@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <rect x="4" y="4" width="72" height="72" rx="20" fill="#ECFDF5" stroke="#10B981" stroke-width="3"/>
+  <!-- Shield with lock -->
+  <path d="M40,18 L56,24 C56,38 49,49 40,54 C31,49 24,38 24,24 Z" fill="#63BA97" stroke="#243B33" stroke-width="2"/>
+  <!-- Checkmark inside shield -->
+  <path d="M33,36 L38,41 L47,30" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
