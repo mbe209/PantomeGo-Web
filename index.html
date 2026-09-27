@@ -25,7 +25,7 @@
       --sunburst-orange: #F9A826;
       --sunburst-orange-hover: #E29317;
       --honey-yellow: #FDB813;
-      --canvas-bg: #F7FAF8;
+      --canvas-bg: #F3F9F6;
       --card-surface: #FFFFFF;
       --text-forest: #243B33;
       --text-muted: #5B7368;
@@ -36,18 +36,76 @@
       --purple-accent: #8B5CF6;
       --purple-light: #F3E8FF;
 
+      /* Vibrant Section Gradient Backgrounds */
+      --section-hero-bg: linear-gradient(135deg, #EBF7F1 0%, #F7FAF8 45%, #FFF8ED 100%);
+      --section-warum-bg: linear-gradient(160deg, #EBF7F1 0%, #F3F9F6 60%, #EAF5F0 100%);
+      --section-ped-bg: linear-gradient(150deg, #FFF8EE 0%, #FFFBF0 50%, #FEF3E2 100%);
+      --section-steps-bg: linear-gradient(140deg, #EAF5F0 0%, #F3F9F6 50%, #E8F4FE 100%);
+      --section-modes-bg: linear-gradient(155deg, #FFF8EE 0%, #EBF7F1 100%);
+      --section-tiers-bg: linear-gradient(140deg, #F0FBFF 0%, #EBF7F1 40%, #FFF8EE 100%);
+      --section-features-bg: linear-gradient(150deg, #EAF5F0 0%, #F3F9F6 60%, #E8F4FE 100%);
+
+      /* Glassmorphism Tokens */
+      --glass-bg: rgba(255, 255, 255, 0.82);
+      --glass-border: rgba(255, 255, 255, 0.65);
+      --glass-blur: blur(16px);
+      --glass-shadow: 0 12px 36px rgba(36, 59, 51, 0.08);
+
       /* Layout & Spacing */
       --radius-sm: 10px;
       --radius-md: 18px;
       --radius-lg: 28px;
       --radius-full: 9999px;
       --shadow-sm: 0 4px 12px rgba(36, 59, 51, 0.05);
-      --shadow-md: 0 10px 25px rgba(36, 59, 51, 0.08);
-      --shadow-lg: 0 20px 45px rgba(36, 59, 51, 0.12);
+      --shadow-md: 0 12px 28px rgba(36, 59, 51, 0.09);
+      --shadow-lg: 0 24px 52px rgba(36, 59, 51, 0.13);
       --container-max: 1200px;
       --header-height: 80px;
       --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
+    /* ===== MICRO-ANIMATIONS ===== */
+    @keyframes pantoFloat {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      33%  { transform: translateY(-8px) rotate(1.2deg); }
+      66%  { transform: translateY(-4px) rotate(-0.6deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes pantoFloatSlow {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes pantoPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.85; transform: scale(1.04); }
+    }
+    @keyframes pantoGlowPulse {
+      0%, 100% { box-shadow: 0 0 0 0px rgba(99, 186, 151, 0); }
+      50%       { box-shadow: 0 0 0 14px rgba(99, 186, 151, 0.12); }
+    }
+    @keyframes pantoOrbitLeft {
+      0%   { transform: translate(0px, 0px) rotate(0deg); }
+      50%  { transform: translate(-6px, -10px) rotate(-4deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+    @keyframes pantoOrbitRight {
+      0%   { transform: translate(0px, 0px) rotate(0deg); }
+      50%  { transform: translate(6px, -8px) rotate(4deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+    @keyframes pantoSpin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .panto-float       { animation: pantoFloat 4s ease-in-out infinite; }
+    .panto-float-slow  { animation: pantoFloatSlow 5.5s ease-in-out infinite; }
+    .panto-float-delay { animation: pantoFloat 4s ease-in-out infinite 0.9s; }
+    .panto-pulse       { animation: pantoPulse 3s ease-in-out infinite; }
+    .panto-glow-pulse  { animation: pantoGlowPulse 3s ease-in-out infinite; }
+    .panto-orbit-left  { animation: pantoOrbitLeft 6s ease-in-out infinite; }
+    .panto-orbit-right { animation: pantoOrbitRight 6s ease-in-out infinite 1.2s; }
 
     * {
       box-sizing: border-box;
@@ -255,11 +313,38 @@
       border: 1px solid rgba(56, 189, 248, 0.3);
     }
 
-    /* Hero Section */
+    /* Hero Section — Vibrant Radiant Background */
     .hero-section {
-      padding: 70px 0 90px;
+      padding: 70px 0 100px;
       position: relative;
       overflow: hidden;
+      background: var(--section-hero-bg);
+    }
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse at center, rgba(249, 168, 38, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      left: -60px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(99, 186, 151, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-section .container {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-grid {
@@ -563,28 +648,31 @@
     }
 
     .compare-card {
-      background: #FFFFFF;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-radius: var(--radius-lg);
       padding: 40px;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       transition: var(--transition-smooth);
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .compare-card { background: rgba(255, 255, 255, 0.96); }
     }
 
     .compare-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
     }
 
     .card-problem {
-      border-top: 6px solid #EF4444;
-      background: #FFFDFD;
+      border-top: 5px solid #EF4444;
     }
 
     .card-solution {
-      border-top: 6px solid var(--eucalyptus-mint);
-      background: #FFFFFF;
-      box-shadow: var(--shadow-md);
+      border-top: 5px solid var(--eucalyptus-mint);
+      box-shadow: 0 16px 40px rgba(99, 186, 151, 0.14);
       position: relative;
     }
 
@@ -646,11 +734,13 @@
     }
 
     .pedagogy-card {
-      background: #FFFFFF;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-radius: var(--radius-lg);
       padding: 36px 30px;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -658,11 +748,13 @@
       gap: 16px;
       transition: var(--transition-smooth);
     }
+    @supports not (backdrop-filter: blur(1px)) {
+      .pedagogy-card { background: rgba(255, 255, 255, 0.96); }
+    }
 
     .pedagogy-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--eucalyptus-mint);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(99, 186, 151, 0.16);
     }
 
     .pedagogy-icon-wrapper {
@@ -684,11 +776,13 @@
     }
 
     .step-card {
-      background: #FFFFFF;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-radius: var(--radius-lg);
       padding: 32px 24px;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -696,11 +790,18 @@
       text-align: center;
       gap: 16px;
       transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .step-card { background: rgba(255, 255, 255, 0.96); }
     }
 
     .step-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-8px);
+      box-shadow: 0 18px 44px rgba(36, 59, 51, 0.12);
+    }
+    .step-card:hover .step-img-icon {
+      animation: pantoFloat 4s ease-in-out infinite;
     }
 
     .step-number {
@@ -741,11 +842,13 @@
     }
 
     .tier-card {
-      background: #FFFFFF;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-radius: var(--radius-lg);
       padding: 36px 28px;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -756,22 +859,34 @@
       overflow: hidden;
       transition: var(--transition-smooth);
     }
+    @supports not (backdrop-filter: blur(1px)) {
+      .tier-card { background: rgba(255, 255, 255, 0.96); }
+    }
 
     .tier-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
     }
 
     .tier-card-bambini {
-      border-top: 6px solid var(--eucalyptus-mint);
+      border-top: 5px solid var(--eucalyptus-mint);
+    }
+    .tier-card-bambini:hover {
+      box-shadow: 0 20px 50px rgba(99, 186, 151, 0.18);
     }
 
     .tier-card-entdecker {
-      border-top: 6px solid var(--sunburst-orange);
+      border-top: 5px solid var(--sunburst-orange);
+    }
+    .tier-card-entdecker:hover {
+      box-shadow: 0 20px 50px rgba(249, 168, 38, 0.18);
     }
 
     .tier-card-profis {
-      border-top: 6px solid var(--honey-yellow);
+      border-top: 5px solid var(--honey-yellow);
+    }
+    .tier-card-profis:hover {
+      box-shadow: 0 20px 50px rgba(56, 189, 248, 0.18);
     }
 
     .tier-card-header {
@@ -852,11 +967,13 @@
     }
 
     .bento-card {
-      background: #FFFFFF;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-radius: var(--radius-lg);
       padding: 34px 28px;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -865,10 +982,13 @@
       gap: 16px;
       transition: var(--transition-smooth);
     }
+    @supports not (backdrop-filter: blur(1px)) {
+      .bento-card { background: rgba(255, 255, 255, 0.96); }
+    }
 
     .bento-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
+      box-shadow: 0 18px 44px rgba(99, 186, 151, 0.14);
+      transform: translateY(-6px);
     }
 
     .bento-card-large {
@@ -884,12 +1004,12 @@
 
     /* Final CTA Card */
     .cta-banner {
-      background: linear-gradient(135deg, #243B33 0%, #172620 100%);
-      border-radius: 36px;
-      padding: 64px 48px;
+      background: linear-gradient(135deg, #1B2D26 0%, #243B33 40%, #1A2E24 100%);
+      border-radius: 40px;
+      padding: 72px 56px;
       color: #FFFFFF;
       text-align: center;
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 30px 70px rgba(26, 45, 38, 0.35);
       position: relative;
       overflow: hidden;
     }
@@ -897,23 +1017,39 @@
     .cta-banner::before {
       content: "";
       position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(99, 186, 151, 0.25) 0%, transparent 70%);
+      top: -40%;
+      right: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 186, 151, 0.28) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .cta-banner::after {
       content: "";
       position: absolute;
-      bottom: -50%;
-      left: -20%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(249, 168, 38, 0.2) 0%, transparent 70%);
+      bottom: -40%;
+      left: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(249, 168, 38, 0.22) 0%, transparent 65%);
       pointer-events: none;
+    }
+    .cta-mascot-float {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      animation: pantoFloatSlow 5s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .cta-mascot-float { display: none; }
     }
 
     .cta-title {
@@ -1015,13 +1151,73 @@
     /* Scroll Reveal Animation */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(32px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Step icon container: tactile pillowy glow rings */
+    .step-icon-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step-icon-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 28px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .step-card:hover .step-icon-wrap::before {
+      opacity: 1;
+    }
+    .step-icon-wrap-roulette { background: linear-gradient(135deg, #EAF5F0, #D4EDDF); }
+    .step-icon-wrap-roulette::before { background: radial-gradient(circle, rgba(99,186,151,0.18), transparent); }
+    .step-icon-wrap-whisper { background: linear-gradient(135deg, #FFF8EE, #FDEDC5); }
+    .step-icon-wrap-whisper::before { background: radial-gradient(circle, rgba(249,168,38,0.18), transparent); }
+    .step-icon-wrap-timer { background: linear-gradient(135deg, #EAF5F0, #D4EDDF); }
+    .step-icon-wrap-timer::before { background: radial-gradient(circle, rgba(99,186,151,0.18), transparent); }
+    .step-icon-wrap-fanfare { background: linear-gradient(135deg, #FFF8EE, #FDEDC5); }
+    .step-icon-wrap-fanfare::before { background: radial-gradient(circle, rgba(253,184,19,0.18), transparent); }
+
+    /* Mascot Hero Integration */
+    .hero-mascot-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-mascot-glow {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(ellipse, rgba(249, 168, 38, 0.22) 0%, rgba(99, 186, 151, 0.12) 40%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pantoPulse 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-mascot-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      box-shadow: 0 16px 40px rgba(249, 168, 38, 0.28);
+      position: relative;
+      z-index: 1;
     }
 
     /* Responsive Breakpoints */
@@ -1240,7 +1436,7 @@
   </section>
 
   <!-- Problem vs Solution (Dynamo) Section -->
-  <section class="section-py" id="warum">
+  <section class="section-py" id="warum" style="background: var(--section-warum-bg); position: relative; overflow: hidden;">
     <div class="container">
       <div class="section-header reveal">
         <span class="pill-badge badge-orange" data-i18n="dynamo_badge">Das Pantomime-Dilemma gelöst</span>
@@ -1317,7 +1513,7 @@
   </section>
 
   <!-- Pedagogical & Child Development Section -->
-  <section class="section-py" style="background: #FFFFFF;" id="paedagogik">
+  <section class="section-py" id="paedagogik" style="background: var(--section-ped-bg); position: relative; overflow: hidden;">
     <div class="container">
       <div class="section-header reveal">
         <span class="pill-badge badge-mint" data-i18n="ped_badge">Pädagogisch wertvoll</span>
@@ -1362,7 +1558,7 @@
   </section>
 
   <!-- 4-Steps Gameplay Flow -->
-  <section class="section-py" id="wie-es-geht">
+  <section class="section-py" id="wie-es-geht" style="background: var(--section-steps-bg); position: relative; overflow: hidden;">
     <div class="container">
       <div class="section-header reveal">
         <span class="pill-badge badge-orange" data-i18n="steps_badge">In 4 Schritten zum Spielspaß</span>
@@ -1409,7 +1605,7 @@
   </section>
 
   <!-- Dual Play Modes: Familien-Konfliktlöser -->
-  <section class="section-py" style="background: var(--canvas-bg);" id="spielmodi">
+  <section class="section-py" id="spielmodi" style="background: var(--section-modes-bg); position: relative; overflow: hidden;">
     <div class="container">
       <div class="section-header reveal">
         <span class="pill-badge badge-orange" data-i18n="modes_badge">Der Familien-Konfliktlöser</span>
@@ -1462,7 +1658,7 @@
   </section>
 
   <!-- 3 Age Tiers Showcase -->
-  <section class="section-py" style="background: #FFFFFF;" id="altersstufen">
+  <section class="section-py" id="altersstufen" style="background: var(--section-tiers-bg); position: relative; overflow: hidden;">
     <div class="container">
       <div class="section-header reveal">
         <span class="pill-badge badge-mint" data-i18n="tiers_badge">Passgenau für jedes Alter</span>
@@ -1552,7 +1748,7 @@
   </section>
 
   <!-- Bento Feature Grid -->
-  <section class="section-py" id="features">
+  <section class="section-py" id="features" style="background: var(--section-features-bg); position: relative; overflow: hidden;">
     <div class="container">
       <div class="section-header reveal">
         <span class="pill-badge badge-orange" data-i18n="bento_badge">Kompromisslose Qualität</span>
