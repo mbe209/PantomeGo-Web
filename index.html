@@ -446,6 +446,55 @@
       align-items: center;
     }
 
+    .hero-floating-mascot {
+      position: absolute;
+      top: -16px;
+      right: -24px;
+      z-index: 25;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 6px 14px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 24px rgba(36, 59, 51, 0.14);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+    }
+    .hero-mascot-pill-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(99, 186, 151, 0.35);
+      flex-shrink: 0;
+    }
+    .hero-mascot-pill-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .hero-mascot-pill-tag {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--eucalyptus-mint-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      line-height: 1.1;
+    }
+    .hero-mascot-pill-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-forest);
+      line-height: 1.2;
+    }
+    @media (max-width: 768px) {
+      .hero-floating-mascot {
+        right: 0px;
+        top: -14px;
+      }
+    }
+
     .phone-frame {
       width: 310px;
       height: 620px;
@@ -1354,6 +1403,15 @@
 
       <!-- Phone Mockup Interactive Showcase -->
       <div class="mockup-container reveal">
+        <!-- Floating Mascot Badge -->
+        <div class="hero-floating-mascot panto-float">
+          <img src="app-icon.png" alt="PantoMeGo" width="38" height="38" class="hero-mascot-pill-icon">
+          <div class="hero-mascot-pill-text">
+            <span class="hero-mascot-pill-tag" data-i18n="hero_mascot_pill_tag">NEUES DESIGN</span>
+            <span class="hero-mascot-pill-title" data-i18n="hero_mascot_pill_title">Bereit zum Mitspielen!</span>
+          </div>
+        </div>
+
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen" id="phoneSlider">
@@ -1870,6 +1928,8 @@
         hero_title: 'Das fröhliche Pantomimespiel <span class="highlight-mint">für die ganze Familie</span>',
         hero_subtitle: "Nie wieder Denkblockaden, Zettelchaos oder Frust um die Rundenzeit. PantoMeGo bringt mit Zufalls-Roulette, geheimer Flüster-Karte und Farbtimer das gemeinsame Lachen ins Wohnzimmer!",
         hero_price_tag: "Günstiger als eine Kugel Eis • Einmalkauf ohne Abo",
+        hero_mascot_pill_tag: "NEUES DESIGN",
+        hero_mascot_pill_title: "Bereit zum Mitspielen!",
         bullet_1: "100% Offline spielbar",
         bullet_2: "Keine Werbung & Tracking",
         bullet_3: "Für Kinder ab 3 Jahren",
@@ -2001,6 +2061,8 @@
         hero_title: 'Joyful Charades & Pantomime <span class="highlight-mint">for the Whole Family</span>',
         hero_subtitle: "No more awkward silence, lost paper slips, or timer disputes. PantoMeGo brings pure family laughter to your living room with a random roulette wheel, secret whisper cards, and playful countdowns!",
         hero_price_tag: "Cheaper than an ice cream scoop • One-time purchase, no subscription",
+        hero_mascot_pill_tag: "NEW DESIGN",
+        hero_mascot_pill_title: "Ready to play together!",
         bullet_1: "100% Offline Play",
         bullet_2: "Zero Ads & Tracking",
         bullet_3: "For Kids Ages 3 & Up",
@@ -2132,6 +2194,8 @@
         hero_title: 'El divertido juego de mímica <span class="highlight-mint">para toda la familia</span>',
         hero_subtitle: "Olvídate de las dudas, los papeles perdidos o las discusiones por el tiempo. ¡PantoMeGo trae risas inmediatas con ruleta aleatoria, tarjeta secreta al oído y cronómetro festivo!",
         hero_price_tag: "Más barato que una bola de helado • Compra única sin suscripción",
+        hero_mascot_pill_tag: "NUEVO DISEÑO",
+        hero_mascot_pill_title: "¡Listos para jugar juntos!",
         bullet_1: "100% Sin conexión a internet",
         bullet_2: "Sin anuncios ni rastreo",
         bullet_3: "Para niños a partir de 3 años",
@@ -2263,6 +2327,8 @@
         hero_title: 'Le jeu de charades et mimes <span class="highlight-mint">pour toute la famille</span>',
         hero_subtitle: "Fini le manque d'inspiration, les bouts de papier égarés et les disputes de chronomètre. PantoMeGo apporte la joie du rire partagé avec sa roulette magique, sa carte chuchotée et son minuteur coloré !",
         hero_price_tag: "Moins cher qu'une boule de glace • Achat unique sans abonnement",
+        hero_mascot_pill_tag: "NOUVEAU DESIGN",
+        hero_mascot_pill_title: "Prêt à jouer ensemble !",
         bullet_1: "100% Fonctionne hors ligne",
         bullet_2: "Zéro pub ni pistage",
         bullet_3: "Dès 3 ans et pour tous",
