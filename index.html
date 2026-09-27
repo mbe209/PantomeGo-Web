@@ -1098,6 +1098,7 @@
         <ul class="nav-menu">
           <li><a href="#warum" class="nav-link" data-i18n="nav_why">Vorteile</a></li>
           <li><a href="#wie-es-geht" class="nav-link" data-i18n="nav_how">So geht's</a></li>
+          <li><a href="#spielmodi" class="nav-link" data-i18n="nav_modes">Spielmodi</a></li>
           <li><a href="#altersstufen" class="nav-link" data-i18n="nav_tiers">Altersstufen</a></li>
           <li><a href="#features" class="nav-link" data-i18n="nav_features">Highlights</a></li>
           <li><a href="support/#de" class="nav-link dynamic-sublink" id="navSupportLink" data-i18n="nav_support">Hilfe & FAQ</a></li>
@@ -1407,6 +1408,59 @@
     </div>
   </section>
 
+  <!-- Dual Play Modes: Familien-Konfliktlöser -->
+  <section class="section-py" style="background: var(--canvas-bg);" id="spielmodi">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-orange" data-i18n="modes_badge">Der Familien-Konfliktlöser</span>
+        <h2 class="section-title" data-i18n="modes_title">2 Spielmodi für jedes Alter</h2>
+        <p class="section-subtitle" data-i18n="modes_subtitle">
+          Kinder wollen das Handy selbst bedienen, Eltern fürchten zu viel Bildschirmzeit. PantoMeGo löst das Dilemma genial.
+        </p>
+      </div>
+
+      <div class="modes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        <!-- Card 1: Erwachsenen- & Familien-Modus -->
+        <div class="tier-card reveal" style="border-top: 5px solid var(--sunburst-orange); background: #FFFFFF;">
+          <div class="tier-card-header">
+            <span class="pill-badge badge-orange" style="margin-bottom: 12px;" data-i18n="mode_1_badge">Begleitetes Spiel</span>
+            <h3 style="font-size: 1.6rem; margin-bottom: 8px;" data-i18n="mode_1_t">Eltern- & Familien-Modus</h3>
+            <p style="color: var(--text-muted); font-size: 0.96rem; margin-bottom: 16px;" data-i18n="mode_1_d">
+              Das Smartphone bleibt sicher in den Händen der Eltern. Die geheime Flüster-Karte liefert kindgerechte Schauspiel-Tipps direkt ins Ohr.
+            </p>
+          </div>
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="mode_1_features_t">Die Vorteile für Eltern:</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_1_f1">✓ Perfekt für die Kleinsten (3–5 Jahre): Null Lesedruck</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_1_f2">✓ Konkrete Gesten-Tipps zum Einflüstern ins Ohr</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_1_f3">✓ Volle Kontrolle über Rundendauer & Kategorien</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2: Kinder-Modus -->
+        <div class="tier-card reveal" style="border-top: 5px solid var(--eucalyptus-mint); background: #FFFFFF;">
+          <div class="tier-card-header">
+            <span class="pill-badge badge-mint" style="margin-bottom: 12px;" data-i18n="mode_2_badge">Minimal Screen Time</span>
+            <h3 style="font-size: 1.6rem; margin-bottom: 8px;" data-i18n="mode_2_t">Kinder spielen selbst</h3>
+            <p style="color: var(--text-muted); font-size: 0.96rem; margin-bottom: 16px;" data-i18n="mode_2_d">
+              Schulanfänger nehmen das Handy stolz selbst in die Hand. Große Schrift, ein geheimer Tipp – und der Impuls, das Handy sofort abzulegen!
+            </p>
+          </div>
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="mode_2_features_t">Die Vorteile für Kinder:</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_2_f1">✓ Für Leseanfänger (6–8 und 9+ Jahre): Extra große Schrift</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_2_f2">✓ Impuls „Handy ablegen & vormachen!“ bei Rundenstart</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_2_f3">✓ Kindersichere 3-Sekunden-Sperre für Einstellungen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 3 Age Tiers Showcase -->
   <section class="section-py" style="background: #FFFFFF;" id="altersstufen">
     <div class="container">
@@ -1611,6 +1665,7 @@
       de: {
         nav_why: "Vorteile",
         nav_how: "So geht's",
+        nav_modes: "Spielmodi",
         nav_tiers: "Altersstufen",
         nav_features: "Highlights",
         nav_support: "Hilfe & FAQ",
@@ -1672,6 +1727,23 @@
         step_3_d: "Der Farbring läuft (30s, 60s oder 90s). Tick-Tack-Countdown in den letzten 5 Sekunden!",
         step_4_t: "4. Jubel & Konfetti",
         step_4_d: "Erraten! Klick auf den Button: Fröhliche Fanfare erklingt und buntes Konfetti regnet herab.",
+        modes_badge: "Der Familien-Konfliktlöser",
+        modes_title: "2 Spielmodi für jedes Alter",
+        modes_subtitle: "Kinder wollen das Handy selbst bedienen, Eltern fürchten zu viel Bildschirmzeit. PantoMeGo löst das Dilemma genial.",
+        mode_1_badge: "Begleitetes Spiel",
+        mode_1_t: "Eltern- & Familien-Modus",
+        mode_1_d: "Das Smartphone bleibt sicher in den Händen der Eltern. Die geheime Flüster-Karte liefert kindgerechte Schauspiel-Tipps direkt ins Ohr.",
+        mode_1_features_t: "Die Vorteile für Eltern:",
+        mode_1_f1: "✓ Perfekt für die Kleinsten (3–5 Jahre): Null Lesedruck",
+        mode_1_f2: "✓ Konkrete Gesten-Tipps zum Einflüstern ins Ohr",
+        mode_1_f3: "✓ Volle Kontrolle über Rundendauer & Kategorien",
+        mode_2_badge: "Minimal Screen Time",
+        mode_2_t: "Kinder spielen selbst",
+        mode_2_d: "Schulanfänger nehmen das Handy stolz selbst in die Hand. Große Schrift, ein geheimer Tipp – und der Impuls, das Handy sofort abzulegen!",
+        mode_2_features_t: "Die Vorteile für Kinder:",
+        mode_2_f1: "✓ Für Leseanfänger (6–8 und 9+ Jahre): Extra große Schrift",
+        mode_2_f2: "✓ Impuls „Handy ablegen & vormachen!“ bei Rundenstart",
+        mode_2_f3: "✓ Kindersichere 3-Sekunden-Sperre für Einstellungen",
         tiers_badge: "Passgenau für jedes Alter",
         tiers_title: "Drei liebevoll kuratierte Stufen",
         tiers_subtitle: "Vom Kindergartenkind bis zum Schulkind: Die Begriffe wachsen mit dem Entwicklungsstand deines Kindes mit.",
@@ -1724,6 +1796,7 @@
       en: {
         nav_why: "Benefits",
         nav_how: "How It Works",
+        nav_modes: "Game Modes",
         nav_tiers: "Age Tiers",
         nav_features: "Highlights",
         nav_support: "Help & FAQ",
@@ -1785,6 +1858,23 @@
         step_3_d: "The color timer rings (30s, 60s, or 90s). Ticking audio in the final 5 seconds builds excitement!",
         step_4_t: "4. Cheers & Confetti",
         step_4_d: "Got it! Hit the button: joyful fanfare sounds and confetti rains down.",
+        modes_badge: "The Family Dilemma Solved",
+        modes_title: "2 Game Modes for Every Age",
+        modes_subtitle: "Kids want to hold the phone themselves, while parents worry about screen time. PantoMeGo solves the dilemma brilliantly.",
+        mode_1_badge: "Guided Play",
+        mode_1_t: "Parent & Family Mode",
+        mode_1_d: "The smartphone stays safely in parents' hands. The secret whisper card provides child-friendly acting tips directly into the ear.",
+        mode_1_features_t: "Benefits for Parents:",
+        mode_1_f1: "✓ Perfect for toddlers (ages 3–5): Zero reading pressure",
+        mode_1_f2: "✓ Concrete gesture cues to whisper in their ear",
+        mode_1_f3: "✓ Full control over round length & categories",
+        mode_2_badge: "Minimal Screen Time",
+        mode_2_t: "Kids Play Autonomously",
+        mode_2_d: "Young schoolers proudly hold the device themselves. Big fonts, one secret tip – and an instant prompt to put the phone down!",
+        mode_2_features_t: "Benefits for Kids:",
+        mode_2_f1: "✓ For early readers (ages 6–8 and 9+): Extra large typography",
+        mode_2_f2: "✓ 'Put phone down & act!' cue as soon as round starts",
+        mode_2_f3: "✓ Child-safe 3-second parental gate for settings",
         tiers_badge: "Tailored to Every Age",
         tiers_title: "Three Thoughtfully Curated Tiers",
         tiers_subtitle: "From toddlers to pre-teens: concepts grow alongside your child's developmental milestones.",
@@ -1837,6 +1927,7 @@
       es: {
         nav_why: "Ventajas",
         nav_how: "Cómo funciona",
+        nav_modes: "Modos de Juego",
         nav_tiers: "Edades",
         nav_features: "Destacados",
         nav_support: "Ayuda y FAQ",
@@ -1898,6 +1989,23 @@
         step_3_d: "El anillo cuenta regresiva (30s, 60s o 90s). ¡Sonido de tic-tac en los últimos 5 segundos!",
         step_4_t: "4. ¡Aplausos y confeti!",
         step_4_d: "¡Acertado! Pulsa el botón: suena la fanfarria y llueven confetis de colores.",
+        modes_badge: "El dilema familiar resuelto",
+        modes_title: "2 modos de juego para cada edad",
+        modes_subtitle: "Los niños quieren usar el teléfono ellos mismos, pero los padres temen el tiempo excesivo de pantalla. PantoMeGo lo resuelve a la perfección.",
+        mode_1_badge: "Juego Guiado",
+        mode_1_t: "Modo Padres y Familia",
+        mode_1_d: "El smartphone permanece seguro en manos de los padres. La tarjeta secreta susurra pistas de actuación directamente al oído del niño.",
+        mode_1_features_t: "Ventajas para los padres:",
+        mode_1_f1: "✓ Ideal para los más pequeños (3–5 años): Cero presión de lectura",
+        mode_1_f2: "✓ Consejos de gestos concretos para susurrar al oído",
+        mode_1_f3: "✓ Control total del tiempo de ronda y categorías",
+        mode_2_badge: "Mínimo tiempo de pantalla",
+        mode_2_t: "Los niños juegan solos",
+        mode_2_d: "Los escolares sostienen el dispositivo con orgullo. Letras grandes, una pista secreta ¡y la orden de soltar el teléfono de inmediato!",
+        mode_2_features_t: "Ventajas para los niños:",
+        mode_2_f1: "✓ Para primeros lectores (6–8 y 9+ años): Tipografía extragrande",
+        mode_2_f2: "✓ Aviso «¡Deja el teléfono y actúa!» al iniciar la ronda",
+        mode_2_f3: "✓ Bloqueo parental seguro de 3 segundos para ajustes",
         tiers_badge: "Adaptado a cada etapa",
         tiers_title: "Tres niveles cuidadosamente diseñados",
         tiers_subtitle: "Desde niños en edad preescolar hasta primaria: los retos crecen junto a tus hijos.",
@@ -1950,6 +2058,7 @@
       fr: {
         nav_why: "Avantages",
         nav_how: "Comment ça marche",
+        nav_modes: "Modes de Jeu",
         nav_tiers: "Niveaux d'âge",
         nav_features: "Points forts",
         nav_support: "Aide & FAQ",
@@ -2011,6 +2120,23 @@
         step_3_d: "Le cercle s'écoule (30s, 60s ou 90s). Tic-tac sonore dans les 5 dernières secondes !",
         step_4_t: "4. Joie & confettis",
         step_4_d: "Trouvé ! Cliquez sur le bouton : la fanfare retentit et les confettis s'envolent.",
+        modes_badge: "Le dilemme familial résolu",
+        modes_title: "2 modes de jeu pour chaque âge",
+        modes_subtitle: "Les enfants veulent tenir le téléphone eux-mêmes, tandis que les parents s'inquiètent du temps d'écran. PantoMeGo résout ce dilemme avec brio.",
+        mode_1_badge: "Jeu Guidé",
+        mode_1_t: "Mode Parents & Famille",
+        mode_1_d: "Le smartphone reste en sécurité dans les mains des parents. La carte secrète chuchotée offre des conseils de mime directement au creux de l'oreille.",
+        mode_1_features_t: "Les avantages pour les parents :",
+        mode_1_f1: "✓ Idéal pour les tout-petits (3–5 ans) : Zéro pression de lecture",
+        mode_1_f2: "✓ Conseils de gestes concrets à chuchoter à l'oreille",
+        mode_1_f3: "✓ Contrôle total de la durée des manches et des catégories",
+        mode_2_badge: "Temps d'écran minimal",
+        mode_2_t: "Les enfants jouent en autonomie",
+        mode_2_d: "Les jeunes écoliers prennent fièrement le téléphone en main. Grandes lettres, indice secret – et l'invitation à poser immédiatement le téléphone !",
+        mode_2_features_t: "Les avantages pour les enfants :",
+        mode_2_f1: "✓ Pour apprentis lecteurs (6–8 et 9+ ans) : Typographie géante",
+        mode_2_f2: "✓ Consigne « Pose le téléphone & mime ! » dès le départ",
+        mode_2_f3: "✓ Contrôle parental sécurisé de 3 secondes pour les réglages",
         tiers_badge: "Adapté à chaque âge",
         tiers_title: "Trois niveaux conçus avec tendresse",
         tiers_subtitle: "Des tout-petits aux écoliers : les défis évoluent avec le développement de votre enfant.",
