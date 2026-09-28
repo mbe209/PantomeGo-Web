@@ -63,7 +63,7 @@
     "step_2_t": "2. Die Flüster-Karte",
     "step_2_d": "Mama oder Papa lesen den Begriff vor und flüstern dem Kind die passende Gesten-Idee ins Ohr.",
     "step_3_t": "3. Pantomime-Runde",
-    "step_3_d": "Der Farbring läuft (30s, 60s oder 90s). Tick-Tack-Countdown in den letzten 5 Sekunden!",
+    "step_3_d": "Der 3-2-1-LOS Countdown leitet die Runde ein, danach läuft der Farbtimer (30s, 60s oder 90s). Tick-Tack-Countdown in den letzten 5 Sekunden!",
     "step_4_t": "4. Jubel & Konfetti",
     "step_4_d": "Erraten! Klick auf den Button: Fröhliche Fanfare erklingt und buntes Konfetti regnet herab.",
     "modes_badge": "Der Familien-Konfliktlöser",
@@ -88,9 +88,9 @@
     "tiers_subtitle": "Vom Kindergartenkind bis zum Schulkind: Die Begriffe wachsen mit dem Entwicklungsstand deines Kindes mit.",
     "tier_1_t": "Bambini (3–5 Jahre)",
     "tier_1_d": "Fokus auf Tiere und Figuren mit ganz einfachen, typischen Bewegungen. Große visuelle Symbole und bildhafte Regieanweisungen.",
-    "tier_2_t": "Entdecker (5–7 Jahre)",
+    "tier_2_t": "Entdecker (6–8 Jahre)",
     "tier_2_d": "Lebendige Tiere, Fantasiefiguren und bekannte Berufe. Ermutigt zu typischen Handlungsabläufen und lebendiger Mimik.",
-    "tier_3_t": "Profis (7–12 Jahre)",
+    "tier_3_t": "Profis (9+ Jahre)",
     "tier_3_d": "Anspruchsvollere, zusammengesetzte Handlungen und spannende Berufe für Schulkinder. Fördert schnelles Abstrahieren.",
     "words_example": "Beispiel-Begriffe:",
     "chip_cat": "Katze",
@@ -130,7 +130,9 @@
     "footer_privacy": "Datenschutz",
     "footer_support": "Support & FAQ",
     "footer_rights": "Alle Rechte vorbehalten.",
-    "footer_compliance": "Apple Kids Category & DSGVO Konform"
+    "footer_compliance": "Apple Kids Category & DSGVO Konform",
+    "feat_6_t": "5 Kategorien & Direktauswahl",
+    "feat_6_d": "Tiere, Berufe, Sport & Freizeit, Alltag & Natur, Gegenstände. Passe Kategorien und Rundendauer direkt über das Startmenü an – geschützt durch die kindersichere 3-Sekunden-Elternschranke."
   },
   "en": {
     "nav_why": "Benefits",
@@ -196,7 +198,7 @@
     "step_2_t": "2. Whisper Card",
     "step_2_d": "Mom or Dad quietly whispers the secret term and playful acting hint into the child's ear.",
     "step_3_t": "3. Act It Out",
-    "step_3_d": "The color timer rings (30s, 60s, or 90s). Ticking audio in the final 5 seconds builds excitement!",
+    "step_3_d": "The 3-2-1-GO audio countdown kicks off the round, then the vibrant timer runs (30s, 60s, or 90s). Ticking audio in the final 5 seconds builds excitement!",
     "step_4_t": "4. Cheers & Confetti",
     "step_4_d": "Got it! Hit the button: joyful fanfare sounds and confetti rains down.",
     "modes_badge": "The Family Dilemma Solved",
@@ -221,9 +223,9 @@
     "tiers_subtitle": "From toddlers to pre-teens: concepts grow alongside your child's developmental milestones.",
     "tier_1_t": "Bambini (Ages 3–5)",
     "tier_1_d": "Familiar animals and household roles with simple, recognizable gestures and toddler cues.",
-    "tier_2_t": "Explorers (Ages 5–7)",
+    "tier_2_t": "Explorers (Ages 6–8)",
     "tier_2_d": "Dynamic creatures, fairy-tale figures, and professions that inspire lively storytelling.",
-    "tier_3_t": "Pros (Ages 7–12)",
+    "tier_3_t": "Pros (Ages 9+)",
     "tier_3_d": "Exciting multi-step challenges for school-aged kids to test deduction and creativity.",
     "words_example": "Sample Terms:",
     "chip_cat": "Cat",
@@ -263,7 +265,9 @@
     "footer_privacy": "Privacy Policy",
     "footer_support": "Support & FAQ",
     "footer_rights": "All rights reserved.",
-    "footer_compliance": "Apple Kids Category & GDPR Compliant"
+    "footer_compliance": "Apple Kids Category & GDPR Compliant",
+    "feat_6_t": "5 Categories & Direct Setup",
+    "feat_6_d": "Animals, Professions, Sports, Everyday Life & Objects. Customize categories and timer duration directly from the start menu – protected by the kid-safe parental gate."
   },
   "es": {
     "nav_why": "Ventajas",
@@ -329,7 +333,7 @@
     "step_2_t": "2. Tarjeta al oído",
     "step_2_d": "Papá o mamá susurran el término y un truco de actuación al oído del niño.",
     "step_3_t": "3. Ronda de mímica",
-    "step_3_d": "El anillo cuenta regresiva (30s, 60s o 90s). ¡Sonido de tic-tac en los últimos 5 segundos!",
+    "step_3_d": "¡La cuenta atrás 3-2-1-YA inicia la ronda con sonido, luego corre el temporizador (30s, 60s o 90s)! Sonido de tic-tac en los últimos 5 segundos.",
     "step_4_t": "4. ¡Aplausos y confeti!",
     "step_4_d": "¡Acertado! Pulsa el botón: suena la fanfarria y llueven confetis de colores.",
     "modes_badge": "El dilema familiar resuelto",
@@ -354,9 +358,9 @@
     "tiers_subtitle": "Desde niños en edad preescolar hasta primaria: los retos crecen junto a tus hijos.",
     "tier_1_t": "Bambini (3 a 5 años)",
     "tier_1_d": "Animales y roles cotidianos con gestos fáciles de imitar e indicaciones claras.",
-    "tier_2_t": "Exploradores (5 a 7 años)",
+    "tier_2_t": "Exploradores (6 a 8 años)",
     "tier_2_d": "Animales dinámicos y oficios divertidos que despiertan la imaginación.",
-    "tier_3_t": "Expertos (7 a 12 años)",
+    "tier_3_t": "Expertos (9+ años)",
     "tier_3_d": "Acciones compuestas y profesiones desafiantes para poner a prueba el ingenio.",
     "words_example": "Ejemplos de términos:",
     "chip_cat": "Gato",
@@ -396,7 +400,9 @@
     "footer_privacy": "Privacidad",
     "footer_support": "Soporte y FAQ",
     "footer_rights": "Todos los derechos reservados.",
-    "footer_compliance": "Conforme con Apple Kids Category y RGPD"
+    "footer_compliance": "Conforme con Apple Kids Category y RGPD",
+    "feat_6_t": "5 Categorías y Ajustes Directos",
+    "feat_6_d": "Animales, Profesiones, Deportes, Vida Cotidiana y Objetos. Personaliza categorías y temporizador directamente desde el menú principal con control parental."
   },
   "fr": {
     "nav_why": "Avantages",
@@ -462,7 +468,7 @@
     "step_2_t": "2. Carte chuchotée",
     "step_2_d": "Maman ou Papa lit et murmure le mot et l'astuce de mime à l'oreille.",
     "step_3_t": "3. La manche commence",
-    "step_3_d": "Le cercle s'écoule (30s, 60s ou 90s). Tic-tac sonore dans les 5 dernières secondes !",
+    "step_3_d": "Le compte à rebours 3-2-1-PARTEZ lance la manche, puis le cercle de couleur s'écoule (30s, 60s ou 90s). Tic-tac sonore dans les 5 dernières secondes !",
     "step_4_t": "4. Joie & confettis",
     "step_4_d": "Trouvé ! Cliquez sur le bouton : la fanfare retentit et les confettis s'envolent.",
     "modes_badge": "Le dilemme familial résolu",
@@ -487,9 +493,9 @@
     "tiers_subtitle": "Des tout-petits aux écoliers : les défis évoluent avec le développement de votre enfant.",
     "tier_1_t": "Bambini (3 à 5 ans)",
     "tier_1_d": "Animaux familiers et gestes très visuels avec des symboles clairs.",
-    "tier_2_t": "Explorateurs (5 à 7 ans)",
+    "tier_2_t": "Explorateurs (6 à 8 ans)",
     "tier_2_d": "Créatures dynamiques et métiers courants qui stimulent l'imagination.",
-    "tier_3_t": "Pros (7 à 12 ans)",
+    "tier_3_t": "Pros (9 ans et +)",
     "tier_3_d": "Actions combinées et métiers captivants pour les enfants d'âge scolaire.",
     "words_example": "Exemples de mots :",
     "chip_cat": "Chat",
@@ -529,6 +535,8 @@
     "footer_privacy": "Confidentialité",
     "footer_support": "Support & FAQ",
     "footer_rights": "Tous droits réservés.",
-    "footer_compliance": "Conforme Apple Kids Category & RGPD"
+    "footer_compliance": "Conforme Apple Kids Category & RGPD",
+    "feat_6_t": "5 Catégories & Paramètres Directs",
+    "feat_6_d": "Animaux, Métiers, Sports, Vie Quotidienne et Objets. Personnalisez catégories et temps de manche directement depuis le menu principal avec contrôle parental."
   }
 }
