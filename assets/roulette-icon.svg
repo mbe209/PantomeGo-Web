@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Soft Ambient Warm Shadows -->
+    <filter id="rouletteSoftShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#243B33" flood-opacity="0.14"/>
+    </filter>
+    <filter id="hubGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#F9A826" flood-opacity="0.35"/>
+    </filter>
+
+    <!-- Vibrant Segment Gradients -->
+    <linearGradient id="segMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#72D4AB"/>
+      <stop offset="100%" stop-color="#4AA881"/>
+    </linearGradient>
+    <linearGradient id="segOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFBD4A"/>
+      <stop offset="100%" stop-color="#F08E10"/>
+    </linearGradient>
+    <linearGradient id="segYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE169"/>
+      <stop offset="100%" stop-color="#FDB813"/>
+    </linearGradient>
+    <linearGradient id="segSky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60D5FA"/>
+      <stop offset="100%" stop-color="#239BD6"/>
+    </linearGradient>
+
+    <!-- Outer Rim Metallic Soft Glow -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E2EBE6"/>
+    </linearGradient>
+
+    <radialGradient id="centerBulb" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#FFF0D0"/>
+      <stop offset="100%" stop-color="#F9A826"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer Cushion Disc -->
+  <circle cx="60" cy="62" r="50" fill="url(#rimGrad)" filter="url(#rouletteSoftShadow)"/>
+  <circle cx="60" cy="62" r="45" fill="#FFFFFF"/>
+
+  <!-- Colored Wheel Segments (Smooth & Curved) -->
+  <!-- Segment 1: Mint (Top Right) -->
+  <path d="M60,62 L60,19 A43,43 0 0,1 103,62 Z" fill="url(#segMint)"/>
+  <!-- Segment 2: Orange (Bottom Right) -->
+  <path d="M60,62 L103,62 A43,43 0 0,1 60,105 Z" fill="url(#segOrange)"/>
+  <!-- Segment 3: Yellow (Bottom Left) -->
+  <path d="M60,62 L60,105 A43,43 0 0,1 17,62 Z" fill="url(#segYellow)"/>
+  <!-- Segment 4: Sky Blue (Top Left) -->
+  <path d="M60,62 L17,62 A43,43 0 0,1 60,19 Z" fill="url(#segSky)"/>
+
+  <!-- Segment Dividers with Soft Light -->
+  <circle cx="60" cy="62" r="43" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.6"/>
+  <line x1="60" y1="19" x2="60" y2="105" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="17" y1="62" x2="103" y2="62" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Playful Decorative Dots along Rim -->
+  <circle cx="60" cy="24" r="2.5" fill="#FFFFFF"/>
+  <circle cx="98" cy="62" r="2.5" fill="#FFFFFF"/>
+  <circle cx="60" cy="100" r="2.5" fill="#FFFFFF"/>
+  <circle cx="22" cy="62" r="2.5" fill="#FFFFFF"/>
+
+  <!-- Tactile 3D Center Hub -->
+  <circle cx="60" cy="62" r="18" fill="#FFFFFF" filter="url(#rouletteSoftShadow)"/>
+  <circle cx="60" cy="62" r="14" fill="url(#centerBulb)" filter="url(#hubGlow)"/>
+  <circle cx="56" cy="58" r="4" fill="#FFFFFF" opacity="0.8"/>
+
+  <!-- Rounded Friendly Pointer Arrow at Top -->
+  <path d="M54,8 C54,5.8 56.2,4 58.8,5.2 L64.8,8.2 C66.8,9.2 66.8,11.8 64.8,12.8 L58.8,15.8 C56.2,17 54,15.2 54,13 Z"
+        fill="#F9A826" stroke="#FFFFFF" stroke-width="2" filter="url(#rouletteSoftShadow)"
+        transform="rotate(90 60 12)"/>
+  <circle cx="60" cy="12" r="2" fill="#FFFFFF"/>
+</svg>

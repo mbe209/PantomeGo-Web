@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <filter id="timerSoftShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#243B33" flood-opacity="0.14"/>
+    </filter>
+    <filter id="ringGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#F9A826" flood-opacity="0.3"/>
+    </filter>
+
+    <linearGradient id="timerDialGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F2F8F5"/>
+    </linearGradient>
+
+    <!-- Warm Progression Gradient (Mint -> Orange -> Warm Red) -->
+    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#63BA97"/>
+      <stop offset="45%" stop-color="#FDB813"/>
+      <stop offset="75%" stop-color="#F9A826"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+
+    <linearGradient id="knobGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#476356"/>
+      <stop offset="100%" stop-color="#243B33"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top Timer Tactile Knob -->
+  <rect x="52" y="5" width="16" height="8" rx="3.5" fill="url(#knobGrad)"/>
+  <rect x="55" y="11" width="10" height="3" fill="#243B33"/>
+
+  <!-- Background Tactile Disc -->
+  <circle cx="60" cy="64" r="48" fill="url(#timerDialGrad)" filter="url(#timerSoftShadow)"/>
+
+  <!-- Gauge Track (Subtle Warm Neutral) -->
+  <circle cx="60" cy="64" r="38" fill="none" stroke="#E6EFEA" stroke-width="8"/>
+
+  <!-- Glowing Progress Arc (Round Caps & Gradient) -->
+  <circle cx="60" cy="64" r="38" fill="none" stroke="url(#progressGrad)" stroke-width="8.5"
+          stroke-dasharray="238.7" stroke-dashoffset="62" stroke-linecap="round"
+          transform="rotate(-90 60 64)" filter="url(#ringGlow)"/>
+
+  <!-- Dial Center Pin -->
+  <circle cx="60" cy="64" r="6" fill="#243B33"/>
+  <circle cx="60" cy="64" r="2.5" fill="#FFFFFF"/>
+
+  <!-- Soft Rounded Clock Hands -->
+  <line x1="60" y1="64" x2="60" y2="38" stroke="#243B33" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="60" y1="64" x2="77" y2="64" stroke="#F9A826" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Digital Seconds Pill -->
+  <rect x="44" y="78" width="32" height="17" rx="8.5" fill="#243B33"/>
+  <text x="60" y="87" text-anchor="middle" dominant-baseline="central"
+        font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Plus Jakarta Sans', sans-serif" 
+        font-weight="800" font-size="11" fill="#FFFFFF" letter-spacing="0.5px">60s</text>
+</svg>

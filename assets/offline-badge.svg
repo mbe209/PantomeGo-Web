@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <filter id="offlineShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#243B33" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="offBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="100%" stop-color="#E0F2FE"/>
+    </linearGradient>
+    <linearGradient id="slashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+  </defs>
+  <rect x="5" y="5" width="70" height="70" rx="22" fill="url(#offBg)" stroke="#38BDF8" stroke-width="2.5" filter="url(#offlineShadow)"/>
+  <!-- Wifi Arcs with Round Caps -->
+  <path d="M25,33 C30,28 35,26 40,26 C45,26 50,28 55,33" fill="none" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M30,42 C33,39 36,37.5 40,37.5 C44,37.5 47,39 50,42" fill="none" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="40" cy="51" r="4" fill="#0284C7"/>
+  <!-- Soft Diagonal Slash -->
+  <line x1="18" y1="62" x2="62" y2="18" stroke="url(#slashGrad)" stroke-width="5" stroke-linecap="round"/>
+</svg>

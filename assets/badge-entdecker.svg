@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <filter id="entdeckerShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#243B33" flood-opacity="0.12"/>
+    </filter>
+    <filter id="compassGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#F9A826" flood-opacity="0.3"/>
+    </filter>
+
+    <linearGradient id="entdeckerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8EE"/>
+      <stop offset="100%" stop-color="#FEF0D6"/>
+    </linearGradient>
+
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFBD4A"/>
+      <stop offset="100%" stop-color="#F59312"/>
+    </linearGradient>
+
+    <linearGradient id="northNeedle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+
+    <linearGradient id="southNeedle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60D5FA"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Rounded Pillowy Badge -->
+  <rect x="8" y="8" width="104" height="104" rx="32" fill="url(#entdeckerBg)" 
+        stroke="#F9A826" stroke-width="3" filter="url(#entdeckerShadow)"/>
+  
+  <!-- Tactile Friendly Explorer Compass -->
+  <circle cx="60" cy="44" r="23" fill="#FFFFFF" stroke="url(#orangeGrad)" stroke-width="3.5" filter="url(#compassGlow)"/>
+  
+  <!-- North & South Needles with Rounded Endpoints -->
+  <polygon points="60,25 65.5,44 60,41 54.5,44" fill="url(#northNeedle)"/>
+  <polygon points="60,63 65.5,44 60,47 54.5,44" fill="url(#southNeedle)"/>
+  
+  <!-- Compass Pivot -->
+  <circle cx="60" cy="44" r="4.5" fill="#243B33"/>
+  <circle cx="60" cy="44" r="2" fill="#FFFFFF"/>
+
+  <!-- Soft Tick Marks -->
+  <line x1="60" y1="21" x2="60" y2="24" stroke="#F9A826" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="60" y1="64" x2="60" y2="67" stroke="#F9A826" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="37" y1="44" x2="40" y2="44" stroke="#F9A826" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="80" y1="44" x2="83" y2="44" stroke="#F9A826" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Age Pill Box -->
+  <rect x="16" y="74" width="88" height="26" rx="13" fill="#243B33"/>
+  <text x="60" y="87" text-anchor="middle" dominant-baseline="central" 
+        font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Plus Jakarta Sans', sans-serif" 
+        font-weight="800" font-size="11" letter-spacing="0.5px" fill="#FFFFFF">5–7 JAHRE</text>
+</svg>

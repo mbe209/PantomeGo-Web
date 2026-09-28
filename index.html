@@ -1,0 +1,2621 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PantoMeGo — Das kinderfreundliche Pantomime- & Scharadespiel für die ganze Familie</title>
+  <meta name="description" content="PantoMeGo bringt Pantomime und Scharade ins Kinderzimmer: Mit Zufalls-Roulette, geheimer Flüster-Karte für Nicht-Leser, Farbring-Timer und Sieger-Konfetti. 100% offline & werbefrei.">
+  <meta name="theme-color" content="#63BA97">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="app-icon.png">
+  <link rel="apple-touch-icon" href="app-icon.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Brand Color Tokens */
+      --eucalyptus-mint: #63BA97;
+      --eucalyptus-mint-dark: #479B78;
+      --eucalyptus-mint-light: #EAF5F0;
+      --sunburst-orange: #F9A826;
+      --sunburst-orange-hover: #E29317;
+      --honey-yellow: #FDB813;
+      --canvas-bg: #F3F9F6;
+      --card-surface: #FFFFFF;
+      --text-forest: #243B33;
+      --text-muted: #5B7368;
+      --border-soft: #D8E8E0;
+      --sky-blue: #38BDF8;
+      --sky-blue-light: #E0F2FE;
+      --danger-coral: #EF4444;
+      --purple-accent: #8B5CF6;
+      --purple-light: #F3E8FF;
+
+      /* Vibrant Section Gradient Backgrounds */
+      --section-hero-bg: linear-gradient(135deg, #EBF7F1 0%, #F7FAF8 45%, #FFF8ED 100%);
+      --section-warum-bg: linear-gradient(160deg, #EBF7F1 0%, #F3F9F6 60%, #EAF5F0 100%);
+      --section-ped-bg: linear-gradient(150deg, #FFF8EE 0%, #FFFBF0 50%, #FEF3E2 100%);
+      --section-steps-bg: linear-gradient(140deg, #EAF5F0 0%, #F3F9F6 50%, #E8F4FE 100%);
+      --section-modes-bg: linear-gradient(155deg, #FFF8EE 0%, #EBF7F1 100%);
+      --section-tiers-bg: linear-gradient(140deg, #F0FBFF 0%, #EBF7F1 40%, #FFF8EE 100%);
+      --section-features-bg: linear-gradient(150deg, #EAF5F0 0%, #F3F9F6 60%, #E8F4FE 100%);
+
+      /* Glassmorphism Tokens */
+      --glass-bg: rgba(255, 255, 255, 0.82);
+      --glass-border: rgba(255, 255, 255, 0.65);
+      --glass-blur: blur(16px);
+      --glass-shadow: 0 12px 36px rgba(36, 59, 51, 0.08);
+
+      /* Layout & Spacing */
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 4px 12px rgba(36, 59, 51, 0.05);
+      --shadow-md: 0 12px 28px rgba(36, 59, 51, 0.09);
+      --shadow-lg: 0 24px 52px rgba(36, 59, 51, 0.13);
+      --container-max: 1200px;
+      --header-height: 80px;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ===== MICRO-ANIMATIONS ===== */
+    @keyframes pantoFloat {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      33%  { transform: translateY(-8px) rotate(1.2deg); }
+      66%  { transform: translateY(-4px) rotate(-0.6deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes pantoFloatSlow {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes pantoPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.85; transform: scale(1.04); }
+    }
+    @keyframes pantoGlowPulse {
+      0%, 100% { box-shadow: 0 0 0 0px rgba(99, 186, 151, 0); }
+      50%       { box-shadow: 0 0 0 14px rgba(99, 186, 151, 0.12); }
+    }
+    @keyframes pantoOrbitLeft {
+      0%   { transform: translate(0px, 0px) rotate(0deg); }
+      50%  { transform: translate(-6px, -10px) rotate(-4deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+    @keyframes pantoOrbitRight {
+      0%   { transform: translate(0px, 0px) rotate(0deg); }
+      50%  { transform: translate(6px, -8px) rotate(4deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+    @keyframes pantoSpin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .panto-float       { animation: pantoFloat 4s ease-in-out infinite; }
+    .panto-float-slow  { animation: pantoFloatSlow 5.5s ease-in-out infinite; }
+    .panto-float-delay { animation: pantoFloat 4s ease-in-out infinite 0.9s; }
+    .panto-pulse       { animation: pantoPulse 3s ease-in-out infinite; }
+    .panto-glow-pulse  { animation: pantoGlowPulse 3s ease-in-out infinite; }
+    .panto-orbit-left  { animation: pantoOrbitLeft 6s ease-in-out infinite; }
+    .panto-orbit-right { animation: pantoOrbitRight 6s ease-in-out infinite 1.2s; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--canvas-bg);
+      color: var(--text-forest);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-forest);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container Utilities */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-py {
+      padding: 96px 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-py {
+        padding: 64px 0;
+      }
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      background: rgba(247, 250, 248, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-soft);
+      transition: var(--transition-smooth);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--text-forest);
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.02);
+    }
+
+    .brand-icon-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      box-shadow: 0 4px 10px rgba(99, 186, 151, 0.3);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-forest);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--eucalyptus-mint-dark);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: inline-flex;
+      background: #FFFFFF;
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .lang-btn.active {
+      background: var(--eucalyptus-mint);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(99, 186, 151, 0.4);
+    }
+
+    .header-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sunburst-orange);
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 14px rgba(249, 168, 38, 0.35);
+      transition: var(--transition-smooth);
+    }
+
+    .header-cta-btn:hover {
+      background: var(--sunburst-orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(249, 168, 38, 0.45);
+    }
+
+    /* Badges & Pills */
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-mint {
+      background: var(--eucalyptus-mint-light);
+      color: var(--eucalyptus-mint-dark);
+      border: 1px solid rgba(99, 186, 151, 0.3);
+    }
+
+    .badge-orange {
+      background: #FFF7ED;
+      color: #C2410C;
+      border: 1px solid rgba(249, 168, 38, 0.3);
+    }
+
+    .badge-sky {
+      background: var(--sky-blue-light);
+      color: #0369A1;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* Hero Section — Vibrant Radiant Background */
+    .hero-section {
+      padding: 70px 0 100px;
+      position: relative;
+      overflow: hidden;
+      background: var(--section-hero-bg);
+    }
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse at center, rgba(249, 168, 38, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      left: -60px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(99, 186, 151, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      letter-spacing: -0.02em;
+      color: var(--text-forest);
+    }
+
+    .hero-title .highlight-mint {
+      color: var(--eucalyptus-mint-dark);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .trust-price-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-soft);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-forest);
+    }
+
+    .ice-cream-icon {
+      font-size: 1.2rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .app-store-btn {
+      display: inline-block;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .app-store-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .hero-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .hero-bullet-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-bullet-item svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--eucalyptus-mint-dark);
+    }
+
+    /* Hero Interactive Mockup Slider */
+    .mockup-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-floating-mascot {
+      position: absolute;
+      top: -16px;
+      right: -24px;
+      z-index: 25;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 6px 14px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 24px rgba(36, 59, 51, 0.14);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+    }
+    .hero-mascot-pill-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(99, 186, 151, 0.35);
+      flex-shrink: 0;
+    }
+    .hero-mascot-pill-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .hero-mascot-pill-tag {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--eucalyptus-mint-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      line-height: 1.1;
+    }
+    .hero-mascot-pill-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-forest);
+      line-height: 1.2;
+    }
+    @media (max-width: 768px) {
+      .hero-floating-mascot {
+        right: 0px;
+        top: -14px;
+      }
+    }
+
+    .phone-frame {
+      width: 310px;
+      height: 620px;
+      background: #1E2923;
+      border-radius: 46px;
+      padding: 12px;
+      box-shadow: 0 25px 60px rgba(36, 59, 51, 0.25), 0 0 0 4px #2D4238, 0 0 0 8px #E2E8E4;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 22px;
+      background: #111814;
+      border-radius: 12px;
+      z-index: 20;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--canvas-bg);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 56px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(30px) scale(0.96);
+      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+    }
+
+    /* Screen UI Components */
+    .screen-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+    }
+
+    .screen-card {
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 18px 14px;
+      box-shadow: 0 8px 20px rgba(36, 59, 51, 0.08);
+      text-align: center;
+      border: 1px solid var(--border-soft);
+      position: relative;
+    }
+
+    .screen-term-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-forest);
+      margin-bottom: 6px;
+    }
+
+    .screen-cue-box {
+      background: #FFFBEB;
+      border: 1px dashed var(--sunburst-orange);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: #92400E;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .screen-timer-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 8px solid var(--sunburst-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-forest);
+      margin: 14px 0;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .screen-action-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: var(--radius-full);
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-roulette {
+      background: var(--sunburst-orange);
+    }
+
+    .btn-guessed {
+      background: var(--eucalyptus-mint);
+    }
+
+    /* Slider Controls */
+    .slider-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border-soft);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .slider-dot.active {
+      background: var(--eucalyptus-mint-dark);
+      width: 32px;
+      border-radius: var(--radius-full);
+    }
+
+    .slider-arrow-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--text-forest);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .slider-arrow-btn:hover {
+      background: var(--canvas-bg);
+      transform: scale(1.05);
+    }
+
+    /* Section Headings */
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.7rem);
+      margin-top: 12px;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+    }
+
+    /* Problem / Dynamo Section */
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .compare-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition-smooth);
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .compare-card { background: rgba(255, 255, 255, 0.96); }
+    }
+
+    .compare-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+    }
+
+    .card-problem {
+      border-top: 5px solid #EF4444;
+    }
+
+    .card-solution {
+      border-top: 5px solid var(--eucalyptus-mint);
+      box-shadow: 0 16px 40px rgba(99, 186, 151, 0.14);
+      position: relative;
+    }
+
+    .compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .compare-icon {
+      font-size: 2rem;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .compare-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 1.05rem;
+    }
+
+    .compare-item-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .card-problem .compare-item-icon {
+      background: #FEE2E2;
+      color: #DC2626;
+    }
+
+    .card-solution .compare-item-icon {
+      background: var(--eucalyptus-mint-light);
+      color: var(--eucalyptus-mint-dark);
+    }
+
+    /* Pedagogical Section */
+    .pedagogy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .pedagogy-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      transition: var(--transition-smooth);
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .pedagogy-card { background: rgba(255, 255, 255, 0.96); }
+    }
+
+    .pedagogy-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(99, 186, 151, 0.16);
+    }
+
+    .pedagogy-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto;
+    }
+
+    /* 4-Step Gameplay Showcase */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .step-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .step-card { background: rgba(255, 255, 255, 0.96); }
+    }
+
+    .step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 44px rgba(36, 59, 51, 0.12);
+    }
+    .step-card:hover .step-img-icon {
+      animation: pantoFloat 4s ease-in-out infinite;
+    }
+
+    .step-number {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      font-size: 2.2rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      color: #E2E8E4;
+      line-height: 1;
+    }
+
+    .step-img-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .step-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Age Tiers Showcase */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .tier-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .tier-card { background: rgba(255, 255, 255, 0.96); }
+    }
+
+    .tier-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tier-card-bambini {
+      border-top: 5px solid var(--eucalyptus-mint);
+    }
+    .tier-card-bambini:hover {
+      box-shadow: 0 20px 50px rgba(99, 186, 151, 0.18);
+    }
+
+    .tier-card-entdecker {
+      border-top: 5px solid var(--sunburst-orange);
+    }
+    .tier-card-entdecker:hover {
+      box-shadow: 0 20px 50px rgba(249, 168, 38, 0.18);
+    }
+
+    .tier-card-profis {
+      border-top: 5px solid var(--honey-yellow);
+    }
+    .tier-card-profis:hover {
+      box-shadow: 0 20px 50px rgba(56, 189, 248, 0.18);
+    }
+
+    .tier-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .tier-badge-img {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 16px auto;
+      display: block;
+    }
+
+    .tier-card .pill-badge {
+      margin: 0 auto 14px auto;
+      display: inline-flex;
+    }
+
+    .tier-words-sample {
+      background: var(--canvas-bg);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--border-soft);
+      width: 100%;
+      text-align: center;
+    }
+
+    .tier-words-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .tier-word-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .word-chip {
+      background: #FFFFFF;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid var(--border-soft);
+      color: var(--text-forest);
+    }
+
+    .tier-cue-quote {
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--text-forest);
+      background: rgba(255, 255, 255, 0.85);
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border-left: none;
+      border-top: 3px solid var(--sunburst-orange);
+      text-align: center;
+    }
+
+    /* Bento Feature Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(200px, auto);
+      gap: 24px;
+    }
+
+    .bento-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      padding: 34px 28px;
+      border: 1.5px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      transition: var(--transition-smooth);
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .bento-card { background: rgba(255, 255, 255, 0.96); }
+    }
+
+    .bento-card:hover {
+      box-shadow: 0 18px 44px rgba(99, 186, 151, 0.14);
+      transform: translateY(-6px);
+    }
+
+    .bento-card-large {
+      grid-column: span 2;
+    }
+
+    .bento-icon-svg {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Final CTA Card */
+    .cta-banner {
+      background: linear-gradient(135deg, #1B2D26 0%, #243B33 40%, #1A2E24 100%);
+      border-radius: 40px;
+      padding: 72px 56px;
+      color: #FFFFFF;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(26, 45, 38, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 186, 151, 0.28) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-banner::after {
+      content: "";
+      position: absolute;
+      bottom: -40%;
+      left: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(249, 168, 38, 0.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-mascot-float {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      animation: pantoFloatSlow 5s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .cta-mascot-float { display: none; }
+    }
+
+    .cta-title {
+      color: #FFFFFF;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-subtitle {
+      color: #D1D5DB;
+      font-size: 1.2rem;
+      max-width: 780px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .price-anchor-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FDE047;
+      letter-spacing: 0.3px;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-soft);
+      padding: 60px 0 40px;
+      margin-top: 80px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-forest);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .footer-link:hover {
+      color: var(--eucalyptus-mint-dark);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 32px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .compliance-seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--canvas-bg);
+      border: 1px solid var(--border-soft);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-forest);
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Step icon container: tactile pillowy glow rings */
+    .step-icon-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step-icon-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 28px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .step-card:hover .step-icon-wrap::before {
+      opacity: 1;
+    }
+    .step-icon-wrap-roulette { background: linear-gradient(135deg, #EAF5F0, #D4EDDF); }
+    .step-icon-wrap-roulette::before { background: radial-gradient(circle, rgba(99,186,151,0.18), transparent); }
+    .step-icon-wrap-whisper { background: linear-gradient(135deg, #FFF8EE, #FDEDC5); }
+    .step-icon-wrap-whisper::before { background: radial-gradient(circle, rgba(249,168,38,0.18), transparent); }
+    .step-icon-wrap-timer { background: linear-gradient(135deg, #EAF5F0, #D4EDDF); }
+    .step-icon-wrap-timer::before { background: radial-gradient(circle, rgba(99,186,151,0.18), transparent); }
+    .step-icon-wrap-fanfare { background: linear-gradient(135deg, #FFF8EE, #FDEDC5); }
+    .step-icon-wrap-fanfare::before { background: radial-gradient(circle, rgba(253,184,19,0.18), transparent); }
+
+    /* Mascot Hero Integration */
+    .hero-mascot-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-mascot-glow {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(ellipse, rgba(249, 168, 38, 0.22) 0%, rgba(99, 186, 151, 0.12) 40%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pantoPulse 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-mascot-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      box-shadow: 0 16px 40px rgba(249, 168, 38, 0.28);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+      }
+      .hero-content {
+        align-items: center;
+      }
+      .hero-subtitle {
+        margin: 0 auto;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .hero-bullets {
+        justify-content: center;
+      }
+      .pedagogy-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .tiers-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-card-large {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .compare-container {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta-banner {
+        padding: 48px 24px;
+      }
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header" id="mainHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" aria-label="PantoMeGo Home">
+        <img src="app-icon.png" alt="PantoMeGo App Icon" class="brand-icon-img" width="44" height="44">
+        <span>PantoMeGo</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="#warum" class="nav-link" data-i18n="nav_why">Vorteile</a></li>
+          <li><a href="#wie-es-geht" class="nav-link" data-i18n="nav_how">So geht's</a></li>
+          <li><a href="#spielmodi" class="nav-link" data-i18n="nav_modes">Spielmodi</a></li>
+          <li><a href="#altersstufen" class="nav-link" data-i18n="nav_tiers">Altersstufen</a></li>
+          <li><a href="#features" class="nav-link" data-i18n="nav_features">Highlights</a></li>
+          <li><a href="support/#de" class="nav-link dynamic-sublink" id="navSupportLink" data-i18n="nav_support">Hilfe & FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- 4-Language Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" data-lang="de" aria-label="Deutsch">DE</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+          <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+        </div>
+
+        <a href="#laden" class="header-cta-btn" data-i18n="cta_header">App laden</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <span class="pill-badge badge-mint" data-i18n="hero_badge">Familien-Scharade neu gedacht</span>
+        <h1 class="hero-title" data-i18n-html="hero_title">Das fröhliche Pantomimespiel <span class="highlight-mint">für die ganze Familie</span></h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+          Nie wieder Denkblockaden, Zettelchaos oder Frust um die Rundenzeit. PantoMeGo bringt mit Zufalls-Roulette, geheimer Flüster-Karte und Farbtimer das gemeinsame Lachen ins Wohnzimmer!
+        </p>
+        
+        <div class="trust-price-pill">
+          <span class="ice-cream-icon">🍦</span>
+          <span data-i18n="hero_price_tag">Günstiger als eine Kugel Eis • Einmalkauf ohne Abo</span>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="https://apps.apple.com/app/pantomego/id6743128905" target="_blank" rel="noopener noreferrer" class="app-store-btn" id="heroAppStoreBtn" aria-label="Im App Store laden">
+            <img src="assets/appstore-badge.svg" alt="Laden im App Store" width="160" height="50">
+          </a>
+        </div>
+
+        <div class="hero-bullets">
+          <div class="hero-bullet-item">
+            <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+            <span data-i18n="bullet_1">100% Offline spielbar</span>
+          </div>
+          <div class="hero-bullet-item">
+            <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+            <span data-i18n="bullet_2">Keine Werbung & Tracking</span>
+          </div>
+          <div class="hero-bullet-item">
+            <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+            <span data-i18n="bullet_3">Für Kinder ab 3 Jahren</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Mockup Interactive Showcase -->
+      <div class="mockup-container reveal">
+        <!-- Floating Mascot Badge -->
+        <div class="hero-floating-mascot panto-float">
+          <img src="app-icon.png" alt="PantoMeGo" width="38" height="38" class="hero-mascot-pill-icon">
+          <div class="hero-mascot-pill-text">
+            <span class="hero-mascot-pill-tag" data-i18n="hero_mascot_pill_tag">NEUES DESIGN</span>
+            <span class="hero-mascot-pill-title" data-i18n="hero_mascot_pill_title">Bereit zum Mitspielen!</span>
+          </div>
+        </div>
+
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" id="phoneSlider">
+            
+            <!-- Slide 1: Roulette Phase -->
+            <div class="slide active" data-slide="0">
+              <div class="screen-header">
+                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
+                <span class="pill-badge badge-orange" style="font-size: 0.72rem; padding: 2px 8px;">Bambini 3–5</span>
+              </div>
+              <div class="screen-card">
+                <img src="assets/roulette-icon.svg" alt="Roulette" style="width: 80px; height: 80px; margin: 0 auto 10px;">
+                <h3 class="screen-term-title" data-i18n="slide1_title">Glücksrad-Dreh</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="slide1_desc">Ein Fingertipp wählt zufällig den nächsten lustigen Begriff!</p>
+              </div>
+              <button class="screen-action-btn btn-roulette" data-i18n="slide1_btn">🎲 Begriff drehen!</button>
+            </div>
+
+            <!-- Slide 2: Whisper Card -->
+            <div class="slide" data-slide="1">
+              <div class="screen-header">
+                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
+                <span class="pill-badge badge-mint" style="font-size: 0.72rem; padding: 2px 8px;">Flüster-Karte</span>
+              </div>
+              <div class="screen-card">
+                <img src="assets/whisper-icon.svg" alt="Flüstern" style="width: 70px; height: 70px; margin: 0 auto 6px;">
+                <h3 class="screen-term-title" data-i18n="slide2_term">Katze 🐱</h3>
+                <div class="screen-cue-box">
+                  <strong data-i18n="slide2_cue_title">🤫 Geheimtipp fürs Kind:</strong><br>
+                  <span data-i18n="slide2_cue_text">"Schleich leise wie eine Samtpfote und putz dir das Gesicht mit den Pfoten!"</span>
+                </div>
+              </div>
+              <button class="screen-action-btn btn-guessed" data-i18n="slide2_btn">Los geht's!</button>
+            </div>
+
+            <!-- Slide 3: Countdown Timer -->
+            <div class="slide" data-slide="2">
+              <div class="screen-header">
+                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
+                <span class="pill-badge badge-sky" style="font-size: 0.72rem; padding: 2px 8px;">Countdown</span>
+              </div>
+              <div class="screen-card">
+                <div class="screen-timer-circle" style="margin: 6px auto;">
+                  <span>42s</span>
+                </div>
+                <h3 style="font-size: 1.1rem; font-weight: 800;" data-i18n="slide3_title">Farbtimer läuft!</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="slide3_desc">Ticken in den letzten 5 Sekunden & fröhliche Tröte!</p>
+              </div>
+              <button class="screen-action-btn btn-guessed" data-i18n="slide3_btn">🎉 ERRATEN!</button>
+            </div>
+
+            <!-- Slide 4: Confetti & Fanfare -->
+            <div class="slide" data-slide="3">
+              <div class="screen-header">
+                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
+                <span class="pill-badge badge-orange" style="font-size: 0.72rem; padding: 2px 8px;">Jubel!</span>
+              </div>
+              <div class="screen-card" style="background: #FEF3C7; border-color: #FCD34D;">
+                <img src="assets/fanfare-icon.svg" alt="Fanfare" style="width: 80px; height: 80px; margin: 0 auto 10px;">
+                <h3 class="screen-term-title" style="color: #92400E;" data-i18n="slide4_title">Super gemacht! 🏆</h3>
+                <p style="font-size: 0.85rem; color: #78350F;" data-i18n="slide4_desc">Siegerfanfare & bunter Konfetti-Regen belohnen die Runde!</p>
+              </div>
+              <button class="screen-action-btn btn-roulette" data-i18n="slide4_btn">Nächste Runde ➔</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-nav">
+          <button class="slider-arrow-btn" id="prevSlide" aria-label="Vorherige Folie">‹</button>
+          <button class="slider-dot active" data-slide-target="0" aria-label="Folie 1"></button>
+          <button class="slider-dot" data-slide-target="1" aria-label="Folie 2"></button>
+          <button class="slider-dot" data-slide-target="2" aria-label="Folie 3"></button>
+          <button class="slider-dot" data-slide-target="3" aria-label="Folie 4"></button>
+          <button class="slider-arrow-btn" id="nextSlide" aria-label="Nächste Folie">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem vs Solution (Dynamo) Section -->
+  <section class="section-py" id="warum" style="background: var(--section-warum-bg); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-orange" data-i18n="dynamo_badge">Das Pantomime-Dilemma gelöst</span>
+        <h2 class="section-title" data-i18n="dynamo_title">Warum klassische Scharade oft im Frust endet</h2>
+        <p class="section-subtitle" data-i18n="dynamo_subtitle">
+          Eltern kennen das: Die Idee klingt toll, doch am Spieltisch stockt es sofort. PantoMeGo räumt jede Hürde mit spielerischer Leichtigkeit aus dem Weg.
+        </p>
+      </div>
+
+      <div class="compare-container">
+        <!-- The Problem -->
+        <div class="compare-card card-problem reveal">
+          <div class="compare-header">
+            <span class="compare-icon">🛑</span>
+            <h3 style="font-size: 1.45rem;" data-i18n="problem_title">Klassische Pantomime</h3>
+          </div>
+          <ul class="compare-list">
+            <li class="compare-item">
+              <span class="compare-item-icon">✕</span>
+              <div>
+                <strong data-i18n="problem_1_t">Denkblockaden & langes Zögern:</strong>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="problem_1_d">„Mir fällt nichts ein!“ – Kinder verstummen unter Druck und das Spiel bricht ab.</p>
+              </div>
+            </li>
+            <li class="compare-item">
+              <span class="compare-item-icon">✕</span>
+              <div>
+                <strong data-i18n="problem_2_t">Lesedruck bei Kleinkindern:</strong>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="problem_2_d">Nicht-Leser können Zettel nicht entziffern oder verraten den Begriff laut.</p>
+              </div>
+            </li>
+            <li class="compare-item">
+              <span class="compare-item-icon">✕</span>
+              <div>
+                <strong data-i18n="problem_3_t">Streit um Rundenzeit & Regeln:</strong>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="problem_3_d">„Das war viel zu kurz!“ – Diskussionen mit der Stoppuhr verderben die Stimmung.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- The Solution -->
+        <div class="compare-card card-solution reveal">
+          <div class="compare-header">
+            <span class="compare-icon">✨</span>
+            <h3 style="font-size: 1.45rem; color: var(--eucalyptus-mint-dark);" data-i18n="solution_title">Mit PantoMeGo</h3>
+          </div>
+          <ul class="compare-list">
+            <li class="compare-item">
+              <span class="compare-item-icon">✓</span>
+              <div>
+                <strong data-i18n="solution_1_t">Zufalls-Roulette auf Knopfdruck:</strong>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="solution_1_d">Ein Klick und der passende, altersgerechte Begriff steht sofort fest.</p>
+              </div>
+            </li>
+            <li class="compare-item">
+              <span class="compare-item-icon">✓</span>
+              <div>
+                <strong data-i18n="solution_2_t">Geheime Flüster-Karte:</strong>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="solution_2_d">Eltern sehen Begriff & Schauspieltipp und flüstern ihn leise ins Kinderohr. 100% ohne Lesedruck!</p>
+              </div>
+            </li>
+            <li class="compare-item">
+              <span class="compare-item-icon">✓</span>
+              <div>
+                <strong data-i18n="solution_3_t">Fairer Farb-Timer & Konfetti:</strong>
+                <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="solution_3_d">Visueller Farbring (30s, 60s, 90s) und Siegerfanfare für gemeinsames Gewinnen.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pedagogical & Child Development Section -->
+  <section class="section-py" id="paedagogik" style="background: var(--section-ped-bg); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-mint" data-i18n="ped_badge">Pädagogisch wertvoll</span>
+        <h2 class="section-title" data-i18n="ped_title">Körper, Geist & Selbstvertrauen stärken</h2>
+        <p class="section-subtitle" data-i18n="ped_subtitle">
+          PantoMeGo ist kein passives Bildschirmwischen. Die App ist der Funke für echte Bewegung, kreativen Ausdruck und soziale Familienbindung.
+        </p>
+      </div>
+
+      <div class="pedagogy-grid">
+        <div class="pedagogy-card reveal">
+          <div class="pedagogy-icon-wrapper" style="background: var(--eucalyptus-mint-light); color: var(--eucalyptus-mint-dark);">
+            🏃
+          </div>
+          <h3 style="font-size: 1.35rem;" data-i18n="ped_1_t">Ganzheitliche Bewegung</h3>
+          <p style="color: var(--text-muted); font-size: 0.98rem;" data-i18n="ped_1_d">
+            Kinder hüpfen wie Frösche, stampfen wie Elefanten oder balancieren wie Seiltänzer. Trainiert Koordination, Raumgefühl und Motorik auf natürliche Art.
+          </p>
+        </div>
+
+        <div class="pedagogy-card reveal">
+          <div class="pedagogy-icon-wrapper" style="background: #FFF7ED; color: var(--sunburst-orange);">
+            🎭
+          </div>
+          <h3 style="font-size: 1.35rem;" data-i18n="ped_2_t">Nonverbale Expressivität</h3>
+          <p style="color: var(--text-muted); font-size: 0.98rem;" data-i18n="ped_2_d">
+            Gefühle, Handlungen und Wesenszüge ohne Worte darzustellen schult Mimik, Gestik und emotionale Empathie gegenüber den Mitspielern.
+          </p>
+        </div>
+
+        <div class="pedagogy-card reveal">
+          <div class="pedagogy-icon-wrapper" style="background: var(--sky-blue-light); color: #0284C7;">
+            🌟
+          </div>
+          <h3 style="font-size: 1.35rem;" data-i18n="ped_3_t">Selbstwert ohne Versagensangst</h3>
+          <p style="color: var(--text-muted); font-size: 0.98rem;" data-i18n="ped_3_d">
+            Durch konkrete Kinder-Tipps („Tu so, als hättest du eine Bratpfanne“) fühlt sich jedes Kind sicher und erfährt echte Erfolgsmomente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-Steps Gameplay Flow -->
+  <section class="section-py" id="wie-es-geht" style="background: var(--section-steps-bg); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-orange" data-i18n="steps_badge">In 4 Schritten zum Spielspaß</span>
+        <h2 class="section-title" data-i18n="steps_title">Kinderleicht. Sofort loslegen.</h2>
+        <p class="section-subtitle" data-i18n="steps_subtitle">
+          Keine langen Spielanleitungen studieren. In unter 10 Sekunden startet die erste Pantomime-Runde.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card reveal">
+          <span class="step-number">01</span>
+          <img src="assets/roulette-icon.svg" alt="Roulette drehen" class="step-img-icon">
+          <h3 class="step-title" data-i18n="step_1_t">1. Roulette drehen</h3>
+          <p class="step-desc" data-i18n="step_1_d">Tippe auf den Würfel. Das bunte Glücksrad bestimmt den geheimen Begriff aus Tier- oder Berufswelt.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal">
+          <span class="step-number">02</span>
+          <img src="assets/whisper-icon.svg" alt="Flüsterkarte" class="step-img-icon">
+          <h3 class="step-title" data-i18n="step_2_t">2. Die Flüster-Karte</h3>
+          <p class="step-desc" data-i18n="step_2_d">Mama oder Papa lesen den Begriff vor und flüstern dem Kind die passende Gesten-Idee ins Ohr.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal">
+          <span class="step-number">03</span>
+          <img src="assets/timer-icon.svg" alt="Farbtimer" class="step-img-icon">
+          <h3 class="step-title" data-i18n="step_3_t">3. Pantomime-Runde</h3>
+          <p class="step-desc" data-i18n="step_3_d">Der Farbring läuft (30s, 60s oder 90s). Tick-Tack-Countdown in den letzten 5 Sekunden!</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card reveal">
+          <span class="step-number">04</span>
+          <img src="assets/fanfare-icon.svg" alt="Siegerfanfare" class="step-img-icon">
+          <h3 class="step-title" data-i18n="step_4_t">4. Jubel & Konfetti</h3>
+          <p class="step-desc" data-i18n="step_4_d">Erraten! Klick auf den Button: Fröhliche Fanfare erklingt und buntes Konfetti regnet herab.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Play Modes: Familien-Konfliktlöser -->
+  <section class="section-py" id="spielmodi" style="background: var(--section-modes-bg); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-orange" data-i18n="modes_badge">Der Familien-Konfliktlöser</span>
+        <h2 class="section-title" data-i18n="modes_title">2 Spielmodi für jedes Alter</h2>
+        <p class="section-subtitle" data-i18n="modes_subtitle">
+          Kinder wollen das Handy selbst bedienen, Eltern fürchten zu viel Bildschirmzeit. PantoMeGo löst das Dilemma genial.
+        </p>
+      </div>
+
+      <div class="modes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        <!-- Card 1: Erwachsenen- & Familien-Modus -->
+        <div class="tier-card reveal" style="border-top: 5px solid var(--sunburst-orange); background: #FFFFFF;">
+          <div class="tier-card-header">
+            <span class="pill-badge badge-orange" style="margin-bottom: 12px;" data-i18n="mode_1_badge">Begleitetes Spiel</span>
+            <h3 style="font-size: 1.6rem; margin-bottom: 8px;" data-i18n="mode_1_t">Eltern- & Familien-Modus</h3>
+            <p style="color: var(--text-muted); font-size: 0.96rem; margin-bottom: 16px;" data-i18n="mode_1_d">
+              Das Smartphone bleibt sicher in den Händen der Eltern. Die geheime Flüster-Karte liefert kindgerechte Schauspiel-Tipps direkt ins Ohr.
+            </p>
+          </div>
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="mode_1_features_t">Die Vorteile für Eltern:</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_1_f1">✓ Perfekt für die Kleinsten (3–5 Jahre): Null Lesedruck</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_1_f2">✓ Konkrete Gesten-Tipps zum Einflüstern ins Ohr</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_1_f3">✓ Volle Kontrolle über Rundendauer & Kategorien</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2: Kinder-Modus -->
+        <div class="tier-card reveal" style="border-top: 5px solid var(--eucalyptus-mint); background: #FFFFFF;">
+          <div class="tier-card-header">
+            <span class="pill-badge badge-mint" style="margin-bottom: 12px;" data-i18n="mode_2_badge">Minimal Screen Time</span>
+            <h3 style="font-size: 1.6rem; margin-bottom: 8px;" data-i18n="mode_2_t">Kinder spielen selbst</h3>
+            <p style="color: var(--text-muted); font-size: 0.96rem; margin-bottom: 16px;" data-i18n="mode_2_d">
+              Schulanfänger nehmen das Handy stolz selbst in die Hand. Große Schrift, ein geheimer Tipp – und der Impuls, das Handy sofort abzulegen!
+            </p>
+          </div>
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="mode_2_features_t">Die Vorteile für Kinder:</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_2_f1">✓ Für Leseanfänger (6–8 und 9+ Jahre): Extra große Schrift</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_2_f2">✓ Impuls „Handy ablegen & vormachen!“ bei Rundenstart</li>
+              <li style="font-size: 0.9rem; color: var(--text-main);" data-i18n="mode_2_f3">✓ Kindersichere 3-Sekunden-Sperre für Einstellungen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Age Tiers Showcase -->
+  <section class="section-py" id="altersstufen" style="background: var(--section-tiers-bg); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-mint" data-i18n="tiers_badge">Passgenau für jedes Alter</span>
+        <h2 class="section-title" data-i18n="tiers_title">Drei liebevoll kuratierte Stufen</h2>
+        <p class="section-subtitle" data-i18n="tiers_subtitle">
+          Vom Kindergartenkind bis zum Schulkind: Die Begriffe wachsen mit dem Entwicklungsstand deines Kindes mit.
+        </p>
+      </div>
+
+      <div class="tiers-grid">
+        <!-- Bambini Tier -->
+        <div class="tier-card tier-card-bambini reveal">
+          <div class="tier-card-header">
+            <img src="assets/badge-bambini.svg" alt="Bambini 3-5" class="tier-badge-img">
+            <span class="pill-badge badge-mint" style="margin-bottom: 10px;">Stufe 1</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px;" data-i18n="tier_1_t">Bambini (3–5 Jahre)</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;" data-i18n="tier_1_d">
+              Fokus auf Tiere und Figuren mit ganz einfachen, typischen Bewegungen. Große visuelle Symbole und bildhafte Regieanweisungen.
+            </p>
+          </div>
+
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="words_example">Beispiel-Begriffe:</div>
+            <div class="tier-word-chips">
+              <span class="word-chip" data-i18n="chip_cat">Katze</span>
+              <span class="word-chip" data-i18n="chip_frog">Frosch</span>
+              <span class="word-chip" data-i18n="chip_elephant">Elefant</span>
+              <span class="word-chip" data-i18n="chip_chef">Koch</span>
+            </div>
+            <div class="tier-cue-quote" data-i18n="tier_1_quote">
+              „Schleich leise wie eine Samtpfote und putz dir das Gesicht!“
+            </div>
+          </div>
+        </div>
+
+        <!-- Entdecker Tier -->
+        <div class="tier-card tier-card-entdecker reveal">
+          <div class="tier-card-header">
+            <img src="assets/badge-entdecker.svg" alt="Entdecker 5-7" class="tier-badge-img">
+            <span class="pill-badge badge-orange" style="margin-bottom: 10px;">Stufe 2</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px;" data-i18n="tier_2_t">Entdecker (5–7 Jahre)</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;" data-i18n="tier_2_d">
+              Lebendige Tiere, Fantasiefiguren und bekannte Berufe. Ermutigt zu typischen Handlungsabläufen und lebendiger Mimik.
+            </p>
+          </div>
+
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="words_example">Beispiel-Begriffe:</div>
+            <div class="tier-word-chips">
+              <span class="word-chip" data-i18n="chip_monkey">Affe</span>
+              <span class="word-chip" data-i18n="chip_magician">Zauberer</span>
+              <span class="word-chip" data-i18n="chip_gardener">Gärtner</span>
+              <span class="word-chip" data-i18n="chip_penguin">Pinguin</span>
+            </div>
+            <div class="tier-cue-quote" data-i18n="tier_2_quote">
+              „Zieh ein weißes Kaninchen aus deinem imaginären Zylinder!“
+            </div>
+          </div>
+        </div>
+
+        <!-- Profis Tier -->
+        <div class="tier-card tier-card-profis reveal">
+          <div class="tier-card-header">
+            <img src="assets/badge-profis.svg" alt="Profis 7-12" class="tier-badge-img">
+            <span class="pill-badge badge-sky" style="margin-bottom: 10px;">Stufe 3</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px;" data-i18n="tier_3_t">Profis (7–12 Jahre)</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;" data-i18n="tier_3_d">
+              Anspruchsvollere, zusammengesetzte Handlungen und spannende Berufe für Schulkinder. Fördert schnelles Abstrahieren.
+            </p>
+          </div>
+
+          <div class="tier-words-sample">
+            <div class="tier-words-label" data-i18n="words_example">Beispiel-Begriffe:</div>
+            <div class="tier-word-chips">
+              <span class="word-chip" data-i18n="chip_chameleon">Chamäleon</span>
+              <span class="word-chip" data-i18n="chip_detective">Detektiv</span>
+              <span class="word-chip" data-i18n="chip_astronaut">Astronaut</span>
+              <span class="word-chip" data-i18n="chip_surfer">Surfer</span>
+            </div>
+            <div class="tier-cue-quote" data-i18n="tier_3_quote">
+              „Halte eine Lupe vors Auge und folge den geheimen Fußspuren!“
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Feature Grid -->
+  <section class="section-py" id="features" style="background: var(--section-features-bg); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="pill-badge badge-orange" data-i18n="bento_badge">Kompromisslose Qualität</span>
+        <h2 class="section-title" data-i18n="bento_title">Alles, was eine Familien-App braucht</h2>
+        <p class="section-subtitle" data-i18n="bento_subtitle">
+          Entwickelt nach den strengen Richtlinien der Apple Kids Category und mit viel Liebe zum Detail gebaut.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1: 100% Offline -->
+        <div class="bento-card bento-card-large reveal">
+          <img src="assets/offline-badge.svg" alt="Offline Play" class="bento-icon-svg">
+          <h3 style="font-size: 1.45rem;" data-i18n="feat_1_t">100% Offline-First. Spielspaß überall.</h3>
+          <p style="color: var(--text-muted); font-size: 1rem;" data-i18n="feat_1_d">
+            Kein WLAN, kein Funkloch, kein Datenvolumen verbraucht. Ob im Flugzeug, auf der Berghütte, im Garten oder auf dem Kindergeburtstag: PantoMeGo läuft vollständig autark auf deinem iPhone oder iPad.
+          </p>
+        </div>
+
+        <!-- Card 2: Zero Tracking & Privacy -->
+        <div class="bento-card reveal">
+          <img src="assets/privacy-badge.svg" alt="Zero Tracking" class="bento-icon-svg">
+          <h3 style="font-size: 1.3rem;" data-i18n="feat_2_t">100% Kindersicher & Werbefrei</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="feat_2_d">
+            Keine Werbe-Banner, keine In-App-Käufe, kein Benutzerkonto und null Tracking (PrivacyInfo CA92.1). Die Daten deiner Kinder bleiben dort, wo sie hingehören: geschützt.
+          </p>
+        </div>
+
+        <!-- Card 3: Secret Whisper Mode -->
+        <div class="bento-card reveal">
+          <img src="assets/whisper-icon.svg" alt="Flüstermodus" class="bento-icon-svg">
+          <h3 style="font-size: 1.3rem;" data-i18n="feat_3_t">Die clevere Flüster-Karte</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="feat_3_d">
+            Nimmt Kleinkindern die Angst vor dem Vorlesen. Mit praxiserprobten kindgerechten Regieanweisungen für sofortigen Einstieg.
+          </p>
+        </div>
+
+        <!-- Card 4: Audio & Haptics -->
+        <div class="bento-card reveal">
+          <img src="assets/timer-icon.svg" alt="Sound & Haptic" class="bento-icon-svg">
+          <h3 style="font-size: 1.3rem;" data-i18n="feat_4_t">Haptik & AV-Synthese</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="feat_4_d">
+            Lebendige Taptic-Engine-Vibrationen, Tick-Tack-Sounds in den letzten 5 Sekunden und echte Siegerfanfaren erzeugen ein mitreißendes Spielerlebnis.
+          </p>
+        </div>
+
+        <!-- Card 5: 4 Languages -->
+        <div class="bento-card reveal">
+          <div style="font-size: 2.2rem;">🌍</div>
+          <h3 style="font-size: 1.3rem;" data-i18n="feat_5_t">4 Sprachen integriert</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="feat_5_d">
+            Wechsle nahtlos zwischen Deutsch, Englisch, Spanisch und Französisch – ideal auch für zweisprachige Familien und Urlaube.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA & Price Anchor Banner -->
+  <section class="section-py" id="laden">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <span class="price-anchor-tag" data-i18n="cta_pill">Einmalkauf • Kein Abo • Keine Werbung</span>
+        <h2 class="cta-title" data-i18n="cta_banner_title">Bereit für unvergessliche Momente mit Familie & Freunden?</h2>
+        <p class="cta-subtitle" data-i18n="cta_banner_subtitle">
+          Der Hit auf jedem Kindergeburtstag, bei Familienabenden oder unterwegs mit Freunden: PantoMeGo funktioniert überall kinderleicht – denn alles, was ihr braucht, habt ihr auf dem Smartphone oder Tablet bereits dabei! Günstiger als eine Kugel Eis und sofort spielbereit.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="https://apps.apple.com/app/pantomego/id6743128905" target="_blank" rel="noopener noreferrer" class="app-store-btn" id="ctaAppStoreBtn" aria-label="Im App Store laden">
+            <img src="assets/appstore-badge.svg" alt="Laden im App Store" width="180" height="56">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="app-icon.png" alt="PantoMeGo Icon" width="38" height="38" style="border-radius: 9px;">
+          <span>PantoMeGo</span>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#hero" class="footer-link" data-i18n="footer_home">Start</a></li>
+          <li><a href="#warum" class="footer-link" data-i18n="footer_why">Vorteile</a></li>
+          <li><a href="#altersstufen" class="footer-link" data-i18n="footer_tiers">Altersstufen</a></li>
+          <li><a href="privacy/#de" class="footer-link dynamic-sublink" id="footerPrivacyLink" data-i18n="footer_privacy">Datenschutz</a></li>
+          <li><a href="support/#de" class="footer-link dynamic-sublink" id="footerSupportLink" data-i18n="footer_support">Support & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Martin Bechtold. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
+        <div class="compliance-seal">
+          <span>🛡️</span>
+          <span data-i18n="footer_compliance">Apple Kids Category & DSGVO Konform</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 4-Language Localization & Micro-Interactions Script -->
+  <script>
+    // --- 1. Client-Side Localization Engine ---
+    const translations = {
+      de: {
+        nav_why: "Vorteile",
+        nav_how: "So geht's",
+        nav_modes: "Spielmodi",
+        nav_tiers: "Altersstufen",
+        nav_features: "Highlights",
+        nav_support: "Hilfe & FAQ",
+        cta_header: "App laden",
+        hero_badge: "Familien-Scharade neu gedacht",
+        hero_title: 'Das fröhliche Pantomimespiel <span class="highlight-mint">für die ganze Familie</span>',
+        hero_subtitle: "Nie wieder Denkblockaden, Zettelchaos oder Frust um die Rundenzeit. PantoMeGo bringt mit Zufalls-Roulette, geheimer Flüster-Karte und Farbtimer das gemeinsame Lachen ins Wohnzimmer!",
+        hero_price_tag: "Günstiger als eine Kugel Eis • Einmalkauf ohne Abo",
+        hero_mascot_pill_tag: "NEUES DESIGN",
+        hero_mascot_pill_title: "Bereit zum Mitspielen!",
+        bullet_1: "100% Offline spielbar",
+        bullet_2: "Keine Werbung & Tracking",
+        bullet_3: "Für Kinder ab 3 Jahren",
+        slide1_title: "Glücksrad-Dreh",
+        slide1_desc: "Ein Fingertipp wählt zufällig den nächsten lustigen Begriff!",
+        slide1_btn: "🎲 Begriff drehen!",
+        slide2_term: "Katze 🐱",
+        slide2_cue_title: "🤫 Geheimtipp fürs Kind:",
+        slide2_cue_text: '"Schleich leise wie eine Samtpfote und putz dir das Gesicht mit den Pfoten!"',
+        slide2_btn: "Los geht's!",
+        slide3_title: "Farbtimer läuft!",
+        slide3_desc: "Ticken in den letzten 5 Sekunden & fröhliche Tröte!",
+        slide3_btn: "🎉 ERRATEN!",
+        slide4_title: "Super gemacht! 🏆",
+        slide4_desc: "Siegerfanfare & bunter Konfetti-Regen belohnen die Runde!",
+        slide4_btn: "Nächste Runde ➔",
+        dynamo_badge: "Das Pantomime-Dilemma gelöst",
+        dynamo_title: "Warum klassische Scharade oft im Frust endet",
+        dynamo_subtitle: "Eltern kennen das: Die Idee klingt toll, doch am Spieltisch stockt es sofort. PantoMeGo räumt jede Hürde mit spielerischer Leichtigkeit aus dem Weg.",
+        problem_title: "Klassische Pantomime",
+        problem_1_t: "Denkblockaden & langes Zögern:",
+        problem_1_d: "„Mir fällt nichts ein!“ – Kinder verstummen unter Druck und das Spiel bricht ab.",
+        problem_2_t: "Lesedruck bei Kleinkindern:",
+        problem_2_d: "Nicht-Leser können Zettel nicht entziffern oder verraten den Begriff laut.",
+        problem_3_t: "Streit um Rundenzeit & Regeln:",
+        problem_3_d: "„Das war viel zu kurz!“ – Diskussionen mit der Stoppuhr verderben die Stimmung.",
+        solution_title: "Mit PantoMeGo",
+        solution_1_t: "Zufalls-Roulette auf Knopfdruck:",
+        solution_1_d: "Ein Klick und der passende, altersgerechte Begriff steht sofort fest.",
+        solution_2_t: "Geheime Flüster-Karte:",
+        solution_2_d: "Eltern sehen Begriff & Schauspieltipp und flüstern ihn leise ins Kinderohr. 100% ohne Lesedruck!",
+        solution_3_t: "Fairer Farb-Timer & Konfetti:",
+        solution_3_d: "Visueller Farbring (30s, 60s, 90s) und Siegerfanfare für gemeinsames Gewinnen.",
+        ped_badge: "Pädagogisch wertvoll",
+        ped_title: "Körper, Geist & Selbstvertrauen stärken",
+        ped_subtitle: "PantoMeGo ist kein passives Bildschirmwischen. Die App ist der Funke für echte Bewegung, kreativen Ausdruck und soziale Familienbindung.",
+        ped_1_t: "Ganzheitliche Bewegung",
+        ped_1_d: "Kinder hüpfen wie Frösche, stampfen wie Elefanten oder balancieren wie Seiltänzer. Trainiert Koordination, Raumgefühl und Motorik auf natürliche Art.",
+        ped_2_t: "Nonverbale Expressivität",
+        ped_2_d: "Gefühle, Handlungen und Wesenszüge ohne Worte darzustellen schult Mimik, Gestik und emotionale Empathie gegenüber den Mitspielern.",
+        ped_3_t: "Selbstwert ohne Versagensangst",
+        ped_3_d: "Durch konkrete Kinder-Tipps („Tu so, als hättest du eine Bratpfanne“) fühlt sich jedes Kind sicher und erfährt echte Erfolgsmomente.",
+        steps_badge: "In 4 Schritten zum Spielspaß",
+        steps_title: "Kinderleicht. Sofort loslegen.",
+        steps_subtitle: "Keine langen Spielanleitungen studieren. In unter 10 Sekunden startet die erste Pantomime-Runde.",
+        step_1_t: "1. Roulette drehen",
+        step_1_d: "Tippe auf den Würfel. Das bunte Glücksrad bestimmt den geheimen Begriff aus Tier- oder Berufswelt.",
+        step_2_t: "2. Die Flüster-Karte",
+        step_2_d: "Mama oder Papa lesen den Begriff vor und flüstern dem Kind die passende Gesten-Idee ins Ohr.",
+        step_3_t: "3. Pantomime-Runde",
+        step_3_d: "Der Farbring läuft (30s, 60s oder 90s). Tick-Tack-Countdown in den letzten 5 Sekunden!",
+        step_4_t: "4. Jubel & Konfetti",
+        step_4_d: "Erraten! Klick auf den Button: Fröhliche Fanfare erklingt und buntes Konfetti regnet herab.",
+        modes_badge: "Der Familien-Konfliktlöser",
+        modes_title: "2 Spielmodi für jedes Alter",
+        modes_subtitle: "Kinder wollen das Handy selbst bedienen, Eltern fürchten zu viel Bildschirmzeit. PantoMeGo löst das Dilemma genial.",
+        mode_1_badge: "Begleitetes Spiel",
+        mode_1_t: "Eltern- & Familien-Modus",
+        mode_1_d: "Das Smartphone bleibt sicher in den Händen der Eltern. Die geheime Flüster-Karte liefert kindgerechte Schauspiel-Tipps direkt ins Ohr.",
+        mode_1_features_t: "Die Vorteile für Eltern:",
+        mode_1_f1: "✓ Perfekt für die Kleinsten (3–5 Jahre): Null Lesedruck",
+        mode_1_f2: "✓ Konkrete Gesten-Tipps zum Einflüstern ins Ohr",
+        mode_1_f3: "✓ Volle Kontrolle über Rundendauer & Kategorien",
+        mode_2_badge: "Minimal Screen Time",
+        mode_2_t: "Kinder spielen selbst",
+        mode_2_d: "Schulanfänger nehmen das Handy stolz selbst in die Hand. Große Schrift, ein geheimer Tipp – und der Impuls, das Handy sofort abzulegen!",
+        mode_2_features_t: "Die Vorteile für Kinder:",
+        mode_2_f1: "✓ Für Leseanfänger (6–8 und 9+ Jahre): Extra große Schrift",
+        mode_2_f2: "✓ Impuls „Handy ablegen & vormachen!“ bei Rundenstart",
+        mode_2_f3: "✓ Kindersichere 3-Sekunden-Sperre für Einstellungen",
+        tiers_badge: "Passgenau für jedes Alter",
+        tiers_title: "Drei liebevoll kuratierte Stufen",
+        tiers_subtitle: "Vom Kindergartenkind bis zum Schulkind: Die Begriffe wachsen mit dem Entwicklungsstand deines Kindes mit.",
+        tier_1_t: "Bambini (3–5 Jahre)",
+        tier_1_d: "Fokus auf Tiere und Figuren mit ganz einfachen, typischen Bewegungen. Große visuelle Symbole und bildhafte Regieanweisungen.",
+        tier_2_t: "Entdecker (5–7 Jahre)",
+        tier_2_d: "Lebendige Tiere, Fantasiefiguren und bekannte Berufe. Ermutigt zu typischen Handlungsabläufen und lebendiger Mimik.",
+        tier_3_t: "Profis (7–12 Jahre)",
+        tier_3_d: "Anspruchsvollere, zusammengesetzte Handlungen und spannende Berufe für Schulkinder. Fördert schnelles Abstrahieren.",
+        words_example: "Beispiel-Begriffe:",
+        chip_cat: "Katze",
+        chip_frog: "Frosch",
+        chip_elephant: "Elefant",
+        chip_chef: "Koch",
+        chip_monkey: "Affe",
+        chip_magician: "Zauberer",
+        chip_gardener: "Gärtner",
+        chip_penguin: "Pinguin",
+        chip_chameleon: "Chamäleon",
+        chip_detective: "Detektiv",
+        chip_astronaut: "Astronaut",
+        chip_surfer: "Surfer",
+        tier_1_quote: "„Schleich leise wie eine Samtpfote und putz dir das Gesicht!“",
+        tier_2_quote: "„Zieh ein weißes Kaninchen aus deinem imaginären Zylinder!“",
+        tier_3_quote: "„Halte eine Lupe vors Auge und folge den geheimen Fußspuren!“",
+        bento_badge: "Kompromisslose Qualität",
+        bento_title: "Alles, was eine Familien-App braucht",
+        bento_subtitle: "Entwickelt nach den strengen Richtlinien der Apple Kids Category und mit viel Liebe zum Detail gebaut.",
+        feat_1_t: "100% Offline-First. Spielspaß überall.",
+        feat_1_d: "Kein WLAN, kein Funkloch, kein Datenvolumen verbraucht. Ob im Flugzeug, auf der Berghütte, im Garten oder auf dem Kindergeburtstag: PantoMeGo läuft vollständig autark auf deinem iPhone oder iPad.",
+        feat_2_t: "100% Kindersicher & Werbefrei",
+        feat_2_d: "Keine Werbe-Banner, keine In-App-Käufe, kein Benutzerkonto und null Tracking (PrivacyInfo CA92.1). Die Daten deiner Kinder bleiben dort, wo sie hingehören: geschützt.",
+        feat_3_t: "Die clevere Flüster-Karte",
+        feat_3_d: "Nimmt Kleinkindern die Angst vor dem Vorlesen. Mit praxiserprobten kindgerechten Regieanweisungen für sofortigen Einstieg.",
+        feat_4_t: "Haptik & AV-Synthese",
+        feat_4_d: "Lebendige Taptic-Engine-Vibrationen, Tick-Tack-Sounds in den letzten 5 Sekunden und echte Siegerfanfaren erzeugen ein mitreißendes Spielerlebnis.",
+        feat_5_t: "4 Sprachen integriert",
+        feat_5_d: "Wechsle nahtlos zwischen Deutsch, Englisch, Spanisch und Französisch – ideal auch für zweisprachige Familien und Urlaube.",
+        cta_pill: "Einmalkauf • Kein Abo • Keine Werbung",
+        cta_banner_title: "Bereit für unvergessliche Momente mit Familie & Freunden?",
+        cta_banner_subtitle: "Der Hit auf jedem Kindergeburtstag, bei Familienabenden oder unterwegs mit Freunden: PantoMeGo funktioniert überall kinderleicht – denn alles, was ihr braucht, habt ihr auf dem Smartphone oder Tablet bereits dabei! Günstiger als eine Kugel Eis und sofort spielbereit.",
+        footer_home: "Start",
+        footer_why: "Vorteile",
+        footer_tiers: "Altersstufen",
+        footer_privacy: "Datenschutz",
+        footer_support: "Support & FAQ",
+        footer_rights: "Alle Rechte vorbehalten.",
+        footer_compliance: "Apple Kids Category & DSGVO Konform"
+      },
+      en: {
+        nav_why: "Benefits",
+        nav_how: "How It Works",
+        nav_modes: "Game Modes",
+        nav_tiers: "Age Tiers",
+        nav_features: "Highlights",
+        nav_support: "Help & FAQ",
+        cta_header: "Get the App",
+        hero_badge: "Family Charades Reimagined",
+        hero_title: 'Joyful Charades & Pantomime <span class="highlight-mint">for the Whole Family</span>',
+        hero_subtitle: "No more awkward silence, lost paper slips, or timer disputes. PantoMeGo brings pure family laughter to your living room with a random roulette wheel, secret whisper cards, and playful countdowns!",
+        hero_price_tag: "Cheaper than an ice cream scoop • One-time purchase, no subscription",
+        hero_mascot_pill_tag: "NEW DESIGN",
+        hero_mascot_pill_title: "Ready to play together!",
+        bullet_1: "100% Offline Play",
+        bullet_2: "Zero Ads & Tracking",
+        bullet_3: "For Kids Ages 3 & Up",
+        slide1_title: "Spin the Wheel",
+        slide1_desc: "A single tap randomly picks the next delightful animal or role!",
+        slide1_btn: "🎲 Spin the Word!",
+        slide2_term: "Cat 🐱",
+        slide2_cue_title: "🤫 Secret Hint for Kids:",
+        slide2_cue_text: '"Tiptoe silently like soft paws and wash your face with your hands!"',
+        slide2_btn: "Let's Go!",
+        slide3_title: "Timer is Ticking!",
+        slide3_desc: "Ticking sound in the final 5s and upbeat party horn finish!",
+        slide3_btn: "🎉 GUESSED!",
+        slide4_title: "Hooray! Victory! 🏆",
+        slide4_desc: "Chimes and confetti shower reward every successful guess!",
+        slide4_btn: "Next Round ➔",
+        dynamo_badge: "The Charades Dilemma Solved",
+        dynamo_title: "Why Classic Charades Often Stalls",
+        dynamo_subtitle: "Parents know the drill: the idea sounds lovely, but round one brings hesitation and tears. PantoMeGo solves every hurdle with joyful ease.",
+        problem_title: "Classic Charades",
+        problem_1_t: "Stage Fright & Hesitation:",
+        problem_1_d: "“I don't know what to do!” – Kids freeze under pressure and the fun stops.",
+        problem_2_t: "Reading Stress for Toddlers:",
+        problem_2_d: "Non-readers can't decipher slips of paper or blurt out the answer accidentally.",
+        problem_3_t: "Arguments Over Timer & Rules:",
+        problem_3_d: "“That wasn't fair!” – Stopwatch disagreements quickly sour the evening.",
+        solution_title: "With PantoMeGo",
+        solution_1_t: "Instant Roulette Wheel:",
+        solution_1_d: "One tap spins a guaranteed age-appropriate term in seconds.",
+        solution_2_t: "Secret Whisper Card:",
+        solution_2_d: "Parents glance at the word and hint, whispering cues into toddler ears. Zero reading anxiety!",
+        solution_3_t: "Neutral Timer & Confetti:",
+        solution_3_d: "Vibrant visual ring (30s, 60s, 90s) and victory chimes celebrate shared triumphs.",
+        ped_badge: "Pedagogically Meaningful",
+        ped_title: "Nurturing Body, Mind & Confidence",
+        ped_subtitle: "PantoMeGo isn't passive screen swiping. It's the catalyst for physical movement, nonverbal expression, and heartwarming family connection.",
+        ped_1_t: "Full-Body Movement",
+        ped_1_d: "Children jump like frogs, stomp like elephants, or balance like surfers. Naturally trains coordination and spatial awareness.",
+        ped_2_t: "Nonverbal Expressiveness",
+        ped_2_d: "Conveying actions and emotions without words sharpens facial expressions, body language, and empathy.",
+        ped_3_t: "Self-Worth Without Pressure",
+        ped_3_d: "Concrete acting cues (“Act like you are holding a frying pan”) make toddlers feel confident and proud.",
+        steps_badge: "Fun in 4 Simple Steps",
+        steps_title: "Simple & Instant Fun",
+        steps_subtitle: "No manual to read. Start your very first charade round in under ten seconds.",
+        step_1_t: "1. Spin the Wheel",
+        step_1_d: "Tap the dice. The vibrant wheel selects a secret animal or profession.",
+        step_2_t: "2. Whisper Card",
+        step_2_d: "Mom or Dad quietly whispers the secret term and playful acting hint into the child's ear.",
+        step_3_t: "3. Act It Out",
+        step_3_d: "The color timer rings (30s, 60s, or 90s). Ticking audio in the final 5 seconds builds excitement!",
+        step_4_t: "4. Cheers & Confetti",
+        step_4_d: "Got it! Hit the button: joyful fanfare sounds and confetti rains down.",
+        modes_badge: "The Family Dilemma Solved",
+        modes_title: "2 Game Modes for Every Age",
+        modes_subtitle: "Kids want to hold the phone themselves, while parents worry about screen time. PantoMeGo solves the dilemma brilliantly.",
+        mode_1_badge: "Guided Play",
+        mode_1_t: "Parent & Family Mode",
+        mode_1_d: "The smartphone stays safely in parents' hands. The secret whisper card provides child-friendly acting tips directly into the ear.",
+        mode_1_features_t: "Benefits for Parents:",
+        mode_1_f1: "✓ Perfect for toddlers (ages 3–5): Zero reading pressure",
+        mode_1_f2: "✓ Concrete gesture cues to whisper in their ear",
+        mode_1_f3: "✓ Full control over round length & categories",
+        mode_2_badge: "Minimal Screen Time",
+        mode_2_t: "Kids Play Autonomously",
+        mode_2_d: "Young schoolers proudly hold the device themselves. Big fonts, one secret tip – and an instant prompt to put the phone down!",
+        mode_2_features_t: "Benefits for Kids:",
+        mode_2_f1: "✓ For early readers (ages 6–8 and 9+): Extra large typography",
+        mode_2_f2: "✓ 'Put phone down & act!' cue as soon as round starts",
+        mode_2_f3: "✓ Child-safe 3-second parental gate for settings",
+        tiers_badge: "Tailored to Every Age",
+        tiers_title: "Three Thoughtfully Curated Tiers",
+        tiers_subtitle: "From toddlers to pre-teens: concepts grow alongside your child's developmental milestones.",
+        tier_1_t: "Bambini (Ages 3–5)",
+        tier_1_d: "Familiar animals and household roles with simple, recognizable gestures and toddler cues.",
+        tier_2_t: "Explorers (Ages 5–7)",
+        tier_2_d: "Dynamic creatures, fairy-tale figures, and professions that inspire lively storytelling.",
+        tier_3_t: "Pros (Ages 7–12)",
+        tier_3_d: "Exciting multi-step challenges for school-aged kids to test deduction and creativity.",
+        words_example: "Sample Terms:",
+        chip_cat: "Cat",
+        chip_frog: "Frog",
+        chip_elephant: "Elephant",
+        chip_chef: "Chef",
+        chip_monkey: "Monkey",
+        chip_magician: "Magician",
+        chip_gardener: "Gardener",
+        chip_penguin: "Penguin",
+        chip_chameleon: "Chameleon",
+        chip_detective: "Detective",
+        chip_astronaut: "Astronaut",
+        chip_surfer: "Surfer",
+        tier_1_quote: "“Tiptoe quietly like a kitten and groom your whiskers!”",
+        tier_2_quote: "“Pull a white rabbit out of an imaginary top hat!”",
+        tier_3_quote: "“Peer through a magnifying glass and follow secret footprints!”",
+        bento_badge: "Uncompromising Quality",
+        bento_title: "Everything a Family App Should Be",
+        bento_subtitle: "Built to adhere to Apple Kids Category standards with craftsmanship in every interaction.",
+        feat_1_t: "100% Offline-First. Play Anywhere.",
+        feat_1_d: "Zero internet, cellular, or Wi-Fi required. Whether on airplanes, road trips, cabins, or backyard picnics, PantoMeGo runs completely locally.",
+        feat_2_t: "100% Child-Safe & Ad-Free",
+        feat_2_d: "No banner ads, no in-app purchases, no accounts, and zero tracking (PrivacyInfo CA92.1). Your family's privacy stays completely protected.",
+        feat_3_t: "The Clever Whisper Card",
+        feat_3_d: "Relieves little kids of reading anxiety. Includes age-friendly cue suggestions to kick off acting instantly.",
+        feat_4_t: "Sensory Audio & Haptics",
+        feat_4_d: "Tactile Taptic vibrations, suspenseful 5s ticking, and joyful party horn finishes create an engaging sensory experience.",
+        feat_5_t: "4 Built-In Languages",
+        feat_5_d: "Seamlessly switch between German, English, Spanish, and French – wonderful for bilingual households.",
+        cta_pill: "One-Time Purchase • No Subscription • No Ads",
+        cta_banner_title: "Ready for Unforgettable Moments with Family & Friends?",
+        cta_banner_subtitle: "The hit at kids' birthday parties, family game nights, or on the go with friends: PantoMeGo works anywhere with zero hassle – because everything you need is already right on your device! Cheaper than an ice cream scoop and ready to play.",
+        footer_home: "Home",
+        footer_why: "Benefits",
+        footer_tiers: "Age Tiers",
+        footer_privacy: "Privacy Policy",
+        footer_support: "Support & FAQ",
+        footer_rights: "All rights reserved.",
+        footer_compliance: "Apple Kids Category & GDPR Compliant"
+      },
+      es: {
+        nav_why: "Ventajas",
+        nav_how: "Cómo funciona",
+        nav_modes: "Modos de Juego",
+        nav_tiers: "Edades",
+        nav_features: "Destacados",
+        nav_support: "Ayuda y FAQ",
+        cta_header: "Descargar app",
+        hero_badge: "La mímica familiar reinventada",
+        hero_title: 'El divertido juego de mímica <span class="highlight-mint">para toda la familia</span>',
+        hero_subtitle: "Olvídate de las dudas, los papeles perdidos o las discusiones por el tiempo. ¡PantoMeGo trae risas inmediatas con ruleta aleatoria, tarjeta secreta al oído y cronómetro festivo!",
+        hero_price_tag: "Más barato que una bola de helado • Compra única sin suscripción",
+        hero_mascot_pill_tag: "NUEVO DISEÑO",
+        hero_mascot_pill_title: "¡Listos para jugar juntos!",
+        bullet_1: "100% Sin conexión a internet",
+        bullet_2: "Sin anuncios ni rastreo",
+        bullet_3: "Para niños a partir de 3 años",
+        slide1_title: "Giro de Ruleta",
+        slide1_desc: "¡Un toque en la pantalla elige el próximo término divertido!",
+        slide1_btn: "🎲 ¡Girar ruleta!",
+        slide2_term: "Gato 🐱",
+        slide2_cue_title: "🤫 Consejo secreto para el niño:",
+        slide2_cue_text: '"¡Camina sigilosamente como un felino y lávate la cara con las patas!"',
+        slide2_btn: "¡A jugar!",
+        slide3_title: "¡El tiempo corre!",
+        slide3_desc: "Tic-tac en los últimos 5 segundos y bocina festiva al terminar.",
+        slide3_btn: "🎉 ¡ACERTADO!",
+        slide4_title: "¡Bien hecho! 🏆",
+        slide4_desc: "¡Música triunfal y confeti celebran el acierto en familia!",
+        slide4_btn: "Siguiente ronda ➔",
+        dynamo_badge: "El dilema de la mímica resuelto",
+        dynamo_title: "¿Por qué la mímica clásica suele frustrar a los niños?",
+        dynamo_subtitle: "Los padres lo saben: la idea parece genial, pero enseguida surgen bloqueos. PantoMeGo elimina cada obstáculo con alegría.",
+        problem_title: "Mímica clásica",
+        problem_1_t: "Bloqueos y timidez:",
+        problem_1_d: "“¡No sé qué hacer!” – Los niños se sienten presionados y el juego se detiene.",
+        problem_2_t: "Dificultad de lectura en los pequeños:",
+        problem_2_d: "Quienes aún no leen no entienden las notas o dicen la palabra en voz alta.",
+        problem_3_t: "Discusiones por el cronómetro:",
+        problem_3_d: "“¡Fue muy poco tiempo!” – El cronómetro genera discusiones innecesarias.",
+        solution_title: "Con PantoMeGo",
+        solution_1_t: "Ruleta aleatoria instantánea:",
+        solution_1_d: "Un solo toque y el término adaptado a la edad aparece de inmediato.",
+        solution_2_t: "Tarjeta secreta al oído:",
+        solution_2_d: "Papá o mamá susurran la palabra y el gesto al oído del niño. ¡Cero presión de lectura!",
+        solution_3_t: "Temporizador visual y confeti:",
+        solution_3_d: "Anillo de color (30s, 60s, 90s) y música de victoria para celebrar juntos.",
+        ped_badge: "Valor pedagógico",
+        ped_title: "Estimula el cuerpo, la mente y la autoestima",
+        ped_subtitle: "PantoMeGo no es pasar el dedo por una pantalla. Es una invitación al movimiento, a la empatía y al vínculo familiar.",
+        ped_1_t: "Movimiento corporal completo",
+        ped_1_d: "Saltar como ranas, pisar fuerte como elefantes o surfear olas. Fomenta la motricidad y la coordinación natural.",
+        ped_2_t: "Expresividad no verbal",
+        ped_2_d: "Expresar sentimientos y acciones sin palabras estimula la mímica facial, los gestos y la empatía emocional.",
+        ped_3_t: "Autoestima sin miedo al error",
+        ped_3_d: "Consejos claros de actuación dan seguridad a los más pequeños para divertirse con confianza.",
+        steps_badge: "Diversión en 4 sencillos pasos",
+        steps_title: "Muy fácil. A jugar al instante.",
+        steps_subtitle: "Sin manuales complicados. Comienza tu primera ronda en menos de diez segundos.",
+        step_1_t: "1. Girar la ruleta",
+        step_1_d: "Toca el dado. La ruleta selecciona un término divertido de animales o profesiones.",
+        step_2_t: "2. Tarjeta al oído",
+        step_2_d: "Papá o mamá susurran el término y un truco de actuación al oído del niño.",
+        step_3_t: "3. Ronda de mímica",
+        step_3_d: "El anillo cuenta regresiva (30s, 60s o 90s). ¡Sonido de tic-tac en los últimos 5 segundos!",
+        step_4_t: "4. ¡Aplausos y confeti!",
+        step_4_d: "¡Acertado! Pulsa el botón: suena la fanfarria y llueven confetis de colores.",
+        modes_badge: "El dilema familiar resuelto",
+        modes_title: "2 modos de juego para cada edad",
+        modes_subtitle: "Los niños quieren usar el teléfono ellos mismos, pero los padres temen el tiempo excesivo de pantalla. PantoMeGo lo resuelve a la perfección.",
+        mode_1_badge: "Juego Guiado",
+        mode_1_t: "Modo Padres y Familia",
+        mode_1_d: "El smartphone permanece seguro en manos de los padres. La tarjeta secreta susurra pistas de actuación directamente al oído del niño.",
+        mode_1_features_t: "Ventajas para los padres:",
+        mode_1_f1: "✓ Ideal para los más pequeños (3–5 años): Cero presión de lectura",
+        mode_1_f2: "✓ Consejos de gestos concretos para susurrar al oído",
+        mode_1_f3: "✓ Control total del tiempo de ronda y categorías",
+        mode_2_badge: "Mínimo tiempo de pantalla",
+        mode_2_t: "Los niños juegan solos",
+        mode_2_d: "Los escolares sostienen el dispositivo con orgullo. Letras grandes, una pista secreta ¡y la orden de soltar el teléfono de inmediato!",
+        mode_2_features_t: "Ventajas para los niños:",
+        mode_2_f1: "✓ Para primeros lectores (6–8 y 9+ años): Tipografía extragrande",
+        mode_2_f2: "✓ Aviso «¡Deja el teléfono y actúa!» al iniciar la ronda",
+        mode_2_f3: "✓ Bloqueo parental seguro de 3 segundos para ajustes",
+        tiers_badge: "Adaptado a cada etapa",
+        tiers_title: "Tres niveles cuidadosamente diseñados",
+        tiers_subtitle: "Desde niños en edad preescolar hasta primaria: los retos crecen junto a tus hijos.",
+        tier_1_t: "Bambini (3 a 5 años)",
+        tier_1_d: "Animales y roles cotidianos con gestos fáciles de imitar e indicaciones claras.",
+        tier_2_t: "Exploradores (5 a 7 años)",
+        tier_2_d: "Animales dinámicos y oficios divertidos que despiertan la imaginación.",
+        tier_3_t: "Expertos (7 a 12 años)",
+        tier_3_d: "Acciones compuestas y profesiones desafiantes para poner a prueba el ingenio.",
+        words_example: "Ejemplos de términos:",
+        chip_cat: "Gato",
+        chip_frog: "Rana",
+        chip_elephant: "Elefante",
+        chip_chef: "Cocinero",
+        chip_monkey: "Mono",
+        chip_magician: "Mago",
+        chip_gardener: "Jardinero",
+        chip_penguin: "Pingüino",
+        chip_chameleon: "Camaleón",
+        chip_detective: "Detective",
+        chip_astronaut: "Astronauta",
+        chip_surfer: "Surfista",
+        tier_1_quote: "“¡Camina sigilosamente como un gato y lávate la carita!”",
+        tier_2_quote: "“¡Saca un conejo blanco de un sombrero imaginario!”",
+        tier_3_quote: "“¡Mira con una lupa imaginaria y sigue las huellas misteriosas!”",
+        bento_badge: "Calidad sin concesiones",
+        bento_title: "Todo lo que una app familiar debe ofrecer",
+        bento_subtitle: "Cumple rigurosamente las normas de Apple Kids Category con el máximo mimo.",
+        feat_1_t: "100% Offline. Juega donde quieras.",
+        feat_1_d: "Sin internet, sin datos móviles ni cobertura. En el avión, en excursiones o fiestas de cumpleaños: funciona de forma totalmente autónoma.",
+        feat_2_t: "100% Seguro para niños y sin publicidad",
+        feat_2_d: "Sin anuncios, sin micropagos, sin registro y sin rastreo (PrivacyInfo CA92.1). La privacidad de tu familia está a salvo.",
+        feat_3_t: "La ingeniosa tarjeta secreta",
+        feat_3_d: "Elimina la presión lectora en los más pequeños con consejos directos de actuación.",
+        feat_4_t: "Sonido y vibración háptica",
+        feat_4_d: "Vibraciones Taptic Engine y sonidos festivos que sumergen a toda la familia en el juego.",
+        feat_5_t: "4 idiomas disponibles",
+        feat_5_d: "Cambia entre español, alemán, inglés y francés con un solo toque.",
+        cta_pill: "Pago único • Sin suscripciones • Sin anuncios",
+        cta_banner_title: "¿Listos para momentos inolvidables con familia y amigos?",
+        cta_banner_subtitle: "El éxito asegurado en cumpleaños infantiles, tardes familiares o con amigos: PantoMeGo funciona en cualquier lugar con total sencillez, ¡porque todo lo que necesitas ya lo llevas en tu dispositivo! Más barato que una bola de helado y listo para jugar.",
+        footer_home: "Inicio",
+        footer_why: "Ventajas",
+        footer_tiers: "Edades",
+        footer_privacy: "Privacidad",
+        footer_support: "Soporte y FAQ",
+        footer_rights: "Todos los derechos reservados.",
+        footer_compliance: "Conforme con Apple Kids Category y RGPD"
+      },
+      fr: {
+        nav_why: "Avantages",
+        nav_how: "Comment ça marche",
+        nav_modes: "Modes de Jeu",
+        nav_tiers: "Niveaux d'âge",
+        nav_features: "Points forts",
+        nav_support: "Aide & FAQ",
+        cta_header: "Télécharger l'app",
+        hero_badge: "Le jeu de mime en famille réinventé",
+        hero_title: 'Le jeu de charades et mimes <span class="highlight-mint">pour toute la famille</span>',
+        hero_subtitle: "Fini le manque d'inspiration, les bouts de papier égarés et les disputes de chronomètre. PantoMeGo apporte la joie du rire partagé avec sa roulette magique, sa carte chuchotée et son minuteur coloré !",
+        hero_price_tag: "Moins cher qu'une boule de glace • Achat unique sans abonnement",
+        hero_mascot_pill_tag: "NOUVEAU DESIGN",
+        hero_mascot_pill_title: "Prêt à jouer ensemble !",
+        bullet_1: "100% Fonctionne hors ligne",
+        bullet_2: "Zéro pub ni pistage",
+        bullet_3: "Dès 3 ans et pour tous",
+        slide1_title: "Tour de Roulette",
+        slide1_desc: "Une simple touche sélectionne au hasard un mot rigolo !",
+        slide1_btn: "🎲 Lancer la roue !",
+        slide2_term: "Chat 🐱",
+        slide2_cue_title: "🤫 Indice secret pour l'enfant :",
+        slide2_cue_text: '"Avance doucement à pas de velours et fais semblant de te laver avec les pattes !"',
+        slide2_btn: "C'est parti !",
+        slide3_title: "Le chrono tourne !",
+        slide3_desc: "Compte à rebours sonore dans les 5 dernières secondes et klaxon de fête !",
+        slide3_btn: "🎉 TROUVÉ !",
+        slide4_title: "Bravo ! Victoire ! 🏆",
+        slide4_desc: "Fanfare victorieuse et pluie de confettis récompensent l'équipe !",
+        slide4_btn: "Tour suivant ➔",
+        dynamo_badge: "Le dilemme du mime résolu",
+        dynamo_title: "Pourquoi le mime classique finit souvent en frustration",
+        dynamo_subtitle: "Les parents connaissent bien la situation : l'idée est belle, mais les enfants hésitent et se bloquent. PantoMeGo lève tous les obstacles en douceur.",
+        problem_title: "Mime classique",
+        problem_1_t: "Trous de mémoire et timidité :",
+        problem_1_d: "« Je ne sais pas quoi faire ! » – Sous la pression, l'enfant se décourage et le jeu s'arrête.",
+        problem_2_t: "Difficulté de lecture chez les petits :",
+        problem_2_d: "Ceux qui ne savent pas encore lire ne peuvent déchiffrer le mot sans le crier.",
+        problem_3_t: "Disputes autour du chronomètre :",
+        problem_3_d: "« Ce n'était pas assez long ! » – Les désaccords gâchent la fête.",
+        solution_title: "Avec PantoMeGo",
+        solution_1_t: "Roulette instantanée :",
+        solution_1_d: "Un clic et un mot parfait pour l'âge apparaît immédiatement.",
+        solution_2_t: "Carte secrète chuchotée :",
+        solution_2_d: "Les parents chuchotent le mot et le geste à l'oreille. Zéro pression de lecture !",
+        solution_3_t: "Minuteur visuel & confettis :",
+        solution_3_d: "Cercle coloré (30s, 60s, 90s) et fanfare victorieuse pour célébrer ensemble.",
+        ped_badge: "Pédagogique & épanouissant",
+        ped_title: "Développer le corps, l'esprit et la confiance",
+        ped_subtitle: "PantoMeGo n'est pas un écran passif. C'est l'étincelle qui incite à bouger, s'exprimer et créer des souvenirs en famille.",
+        ped_1_t: "Mouvement corporel global",
+        ped_1_d: "Sauter comme des grenouilles, marcher lourdement comme des éléphants. Développe naturellement la coordination motrice.",
+        ped_2_t: "Expressivité non verbale",
+        ped_2_d: "Exprimer des émotions sans parole entraîne le langage corporel, les mimiques et l'empathie.",
+        ped_3_t: "Confiance en soi sans jugement",
+        ped_3_d: "Des astuces concrètes (« Fais comme si tu tenais une poêle ») rassurent chaque enfant.",
+        steps_badge: "Le plaisir en 4 étapes",
+        steps_title: "Facile comme un jeu d'enfant",
+        steps_subtitle: "Aucune règle compliquée à lire. Votre première manche démarre en moins de dix secondes.",
+        step_1_t: "1. Lancer la roue",
+        step_1_d: "Touchez le dé. La roulette choisit un animal ou un métier secret.",
+        step_2_t: "2. Carte chuchotée",
+        step_2_d: "Maman ou Papa lit et murmure le mot et l'astuce de mime à l'oreille.",
+        step_3_t: "3. La manche commence",
+        step_3_d: "Le cercle s'écoule (30s, 60s ou 90s). Tic-tac sonore dans les 5 dernières secondes !",
+        step_4_t: "4. Joie & confettis",
+        step_4_d: "Trouvé ! Cliquez sur le bouton : la fanfare retentit et les confettis s'envolent.",
+        modes_badge: "Le dilemme familial résolu",
+        modes_title: "2 modes de jeu pour chaque âge",
+        modes_subtitle: "Les enfants veulent tenir le téléphone eux-mêmes, tandis que les parents s'inquiètent du temps d'écran. PantoMeGo résout ce dilemme avec brio.",
+        mode_1_badge: "Jeu Guidé",
+        mode_1_t: "Mode Parents & Famille",
+        mode_1_d: "Le smartphone reste en sécurité dans les mains des parents. La carte secrète chuchotée offre des conseils de mime directement au creux de l'oreille.",
+        mode_1_features_t: "Les avantages pour les parents :",
+        mode_1_f1: "✓ Idéal pour les tout-petits (3–5 ans) : Zéro pression de lecture",
+        mode_1_f2: "✓ Conseils de gestes concrets à chuchoter à l'oreille",
+        mode_1_f3: "✓ Contrôle total de la durée des manches et des catégories",
+        mode_2_badge: "Temps d'écran minimal",
+        mode_2_t: "Les enfants jouent en autonomie",
+        mode_2_d: "Les jeunes écoliers prennent fièrement le téléphone en main. Grandes lettres, indice secret – et l'invitation à poser immédiatement le téléphone !",
+        mode_2_features_t: "Les avantages pour les enfants :",
+        mode_2_f1: "✓ Pour apprentis lecteurs (6–8 et 9+ ans) : Typographie géante",
+        mode_2_f2: "✓ Consigne « Pose le téléphone & mime ! » dès le départ",
+        mode_2_f3: "✓ Contrôle parental sécurisé de 3 secondes pour les réglages",
+        tiers_badge: "Adapté à chaque âge",
+        tiers_title: "Trois niveaux conçus avec tendresse",
+        tiers_subtitle: "Des tout-petits aux écoliers : les défis évoluent avec le développement de votre enfant.",
+        tier_1_t: "Bambini (3 à 5 ans)",
+        tier_1_d: "Animaux familiers et gestes très visuels avec des symboles clairs.",
+        tier_2_t: "Explorateurs (5 à 7 ans)",
+        tier_2_d: "Créatures dynamiques et métiers courants qui stimulent l'imagination.",
+        tier_3_t: "Pros (7 à 12 ans)",
+        tier_3_d: "Actions combinées et métiers captivants pour les enfants d'âge scolaire.",
+        words_example: "Exemples de mots :",
+        chip_cat: "Chat",
+        chip_frog: "Grenouille",
+        chip_elephant: "Éléphant",
+        chip_chef: "Cuisinier",
+        chip_monkey: "Singe",
+        chip_magician: "Magicien",
+        chip_gardener: "Jardinier",
+        chip_penguin: "Manchot",
+        chip_chameleon: "Caméléon",
+        chip_detective: "Détective",
+        chip_astronaut: "Astronaute",
+        chip_surfer: "Surfeur",
+        tier_1_quote: "« Avance à pas de velours et lave-toi le visage avec tes pattes ! »",
+        tier_2_quote: "« Sors un lapin blanc d'un chapeau imaginaire ! »",
+        tier_3_quote: "« Regarde à travers une loupe et suis les empreintes secrètes ! »",
+        bento_badge: "Qualité irréprochable",
+        bento_title: "Tout ce qu'une application familiale doit offrir",
+        bento_subtitle: "Conçue selon les exigences de la catégorie Apple Kids avec le plus grand soin.",
+        feat_1_t: "100% Hors ligne. Jouez partout.",
+        feat_1_d: "Aucun Wi-Fi ni réseau mobile requis. En voyage, en avion ou au jardin : PantoMeGo fonctionne de manière totalement autonome.",
+        feat_2_t: "100% Adapté aux enfants & sans pub",
+        feat_2_d: "Zéro publicité, aucun achat intégré, aucune inscription et zéro pistage (PrivacyInfo CA92.1). La vie privée de vos enfants est préservée.",
+        feat_3_t: "La carte chuchotée maligne",
+        feat_3_d: "Évite l'angoisse de la lecture aux plus jeunes avec des conseils de mime concrets.",
+        feat_4_t: "Sensations sonores et haptiques",
+        feat_4_d: "Vibrations haptiques Taptic Engine et effets sonores joyeux pour une immersion totale.",
+        feat_5_t: "4 langues incluses",
+        feat_5_d: "Basculez à tout moment entre français, allemand, anglais et espagnol.",
+        cta_pill: "Achat unique • Sans abonnement • Sans pub",
+        cta_banner_title: "Prêts pour des moments inoubliables en famille et entre amis ?",
+        cta_banner_subtitle: "Le grand succès des anniversaires d'enfants, des soirées en famille et des sorties entre amis : PantoMeGo fonctionne partout en toute simplicité, car tout ce dont vous avez besoin est déjà sur votre appareil ! Moins cher qu'une boule de glace et prêt à jouer.",
+        footer_home: "Accueil",
+        footer_why: "Avantages",
+        footer_tiers: "Niveaux d'âge",
+        footer_privacy: "Confidentialité",
+        footer_support: "Support & FAQ",
+        footer_rights: "Tous droits réservés.",
+        footer_compliance: "Conforme Apple Kids Category & RGPD"
+      }
+    };
+
+    function setLanguage(lang) {
+      if (!translations[lang]) lang = 'de';
+      
+      // Update document lang
+      document.documentElement.lang = lang;
+
+      // Update active toggle button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Update text nodes with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // Update HTML nodes with data-i18n-html
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Synchronize subpage links with the current hash
+      document.querySelectorAll('.dynamic-sublink').forEach(link => {
+        const currentHref = link.getAttribute('href');
+        const basePath = currentHref.split('#')[0];
+        link.setAttribute('href', `${basePath}#${lang}`);
+      });
+
+      // Update page title
+      if (lang === 'de') {
+        document.title = "PantoMeGo — Das kinderfreundliche Pantomime- & Scharadespiel für die ganze Familie";
+      } else if (lang === 'en') {
+        document.title = "PantoMeGo — Joyful Family Charades & Pantomime for Kids";
+      } else if (lang === 'es') {
+        document.title = "PantoMeGo — El divertido juego de mímica y charadas para toda la familia";
+      } else if (lang === 'fr') {
+        document.title = "PantoMeGo — Le jeu de charades et mimes pour toute la famille";
+      }
+
+      // Update hash without triggering extra scroll
+      if (window.location.hash !== `#${lang}`) {
+        history.replaceState(null, null, `#${lang}`);
+      }
+    }
+
+    // Language toggle clicks
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const selectedLang = btn.getAttribute('data-lang');
+        setLanguage(selectedLang);
+      });
+    });
+
+    // Hash check on load & on hashchange
+    function initLanguageFromHash() {
+      const hash = window.location.hash.toLowerCase().replace('#', '');
+      if (['de', 'en', 'es', 'fr'].includes(hash)) {
+        setLanguage(hash);
+      } else {
+        setLanguage('de');
+      }
+    }
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.toLowerCase().replace('#', '');
+      if (['de', 'en', 'es', 'fr'].includes(hash)) {
+        setLanguage(hash);
+      }
+    });
+
+    // --- 2. Interactive Phone Mockup Slider ---
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('#phoneSlider .slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const totalSlides = slides.length;
+
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentSlide = index;
+
+      slides.forEach((s, i) => {
+        if (i === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      dots.forEach((d, i) => {
+        if (i === currentSlide) {
+          d.classList.add('active');
+        } else {
+          d.classList.remove('active');
+        }
+      });
+    }
+
+    document.getElementById('prevSlide').addEventListener('click', () => goToSlide(currentSlide - 1));
+    document.getElementById('nextSlide').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => goToSlide(idx));
+    });
+
+    // Auto rotate mockup slides every 5.5 seconds unless hovered
+    let slideInterval = setInterval(() => {
+      goToSlide(currentSlide + 1);
+    }, 5500);
+
+    const sliderContainer = document.getElementById('phoneSlider');
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    sliderContainer.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, 5500);
+    });
+
+    // Touch gesture support on phone slider
+    let touchStartX = 0;
+    let touchEndX = 0;
+    sliderContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sliderContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 45) {
+        goToSlide(currentSlide + 1);
+      } else if (touchEndX - touchStartX > 45) {
+        goToSlide(currentSlide - 1);
+      }
+    }, { passive: true });
+
+    // --- 3. Intersection Observer for Scroll Reveals ---
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      initLanguageFromHash();
+    });
+  </script>
+</body>
+</html>
