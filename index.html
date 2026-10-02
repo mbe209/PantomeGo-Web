@@ -11,6 +11,17 @@
   <link rel="icon" type="image/png" href="app-icon.png">
   <link rel="apple-touch-icon" href="app-icon.png">
 
+  <!-- Social Media & Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pantomego.app">
+  <meta property="og:title" content="PantoMeGo — Das Pantomime- & Scharadespiel für die ganze Familie">
+  <meta property="og:description" content="Pantomime neu gedacht für Kinder & Familien: Mit Zufalls-Roulette, geheimer Flüster-Karte, Farbtimer & Sieger-Konfetti. 100% offline & werbefrei.">
+  <meta property="og:image" content="https://www.pantomego.app/app-icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PantoMeGo — Das Pantomime-Spiel für Kids">
+  <meta name="twitter:description" content="100% offline, kein Lesedruck dank Flüster-Karte, für Kinder ab 3 Jahren.">
+  <meta name="twitter:image" content="https://www.pantomego.app/app-icon.png">
+
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1414,101 +1425,17 @@
 
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <div class="phone-screen" id="phoneSlider">
-            
-            <!-- Slide 0: Start Screen / Splash & Mascot -->
-            <div class="slide active" data-slide="0" style="background: linear-gradient(180deg, #EBF7F1 0%, #FFF8EE 100%);">
-              <div class="screen-header">
-                <span style="font-weight: 800; font-size: 0.95rem; color: var(--text-forest);">PantoMeGo</span>
-                <span class="pill-badge badge-mint" style="font-size: 0.72rem; padding: 2px 8px;">Start</span>
-              </div>
-              <div class="screen-card" style="border: none; background: transparent; box-shadow: none; padding: 6px 0 10px;">
-                <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 10px;">
-                  <div style="position: absolute; inset: -8px; border-radius: 50%; background: radial-gradient(circle, rgba(249,168,38,0.35) 0%, rgba(253,184,19,0.18) 60%, transparent 100%);"></div>
-                  <img src="app-icon.png" alt="PantoMeGo Maskottchen" style="width: 120px; height: 120px; border-radius: 26px; position: relative; z-index: 2; box-shadow: 0 10px 24px rgba(36,59,51,0.14);">
-                </div>
-                <h3 class="screen-term-title" style="font-size: 1.25rem;">Bereit zum Mitspielen?</h3>
-                <p style="font-size: 0.8rem; color: var(--text-muted);">Keine Vorbereitung, einfach loslegen!</p>
-              </div>
-              <div style="width: 100%; display: flex; flex-direction: column; gap: 8px;">
-                <button class="screen-action-btn" style="background: var(--sunburst-orange); color: #FFF; font-weight: 800; font-size: 0.95rem; padding: 12px; border-radius: 14px; border: none; cursor: pointer; box-shadow: 0 6px 16px rgba(249,168,38,0.3);">▶ Spiel starten</button>
-                <button style="background: #FFF; color: var(--text-forest); font-weight: 700; font-size: 0.82rem; padding: 10px; border-radius: 12px; border: 1px solid var(--border-soft); cursor: pointer;">⚙ Einstellungen & Kategorien</button>
-              </div>
-            </div>
-
-            <!-- Slide 1: Roulette Phase -->
-            <div class="slide" data-slide="1">
-              <div class="screen-header">
-                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
-                <span class="pill-badge badge-orange" style="font-size: 0.72rem; padding: 2px 8px;">Bambini 3–5</span>
-              </div>
-              <div class="screen-card">
-                <img src="assets/roulette-icon.svg" alt="Roulette" style="width: 80px; height: 80px; margin: 0 auto 10px;">
-                <h3 class="screen-term-title" data-i18n="slide1_title">Glücksrad-Dreh</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="slide1_desc">Ein Fingertipp wählt zufällig den nächsten lustigen Begriff!</p>
-              </div>
-              <button class="screen-action-btn btn-roulette" data-i18n="slide1_btn">🎲 Begriff drehen!</button>
-            </div>
-
-            <!-- Slide 2: Whisper Card -->
-            <div class="slide" data-slide="2">
-              <div class="screen-header">
-                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
-                <span class="pill-badge badge-mint" style="font-size: 0.72rem; padding: 2px 8px;">Flüster-Karte</span>
-              </div>
-              <div class="screen-card">
-                <img src="assets/whisper-icon.svg" alt="Flüstern" style="width: 70px; height: 70px; margin: 0 auto 6px;">
-                <h3 class="screen-term-title" data-i18n="slide2_term">Katze 🐱</h3>
-                <div class="screen-cue-box">
-                  <strong data-i18n="slide2_cue_title">🤫 Geheimtipp fürs Kind:</strong><br>
-                  <span data-i18n="slide2_cue_text">"Schleich leise wie eine Samtpfote und putz dir das Gesicht mit den Pfoten!"</span>
-                </div>
-              </div>
-              <button class="screen-action-btn btn-guessed" data-i18n="slide2_btn">Los geht's!</button>
-            </div>
-
-            <!-- Slide 3: Countdown Timer -->
-            <div class="slide" data-slide="3">
-              <div class="screen-header">
-                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
-                <span class="pill-badge badge-sky" style="font-size: 0.72rem; padding: 2px 8px;">Countdown</span>
-              </div>
-              <div class="screen-card">
-                <div class="screen-timer-circle" style="margin: 6px auto;">
-                  <span>42s</span>
-                </div>
-                <h3 style="font-size: 1.1rem; font-weight: 800;" data-i18n="slide3_title">Farbtimer läuft!</h3>
-                <p style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="slide3_desc">Ticken in den letzten 5 Sekunden & fröhliche Tröte!</p>
-              </div>
-              <button class="screen-action-btn btn-guessed" data-i18n="slide3_btn">🎉 ERRATEN!</button>
-            </div>
-
-            <!-- Slide 4: Confetti & Fanfare -->
-            <div class="slide" data-slide="4">
-              <div class="screen-header">
-                <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-forest);">PantoMeGo</span>
-                <span class="pill-badge badge-orange" style="font-size: 0.72rem; padding: 2px 8px;">Jubel!</span>
-              </div>
-              <div class="screen-card" style="background: #FEF3C7; border-color: #FCD34D;">
-                <img src="assets/fanfare-icon.svg" alt="Fanfare" style="width: 80px; height: 80px; margin: 0 auto 10px;">
-                <h3 class="screen-term-title" style="color: #92400E;" data-i18n="slide4_title">Super gemacht! 🏆</h3>
-                <p style="font-size: 0.85rem; color: #78350F;" data-i18n="slide4_desc">Siegerfanfare & bunter Konfetti-Regen belohnen die Runde!</p>
-              </div>
-              <button class="screen-action-btn btn-roulette" data-i18n="slide4_btn">Nächste Runde ➔</button>
-            </div>
-
+          <div class="phone-screen" id="phoneVideoScreen" style="background: #111814; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 36px;">
+            <video id="appGameplayVideo" autoplay loop muted playsinline poster="assets/splash.png" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 36px;">
+              <source src="assets/app-demo.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
 
-        <!-- Slider Controls -->
-        <div class="slider-nav">
-          <button class="slider-arrow-btn" id="prevSlide" aria-label="Vorherige Folie">‹</button>
-          <button class="slider-dot active" data-slide-target="0" aria-label="Folie 1"></button>
-          <button class="slider-dot" data-slide-target="1" aria-label="Folie 2"></button>
-          <button class="slider-dot" data-slide-target="2" aria-label="Folie 3"></button>
-          <button class="slider-dot" data-slide-target="3" aria-label="Folie 4"></button>
-          <button class="slider-dot" data-slide-target="4" aria-label="Folie 5"></button>
-          <button class="slider-arrow-btn" id="nextSlide" aria-label="Nächste Folie">›</button>
+        <!-- Video Badge / Live Indicator -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px;">
+          <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981; animation: pantoPulse 2s infinite;"></span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-forest);" data-i18n="hero_video_label">Echtes In-App Gameplay • iOS Simulator Live-Aufnahme</span>
         </div>
       </div>
     </div>
@@ -1929,11 +1856,12 @@
           <li><a href="#altersstufen" class="footer-link" data-i18n="footer_tiers">Altersstufen</a></li>
           <li><a href="privacy/#de" class="footer-link dynamic-sublink" id="footerPrivacyLink" data-i18n="footer_privacy">Datenschutz</a></li>
           <li><a href="support/#de" class="footer-link dynamic-sublink" id="footerSupportLink" data-i18n="footer_support">Support & FAQ</a></li>
+          <li><a href="mailto:hello@pantomego.app?subject=PantoMeGo%20Support" class="footer-link" style="color: var(--sunburst-orange); font-weight: 700;">hello@pantomego.app</a></li>
         </ul>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Martin Bechtold. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
+        <p>&copy; 2026 Martin Bechtold &bull; <a href="https://www.pantomego.app" style="color: inherit; text-decoration: underline;">www.pantomego.app</a> &bull; <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
         <div class="compliance-seal">
           <span>🛡️</span>
           <span data-i18n="footer_compliance">Apple Kids Category & DSGVO Konform</span>
