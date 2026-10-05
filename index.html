@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>PantoMeGo — Das kinderfreundliche Pantomime- & Scharadespiel für die ganze Familie</title>
   <meta name="description" content="PantoMeGo bringt Pantomime und Scharade ins Kinderzimmer: Mit Zufalls-Roulette, geheimer Flüster-Karte für Nicht-Leser, Farbring-Timer und Sieger-Konfetti. 100% offline & werbefrei.">
   <meta name="theme-color" content="#63BA97">
@@ -717,7 +717,7 @@
       box-shadow: var(--glass-shadow);
       transition: var(--transition-smooth);
     }
-    @supports not (backdrop-filter: blur(1px)) {
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
       .compare-card { background: rgba(255, 255, 255, 0.96); }
     }
 
@@ -808,7 +808,7 @@
       gap: 16px;
       transition: var(--transition-smooth);
     }
-    @supports not (backdrop-filter: blur(1px)) {
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
       .pedagogy-card { background: rgba(255, 255, 255, 0.96); }
     }
 
@@ -852,7 +852,7 @@
       transition: var(--transition-smooth);
       overflow: hidden;
     }
-    @supports not (backdrop-filter: blur(1px)) {
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
       .step-card { background: rgba(255, 255, 255, 0.96); }
     }
 
@@ -919,7 +919,7 @@
       overflow: hidden;
       transition: var(--transition-smooth);
     }
-    @supports not (backdrop-filter: blur(1px)) {
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
       .tier-card { background: rgba(255, 255, 255, 0.96); }
     }
 
@@ -1042,7 +1042,7 @@
       gap: 16px;
       transition: var(--transition-smooth);
     }
-    @supports not (backdrop-filter: blur(1px)) {
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
       .bento-card { background: rgba(255, 255, 255, 0.96); }
     }
 
@@ -1338,6 +1338,28 @@
         align-items: flex-start;
       }
     }
+
+    @media (max-width: 480px) {
+      .header-inner {
+        padding: 0 12px;
+      }
+      .lang-switcher {
+        padding: 2px;
+        gap: 2px;
+      }
+      .lang-btn {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+      }
+      .mockup-container {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .phone-frame {
+        border-width: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1426,7 +1448,7 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen" id="phoneVideoScreen" style="background: #111814; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 36px;">
-            <video id="appGameplayVideo" autoplay loop muted playsinline poster="assets/splash.png" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 36px;">
+            <video id="appGameplayVideo" autoplay loop muted playsinline webkit-playsinline poster="assets/splash.png" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 36px;">
               <source src="assets/app-demo.mp4" type="video/mp4">
             </video>
           </div>
@@ -2581,6 +2603,17 @@
     // Initialize on DOM load
     document.addEventListener('DOMContentLoaded', () => {
       initLanguageFromHash();
+
+      // Graceful video autoplay handling for iOS Safari Low Power Mode
+      const gameplayVideo = document.getElementById('appGameplayVideo');
+      if (gameplayVideo) {
+        const playPromise = gameplayVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Low Power Mode or autoplay restricted - poster image remains visible
+          });
+        }
+      }
     });
   </script>
 </body>
