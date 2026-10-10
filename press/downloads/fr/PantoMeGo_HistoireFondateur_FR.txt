@@ -1,0 +1,53 @@
+HISTOIRE DU FONDATEUR
+
+Portrait · env. 150 mots
+Quand les enfants ont voulu jouer aussi
+
+Belgique, fin août 2026. Une soirée de vacances avec des familles amies et, sur la table, le premier prototype de BiSi, le quiz à buzzer de Martin Bechtold. Les adultes buzzent, crient et rient. Et les enfants se pressent autour de la table : ils veulent absolument jouer eux aussi.
+
+Les lettres et la rapidité de réaction, c’est encore trop tôt pour les plus petits. Mais il y a une chose que même les enfants de trois ans font à merveille : mimer. Un chat qui fait sa toilette. Un cuisinier qui remue sa casserole.
+
+C’est ainsi qu’est né PantoMeGo, la deuxième app de Martin : du mime pour toute la famille, avec des mots pour trois niveaux d’âge et des indices à chuchoter pour tous ceux qui ne savent pas encore lire. Le téléphone affiche seulement le mot, puis on le pose. Le plaisir appartient aux personnes présentes dans la pièce.
+
+—
+
+L’histoire complète · env. 680 mots
+D’une soirée de vacances au salon : comment PantoMeGo est né
+
+Une manche typique de PantoMeGo : un enfant avance à quatre pattes sur le tapis, fait le gros dos et se lave le visage avec sa patte. « Un chat ! », crie la grande sœur. Fanfare, confettis, cris de joie. Pendant tout ce temps, le smartphone reste posé, écran contre le canapé.
+
+Si ce jeu existe, c’est grâce à une autre soirée jeux.
+
+Les enfants voulaient jouer aussi
+
+Fin août 2026, Martin Bechtold passe ses vacances en Belgique avec des familles amies. Le soir, le groupe teste son premier prototype d’app : BiSi, un quiz à buzzer inspiré du Petit Bac. Les adultes sont intarissables, et les enfants se pressent autour de la table pour buzzer eux aussi.
+
+Mais les lettres, les catégories et la rapidité de réaction, c’est encore trop pour les plus jeunes. Ce que savent faire même les enfants de trois ans : mimer des animaux, des métiers et des scènes du quotidien avec tout leur corps. Ainsi naît l’idée d’une deuxième app : un jeu de mime où le téléphone aide seulement, puis sort du jeu.
+
+Ce qui rend le mime avec les enfants fastidieux
+
+Quiconque joue au mime avec de jeunes enfants connaît les obstacles : il faut sans cesse inventer de nouveaux mots adaptés à leur âge. Ceux qui ne savent pas encore lire ont besoin d’aide, et parfois d’une idée pour savoir comment mimer un éléphant. Et quelqu’un doit surveiller l’heure. C’est exactement ce dont se charge PantoMeGo : 64 mots sur trois niveaux d’âge, chacun avec trois idées pour mimer et un indice à chuchoter, plus un compte à rebours et un minuteur.
+
+Deux modes pour en finir avec la dispute du téléphone
+
+Une question se pose très vite : qui tient le téléphone ? La réponse, ce sont deux modes de jeu. En « Parents & Famille », l’appareil reste chez les adultes, qui lisent le mot et le chuchotent à l’oreille de l’enfant. En « Les enfants jouent seuls », les lecteurs débutants tiennent fièrement le téléphone, lisent leur mot en texte géant et appuient sur « Je suis prêt ! ». Puis apparaît la phrase autour de laquelle tout tourne : « Pose le téléphone & mime ! »
+
+Deux semaines, 22 versions de test
+
+Le développement commence fin septembre 2026, d’abord sous le nom de travail « PantoKids ». Comme pour BiSi, Martin programme avec l’aide de l’IA et suit rigoureusement des spécifications : chaque fonction est d’abord décrite, puis développée et testée. En deux semaines environ, 22 versions de test voient le jour. Au fil du chemin prend forme tout ce qui caractérise l’app aujourd’hui : le court compte à rebours « 3, 2, 1, C’EST PARTI ! », le minuteur à anneau de couleur, la prolongation d’un simple toucher quand un mot est presque trouvé, et la sympathique mascotte aux gants blancs de mime.
+
+Pourquoi PantoMeGo ?
+
+Dès le premier jour, « PantoKids » devient PantoMeGo. Le nom est plein de mouvement : « Panto » pour pantomime, « Me » pour « Je joue aussi ! » et « Go » pour « C’est parti ! ».
+
+Sûr, hors ligne et sans données
+
+Une app pour enfants exige un soin particulier. PantoMeGo respecte les règles d’Apple pour la catégorie Enfants : les réglages et chaque lien vers l’extérieur sont protégés par un petit calcul réservé aux adultes. L’app fonctionne entièrement hors ligne, même les sons sont générés sur l’appareil. Pas de publicité, pas de pistage, pas d’achats intégrés, pas de compte.
+
+« Je travaille au quotidien avec la data et l’IA. C’est justement pour cela que je sais combien c’est précieux qu’une app ne collecte tout simplement rien. Les parents doivent pouvoir confier PantoMeGo à leur enfant sans se poser de questions », explique Martin Bechtold.
+
+Deux apps, une même idée
+
+BiSi pour les amis autour de la table, PantoMeGo pour les familles au salon : les deux apps partagent la même conviction. Le smartphone reste en retrait, la joie naît entre les personnes. Plus d’infos sur pantomego.app et buzzitsay.it.
+
+Contact: Martin Bechtold · hello@pantomego.app · www.pantomego.app

@@ -1,0 +1,53 @@
+FOUNDER STORY
+
+Short profile · approx. 120 words
+When the kids wanted to play too
+
+Belgium, late August 2026. A vacation evening with friends and their families, and on the table the first prototype of BiSi, Martin Bechtold’s buzzer quiz. The adults buzz, shout and laugh. And the kids crowd in, desperate to play too.
+
+Letters and reaction speed are still too much for the little ones. But there is one thing even three-year-olds do brilliantly: act things out. A cat washing its face. A chef stirring a pot.
+
+That became PantoMeGo, Martin’s second app: charades for the whole family, with words for three age levels and whisper tips for everyone who can’t read yet. The phone only shows the word, then it goes down. The fun belongs to the people in the room.
+
+—
+
+The full story · approx. 600 words
+From a vacation evening to the living room: how PantoMeGo came to be
+
+A typical round of PantoMeGo: a child creeps across the carpet on all fours, arches its back like a cat and washes its face with a paw. “Cat!” shouts the big sister. Fanfare, confetti, cheers. The whole time, the smartphone lies face down on the couch.
+
+That this game exists at all has to do with another game night.
+
+The kids wanted to play too
+
+In late August 2026, Martin Bechtold spends a vacation in Belgium with friends and their families. In the evenings, the group tests his first app prototype: BiSi, a buzzer quiz based on the classic categories word game. The adults are unstoppable, and the kids crowd in too, wanting to buzz along.
+
+But letters, categories and reaction speed are still too much for the youngest. What even three-year-olds can do: act out animals, jobs and everyday scenes with their whole body. That sparks the idea for a second app: charades where the phone only helps out and then leaves the game.
+
+What makes charades with kids hard work
+
+Anyone who plays charades with young children knows the hurdles: someone constantly has to come up with new words that suit their age. Kids who can’t read yet need help, and sometimes a tip on how to act out an elephant in the first place. And someone has to watch the clock. That is exactly what PantoMeGo takes over: 64 words in three age levels, each with three acting suggestions and a whisper tip, plus countdown and timer.
+
+Two modes to end the fight over the phone
+
+One question comes up early: who actually holds the phone? The answer is two play modes. In “Parents & Family”, the device stays with the adults, who read the word and whisper it into the child’s ear. In “Kids Play Themselves”, early readers proudly hold the phone themselves, read their word in extra-large text and tap “I’m ready!”. Then the one sentence everything revolves around appears: “Put phone down & act it out!”
+
+Two weeks, 22 test builds
+
+Development starts in late September 2026, at first under the working title “PantoKids”. Just like with BiSi, Martin codes with the help of AI and works strictly from specifications: every feature is described first, then built and tested. In about two weeks, 22 test builds come together. Along the way, everything that defines the app today takes shape: the short “3, 2, 1, GO!” countdown, the color-ring timer, the one-tap extension when a word is almost guessed, and the friendly mascot with the white mime gloves.
+
+Why PantoMeGo?
+
+“PantoKids” becomes PantoMeGo on day one. The name is full of movement: “Panto” for pantomime, “Me” for “I’m joining in!” and “Go” for “Let’s go!”.
+
+Safe, offline and data-free
+
+An app for children demands special care. PantoMeGo follows Apple’s rules for the Kids category: the settings and every link out of the app are protected by a math question for grown-ups. The app runs completely offline, and even the sounds are generated on the device. There are no ads, no tracking, no in-app purchases and no accounts.
+
+“I work with data and AI for a living. That’s exactly why I know how valuable it is when an app simply collects nothing at all. Parents should be able to hand PantoMeGo to their child without a second thought,” says Martin Bechtold.
+
+Two apps, one idea
+
+BiSi for friends around the table, PantoMeGo for families in the living room: both apps share the same belief. The smartphone stays in the background, and the joy happens between people. More at pantomego.app and buzzitsay.it.
+
+Contact: Martin Bechtold · hello@pantomego.app · www.pantomego.app

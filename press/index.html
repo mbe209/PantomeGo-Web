@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>PantoMeGo – Presse & Media Kit</title>
+    <link rel="icon" type="image/png" href="../app-icon.png">
+    <link rel="apple-touch-icon" href="../app-icon.png">
+    <meta name="description" content="PantoMeGo Presse & Media Kit: Pressetexte, Fact Sheet, Screenshots, Logos und Markenrichtlinien.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mint: #63BA97; --mint-dark: #479B78; --mint-deep: #3E9474; --mint-light: #EAF5F0;
+            --orange: #F9A826; --orange-hover: #E29317; --honey: #FDB813;
+            --canvas: #F3F9F6; --card: rgba(255, 255, 255, 0.86); --card-solid: #FFFFFF;
+            --forest: #243B33; --muted: #5B7368; --border: #D8E8E0;
+            --shadow-sm: 0 4px 12px rgba(36, 59, 51, 0.05); --shadow-md: 0 12px 28px rgba(36, 59, 51, 0.09);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #EBF7F1 0%, #F7FAF8 45%, #FFF8ED 100%) fixed;
+            background-color: var(--canvas);
+            color: var(--forest); line-height: 1.65; min-height: 100vh; padding: 20px 16px 80px;
+        }
+        h1, h2, h3, h4, .display { font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; }
+        .container { max-width: 980px; margin: 0 auto; }
+        a { color: var(--mint-deep); }
+
+        /* Top nav */
+        .top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 14px 10px 20px; margin-bottom: 34px;
+            background: rgba(255, 255, 255, 0.85); border: 1px solid var(--border);
+            border-radius: 999px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            position: sticky; top: 16px; z-index: 100; box-shadow: var(--shadow-md); flex-wrap: wrap; gap: 12px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .nav-home { display: inline-flex; align-items: center; gap: 8px; font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 800; color: var(--forest); text-decoration: none; font-size: 1.05rem; }
+        .nav-home img { width: 30px; height: 30px; border-radius: 8px; }
+        .nav-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .nav-link:hover { color: var(--mint-deep); }
+        .lang-switch-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
+        .lang-btn {
+            background: #fff; border: 1px solid var(--border); color: var(--forest);
+            padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 0.88rem; font-weight: 700; font-family: inherit;
+            transition: all 0.2s ease;
+        }
+        .lang-btn:hover { border-color: var(--mint); transform: translateY(-1px); }
+        .lang-btn.active { background: var(--mint); color: #fff; border-color: var(--mint); box-shadow: 0 4px 14px rgba(99,186,151,.35); }
+        .lang-btn[hidden] { display: none; }
+
+        /* Header */
+        header { text-align: center; margin-bottom: 40px; }
+        .hero-logo { width: 150px; height: 150px; margin: 0 auto 10px; display: block; object-fit: contain; filter: drop-shadow(0 10px 22px rgba(249,168,38,.35)); }
+        .brand-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--mint-light); border: 1px solid rgba(99,186,151,.45); color: var(--mint-deep);
+            padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em;
+            text-transform: uppercase; margin-bottom: 14px;
+        }
+        h1 { font-size: 2.5rem; font-weight: 900; color: var(--forest); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.15; }
+        h1 .hl { color: var(--mint-deep); }
+        .subtitle { color: var(--muted); font-size: 1.08rem; max-width: 660px; margin: 0 auto 24px; }
+        .cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; font-family: inherit;
+            padding: 12px 22px; border-radius: 999px; transition: all 0.2s ease; cursor: pointer; border: none;
+        }
+        .btn-orange { background: var(--orange); color: #fff; box-shadow: 0 6px 20px rgba(249,168,38,.4); }
+        .btn-orange:hover { background: var(--orange-hover); transform: translateY(-2px); }
+        .btn-ghost { background: #fff; color: var(--forest); border: 1px solid var(--border); }
+        .btn-ghost:hover { border-color: var(--mint); }
+
+        /* Sections */
+        section { margin-bottom: 24px; }
+        .card {
+            background: var(--card); border: 1px solid rgba(255,255,255,.7); border-radius: 28px;
+            padding: 28px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: var(--shadow-md);
+        }
+        h2 { font-size: 1.55rem; font-weight: 800; color: var(--forest); margin-bottom: 6px; letter-spacing: -0.01em; }
+        h2 .dot { color: var(--orange); }
+        h3 { font-size: 1.1rem; font-weight: 700; color: var(--forest); margin: 22px 0 10px; }
+        .lead { color: var(--muted); margin-bottom: 18px; font-size: 0.97rem; }
+
+        /* Facts */
+        .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        .fact { background: var(--card-solid); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow-sm); }
+        .fact b { display: block; font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 2.2rem; font-weight: 900; color: var(--orange); line-height: 1; letter-spacing: -0.02em; }
+        .fact span { display: block; margin-top: 8px; color: var(--muted); font-size: 0.88rem; line-height: 1.35; }
+
+        /* Boilerplate */
+        .boiler { background: var(--card-solid); border: 1px dashed rgba(99,186,151,.7); border-radius: 18px; padding: 18px; margin-top: 18px; }
+        .boiler p { color: var(--forest); font-size: 0.95rem; }
+        .copy-btn {
+            margin-top: 12px; background: transparent; color: var(--mint-deep); border: 1px solid rgba(99,186,151,.7);
+            border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 0.82rem; cursor: pointer; font-family: inherit;
+        }
+        .copy-btn:hover { background: var(--mint-light); }
+
+        /* Downloads table */
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table.dl { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 520px; }
+        table.dl th, table.dl td { padding: 12px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+        table.dl th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: .06em; }
+        table.dl td:first-child { color: var(--forest); font-weight: 700; }
+        table.dl td small { display: block; color: var(--muted); font-weight: 400; font-size: 0.8rem; }
+        table.dl .pills { display: flex; flex-wrap: wrap; gap: 5px; }
+        table.dl a.pill {
+            display: inline-block; text-decoration: none; font-weight: 700; font-size: 0.8rem; padding: 5px 12px; border-radius: 999px;
+            background: #fff; border: 1px solid var(--border); color: var(--forest);
+        }
+        table.dl a.pill:hover { border-color: var(--mint); color: var(--mint-deep); }
+        table.dl a.pill.cur { background: var(--mint); color: #fff; border-color: var(--mint); }
+        table.dl .soon { color: var(--muted); font-size: 0.8rem; font-style: italic; }
+
+        /* Screenshots */
+        .shots { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; }
+        .shots a { display: block; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #fff; aspect-ratio: 1320 / 2868; box-shadow: var(--shadow-sm); }
+        .shots img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+        .shots a:hover img { transform: scale(1.04); }
+
+        /* Video */
+        .video-wrap { margin-top: 18px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: #1d2b26; aspect-ratio: 16 / 9; }
+        .video-wrap video { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .video-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+        .video-meta { color: var(--muted); font-size: 0.85rem; margin-top: 10px; }
+        .soon-box { display: flex; align-items: center; gap: 14px; background: var(--mint-light); border: 1px dashed rgba(99,186,151,.7); border-radius: 18px; padding: 16px 18px; color: var(--forest); font-weight: 600; }
+        .soon-box span:first-child { font-size: 1.6rem; }
+
+        /* Brand */
+        .logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        .logo-tile { background: var(--card-solid); border: 1px solid var(--border); border-radius: 18px; padding: 14px; text-align: center; box-shadow: var(--shadow-sm); }
+        .logo-tile .prev { height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border-radius: 12px;
+            background: repeating-conic-gradient(rgba(36,59,51,.06) 0% 25%, transparent 0% 50%) 50% / 16px 16px; }
+        .logo-tile .prev img { max-height: 110px; max-width: 100%; border-radius: 12px; }
+        .logo-tile .name { font-size: 0.85rem; color: var(--forest); font-weight: 600; line-height: 1.3; min-height: 2.6em; }
+        .logo-tile a { display: inline-block; margin-top: 8px; font-size: 0.82rem; font-weight: 700; text-decoration: none; }
+
+        .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .swatch { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--card-solid); cursor: pointer; text-align: left; color: inherit; font: inherit; padding: 0; }
+        .swatch:hover { border-color: var(--mint); }
+        .swatch .chip { height: 70px; border-bottom: 1px solid var(--border); }
+        .swatch .meta { padding: 10px 12px; }
+        .swatch .meta b { display: block; color: var(--forest); font-size: 0.88rem; }
+        .swatch .meta code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.82rem; color: var(--mint-deep); }
+        .swatch .meta span { display: block; font-size: 0.76rem; color: var(--muted); line-height: 1.35; margin-top: 3px; }
+
+        .type-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .type-box { background: var(--card-solid); border: 1px solid var(--border); border-radius: 18px; padding: 18px; }
+        .type-box.brand { background: linear-gradient(135deg, #EBF7F1, #FFF8ED); display: flex; flex-direction: column; justify-content: center; }
+        .wordmark { display: flex; align-items: center; gap: 12px; font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 800; font-size: 2.6rem; color: var(--forest); line-height: 1; letter-spacing: -0.02em; }
+        .wordmark img { width: 54px; height: 54px; border-radius: 13px; }
+        .claim { font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 800; letter-spacing: .18em; color: var(--mint-deep); margin-top: 10px; font-size: 0.9rem; text-transform: uppercase; }
+        .type-box p { color: var(--muted); font-size: 0.9rem; margin-top: 10px; }
+
+        .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .rule { border-radius: 18px; padding: 18px; border: 1px solid; background: #fff; }
+        .rule.do { border-color: rgba(99,186,151,.6); background: #F3FBF7; }
+        .rule.dont { border-color: rgba(239,68,68,.35); background: #FFF6F5; }
+        .rule h4 { font-size: 1rem; margin-bottom: 8px; }
+        .rule.do h4 { color: var(--mint-deep); } .rule.dont h4 { color: #D14343; }
+        .rule ul { list-style: none; }
+        .rule li { font-size: 0.9rem; color: var(--forest); padding-left: 20px; position: relative; margin-bottom: 6px; }
+        .rule.do li::before { content: "✓"; position: absolute; left: 0; color: var(--mint-deep); font-weight: 800; }
+        .rule.dont li::before { content: "✕"; position: absolute; left: 0; color: #D14343; font-weight: 800; }
+
+        .contact { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+            background: linear-gradient(135deg, #2C4A3F, #18291F); color: #E8F3EE; border: 0; }
+        .contact h2 { color: #fff; }
+        .contact .mail { font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--orange); word-break: break-all; }
+        .contact .note { color: #C9DED4; font-size: 0.9rem; margin-top: 6px; max-width: 560px; }
+        .contact .note b { color: #fff; }
+
+        footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 36px; }
+        footer a { color: var(--muted); }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); opacity: 0;
+            background: var(--forest); color: #fff; font-weight: 700; padding: 10px 18px; border-radius: 999px;
+            transition: all .25s ease; pointer-events: none; z-index: 200; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 860px) {
+            .facts, .logos, .swatches { grid-template-columns: repeat(2, 1fr); }
+            .shots { grid-template-columns: repeat(4, 1fr); }
+            .type-demo, .rules { grid-template-columns: 1fr; }
+            h1 { font-size: 1.95rem; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 12px 16px 60px; }
+            .top-nav { border-radius: 22px; padding: 10px 14px; top: 10px; }
+            .nav-link { font-size: 0.85rem; }
+            .card { padding: 20px; border-radius: 22px; }
+            .shots { grid-template-columns: repeat(3, 1fr); }
+            .hero-logo { width: 120px; height: 120px; }
+            .wordmark { font-size: 2.1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="top-nav" aria-label="Press navigation">
+        <div class="nav-links">
+            <a href="../#de" class="nav-home" id="nav-home"><img src="../app-icon.png" alt="">PantoMeGo</a>
+            <a href="#downloads" class="nav-link" data-i18n="navDownloads">Downloads</a>
+            <a href="#brand" class="nav-link" data-i18n="navBrand">Marke & CI</a>
+            <a href="#contact" class="nav-link" data-i18n="navContact">Kontakt</a>
+        </div>
+        <div class="lang-switch-wrap">
+            <button class="lang-btn active" data-lang="de">DE</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+    </nav>
+
+    <header>
+        <img class="hero-logo" src="brand/PantoMeGo_Maskottchen_transparent.png" alt="PantoMeGo Maskottchen">
+        <div class="brand-badge" data-i18n="badge">Presse & Media Kit</div>
+        <h1 data-i18n="title">Alles für eure Berichterstattung über PantoMeGo</h1>
+        <div class="subtitle" data-i18n="subtitle"></div>
+        <div class="cta-row">
+            <a class="btn btn-orange" id="cta-kit" href="downloads/PantoMeGo_MediaKit_DE.zip" download><span data-i18n="ctaKit">Media Kit herunterladen</span></a>
+            <a class="btn btn-ghost" id="cta-test" href="mailto:hello@pantomego.app"><span data-i18n="ctaTest">Testzugang anfragen</span></a>
+        </div>
+    </header>
+
+    <!-- At a glance -->
+    <section class="card">
+        <h2><span data-i18n="factsHeading">Auf einen Blick</span><span class="dot">.</span></h2>
+        <p class="lead" data-i18n="factsLead"></p>
+        <div class="facts">
+            <div class="fact"><b>3</b><span data-i18n="f1"></span></div>
+            <div class="fact"><b>5</b><span data-i18n="f2"></span></div>
+            <div class="fact"><b>64</b><span data-i18n="f3"></span></div>
+            <div class="fact"><b>4</b><span data-i18n="f4"></span></div>
+        </div>
+        <div class="boiler">
+            <h3 style="margin-top:0" data-i18n="boilerHeading">Über PantoMeGo</h3>
+            <p id="boiler-text"></p>
+            <button class="copy-btn" id="copy-boiler" data-i18n="copy">Text kopieren</button>
+        </div>
+    </section>
+
+    <!-- Downloads -->
+    <section class="card" id="downloads">
+        <h2><span data-i18n="dlHeading">Downloads</span><span class="dot">.</span></h2>
+        <p class="lead" data-i18n="dlLead"></p>
+        <div class="table-wrap">
+            <table class="dl">
+                <thead><tr id="dl-head"></tr></thead>
+                <tbody id="dl-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="card">
+        <h2><span data-i18n="shotsHeading">Screenshots</span><span class="dot">.</span></h2>
+        <p class="lead" data-i18n="shotsLead"></p>
+        <div class="shots" id="shots"></div>
+    </section>
+
+    <!-- Video -->
+    <section class="card" id="video">
+        <h2><span data-i18n="videoHeading">Promo-Video</span><span class="dot">.</span></h2>
+        <div id="video-area"></div>
+    </section>
+
+    <!-- Brand / CI -->
+    <section class="card" id="brand">
+        <h2><span data-i18n="ciHeading">Marke & CI</span><span class="dot">.</span></h2>
+        <p class="lead" data-i18n="ciLead"></p>
+
+        <h3 data-i18n="logoHeading">Logos & Icons</h3>
+        <div class="logos">
+            <div class="logo-tile"><div class="prev"><img src="brand/PantoMeGo_Maskottchen_transparent.png" alt=""></div>
+                <div class="name" data-i18n="logo1">Maskottchen · PNG, transparent</div>
+                <a href="brand/PantoMeGo_Maskottchen_transparent.png" download data-i18n="download">Download</a></div>
+            <div class="logo-tile"><div class="prev"><img src="brand/PantoMeGo_AppIcon_1024_abgerundet.png" alt=""></div>
+                <div class="name" data-i18n="logo2">App-Icon abgerundet · 1024 px</div>
+                <a href="brand/PantoMeGo_AppIcon_1024_abgerundet.png" download data-i18n="download">Download</a></div>
+            <div class="logo-tile"><div class="prev"><img src="brand/PantoMeGo_AppIcon_1024.png" alt=""></div>
+                <div class="name" data-i18n="logo3">App-Icon Original · 1024 px</div>
+                <a href="brand/PantoMeGo_AppIcon_1024.png" download data-i18n="download">Download</a></div>
+            <div class="logo-tile"><div class="prev"><img src="brand/PantoMeGo_Header_2760x1504.jpg" alt=""></div>
+                <div class="name" data-i18n="logo4">Header-Bild · 2760 × 1504</div>
+                <a href="brand/PantoMeGo_Header_2760x1504.jpg" download data-i18n="download">Download</a></div>
+        </div>
+
+        <h3 data-i18n="colorHeading">Farben</h3>
+        <p class="lead" style="margin-bottom:12px" data-i18n="colorLead"></p>
+        <div class="swatches" id="swatches"></div>
+
+        <h3 data-i18n="typeHeading">Wortmarke & Typografie</h3>
+        <div class="type-demo">
+            <div class="type-box brand">
+                <div class="wordmark"><img src="brand/PantoMeGo_AppIcon_1024_abgerundet.png" alt="">PantoMeGo</div>
+                <div class="claim" data-i18n="claim">Zeigen · Lachen · Mitraten</div>
+                <p data-i18n="typeWordmark"></p>
+            </div>
+            <div class="type-box">
+                <p style="margin-top:0" data-i18n="typeFonts"></p>
+                <p data-i18n="typeName"></p>
+            </div>
+        </div>
+
+        <h3 data-i18n="rulesHeading">Do's & Don'ts</h3>
+        <div class="rules">
+            <div class="rule do"><h4 data-i18n="doHeading">Bitte so</h4><ul id="do-list"></ul></div>
+            <div class="rule dont"><h4 data-i18n="dontHeading">Bitte nicht</h4><ul id="dont-list"></ul></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="card contact" id="contact">
+        <div>
+            <h2><span data-i18n="contactHeading">Pressekontakt</span><span class="dot">.</span></h2>
+            <div class="mail">hello@pantomego.app</div>
+            <p class="note"><b>Martin Bechtold</b> · <span data-i18n="contactRole">Entwickler</span></p>
+            <p class="note" data-i18n="contactTest"></p>
+        </div>
+        <a class="btn btn-orange" id="contact-btn" href="mailto:hello@pantomego.app"><span data-i18n="contactBtn">E-Mail schreiben</span></a>
+    </section>
+
+    <footer>
+        <p data-i18n="footer"></p>
+        <p style="margin-top:6px"><a href="../privacy/#de" id="footer-privacy" data-i18n="privacy">Datenschutz</a> · <a href="../#de" id="footer-home" data-i18n="home">Startseite</a></p>
+    </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+    const MAIL = "hello@pantomego.app";
+    const COLORS = [
+        { hex: "#63BA97", rgb: "99, 186, 151",  name: "Eucalyptus Mint",   role: "primary" },
+        { hex: "#479B78", rgb: "71, 155, 120",  name: "Mint Dark",         role: "primaryDark" },
+        { hex: "#F9A826", rgb: "249, 168, 38",  name: "Sunburst Orange",   role: "orange" },
+        { hex: "#FDB813", rgb: "253, 184, 19",  name: "Honey Warm Yellow", role: "honey" },
+        { hex: "#243B33", rgb: "36, 59, 51",    name: "Forest Green",      role: "text" },
+        { hex: "#5B7368", rgb: "91, 115, 104",  name: "Muted Eucalyptus",  role: "muted" },
+        { hex: "#F7FAF8", rgb: "247, 250, 248", name: "Eucalyptus White",  role: "canvas" },
+        { hex: "#D8E8E0", rgb: "216, 232, 224", name: "Soft Border",       role: "border" }
+    ];
+    // Screenshots der Website (assets/screenshots/<lang>/), gleiche Motive wie im Media Kit
+    const SHOTS = ["iPhone_6.9_01_Hauptmenue", "iPhone_6.9_02_Moduswahl", "iPhone_6.9_03_Fluesterkarte", "iPhone_6.9_04_Kinderkarte",
+                   "iPhone_6.9_05_Countdown", "iPhone_6.9_06_AktiveRunde", "iPhone_6.9_07_ParentalGate"];
+    // Dateinamen je Sprache (ohne Endung); Formate je Dokumenttyp
+    const DOCS = {
+        de: { fs: "PantoMeGo_FactSheet_DE", pm: "PantoMeGo_Pressemitteilung_DE", gs: "PantoMeGo_Gruendergeschichte_DE", zip: "PantoMeGo_MediaKit_DE" },
+        en: { fs: "PantoMeGo_FactSheet_EN", pm: "PantoMeGo_PressRelease_EN", gs: "PantoMeGo_FounderStory_EN", zip: "PantoMeGo_MediaKit_EN" },
+        fr: { fs: "PantoMeGo_FactSheet_FR", pm: "PantoMeGo_PressRelease_FR", gs: "PantoMeGo_HistoireFondateur_FR", zip: "PantoMeGo_MediaKit_FR" },
+        es: { fs: "PantoMeGo_FactSheet_ES", pm: "PantoMeGo_PressRelease_ES", gs: "PantoMeGo_HistoriaFundador_ES", zip: "PantoMeGo_MediaKit_ES" }
+    };
+    const FORMATS = { zip: ["zip"], fs: ["pdf"], pm: ["pdf", "docx", "txt"], gs: ["pdf", "docx", "txt"] };
+    // Promo-Video: Sprachen eintragen, sobald die Dateien in video/ liegen, z. B. ["de","en","fr","es"]
+    // Erwartete Dateien: video/PantoMeGo_Promo_<XX>_16x9.mp4, _9x16.mp4, _16x9_poster.png
+    const VIDEO_LANGS = ["de", "en", "fr", "es"];
+    // 9:16-Fassungen (video/PantoMeGo_Promo_<XX>_9x16.mp4): Sprachen eintragen, sobald vorhanden
+    const VIDEO_916 = [];
+
+    const T = {
+        de: {
+            navDownloads: "Downloads", navBrand: "Marke & CI", navContact: "Kontakt",
+            badge: "Presse & Media Kit", title: "Alles für eure Berichterstattung über PantoMeGo",
+            subtitle: "Pressetexte, Fact Sheet, Screenshots, Logos und Markenrichtlinien. Frei verwendbar für die redaktionelle Berichterstattung.",
+            ctaKit: "Media Kit herunterladen (ZIP)", ctaTest: "Testzugang anfragen", testSubject: "Testzugang PantoMeGo",
+            factsHeading: "Auf einen Blick",
+            factsLead: "PantoMeGo ist eine Pantomime- und Scharade-App für Familien mit Kindern ab 3 Jahren auf iPhone und iPad. Die App zieht einen kindgerechten Begriff, gibt einen Flüster-Tipp und startet die Runde. Dann heißt es: Handy ablegen und vormachen.",
+            f1: "Altersstufen: Bambini, Entdecker, Profis", f2: "Kategorien, von Tieren bis Alltag", f3: "Begriffe mit je drei Darstellungstipps", f4: "Sprachen: DE · EN · FR · ES",
+            boilerHeading: "Über PantoMeGo (Textbaustein zum Kopieren)",
+            boiler: "PantoMeGo ist eine Pantomime- und Scharade-App für Familien mit Kindern ab 3 Jahren auf iPhone und iPad, entwickelt von Martin Bechtold. Sie liefert kindgerechte Begriffe in drei Altersstufen, Flüster-Tipps für Kinder, die noch nicht lesen, und einen Timer für jede Runde. PantoMeGo ist auf Deutsch, Englisch, Französisch und Spanisch verfügbar, funktioniert vollständig offline und verzichtet auf Tracking, Werbung und In-App-Käufe.",
+            copy: "Text kopieren", copied: "Kopiert!",
+            dlHeading: "Downloads", dlLead: "Alle Dokumente je Sprache: als PDF zum Lesen, als Word (DOCX) und Text (TXT) zum direkten Übernehmen in eure Artikel. Das Media-Kit-ZIP enthält alles zusammen, dazu Screenshots in Originalauflösung für iPhone und iPad sowie Logo, Icons und Header-Bild.",
+            dlDoc: "Dokument", dlZip: "Media Kit komplett", dlZipSub: "ZIP · alle Dateien einer Sprache", dlFs: "Fact Sheet", dlFsSub: "PDF · 2 Seiten", dlPm: "Pressemitteilung", dlPmSub: "PDF · Word · Text", dlGs: "Gründer-Geschichte", dlGsSub: "Kurzporträt + Story · PDF · Word · Text",
+            dlVid: "Promo-Video", dlVidSub: "MP4 · 16:9 · 1080p", soon: "folgt",
+            shotsHeading: "Screenshots", shotsLead: "Vorschau in der gewählten Sprache. Klick öffnet das Bild. Originalauflösung (iPhone 1320 × 2868, iPad 2064 × 2752) im Media-Kit-ZIP.",
+            videoHeading: "Promo-Video", videoSoon: "Das Promo-Video ist in Produktion und erscheint hier in Kürze.",
+            videoLead: "Der PantoMeGo-Teaser in 20 Sekunden.", vid169: "16:9 herunterladen", vid916: "9:16 herunterladen", videoMeta: "MP4 · 1080p. Alle Sprachfassungen in der Download-Tabelle oben. Hinweis: Die gezeigten Personen und Wohnzimmerszenen sind KI-generiert; alle App-Bildschirme sind echte Screenshots.",
+            ciHeading: "Marke & CI", ciLead: "Für Artikel, Banner und Werbung. Bitte haltet euch an diese Vorgaben, damit PantoMeGo überall sofort wiedererkennbar ist.",
+            logoHeading: "Logos & Icons", logo1: "Maskottchen · PNG, transparent", logo2: "App-Icon abgerundet · 1024 px", logo3: "App-Icon Original · 1024 px", logo4: "Header-Bild · 2760 × 1504", download: "Download",
+            colorHeading: "Farben", colorLead: "Eukalyptus-Mint ist der ruhige Grundton, Sunburst Orange und Honiggelb bringen Energie für Aktionen, Highlights und Belohnungen. Klick auf eine Farbe kopiert den HEX-Code.",
+            roles: { primary: "Primärfarbe, Flächen, Erfolg", primaryDark: "Verläufe, Links, Akzente", orange: "Aktions-Buttons, Timer, Badges", honey: "Sterne, Belohnungen, Highlights", text: "Text, Wortmarke", muted: "Sekundärtext", canvas: "Hintergrund hell", border: "Ränder, Trennlinien" },
+            typeHeading: "Wortmarke & Typografie", claim: "Zeigen · Lachen · Mitraten",
+            typeWordmark: "Wortmarke „PantoMeGo“ in Forest Green auf hellem Grund, gern mit App-Icon oder Maskottchen. Der Name verbindet „Panto“ (Pantomime), „Me“ („Ich mache mit!“) und „Go“ („Los geht’s!“).",
+            typeFonts: "Schrift: In der App SF Pro Rounded (Black / Heavy). Im Web Outfit für Überschriften und Plus Jakarta Sans für Fließtext. Als Ersatz eignet sich jede runde, freundliche Sans-Serif.",
+            typeName: "Schreibweise: „PantoMeGo“ in einem Wort mit großem P, M und G. Untertitel im App Store: „Pantomime & Scharade für Kids“.",
+            rulesHeading: "Do's & Don'ts", doHeading: "Bitte so", dontHeading: "Bitte nicht",
+            dos: ["Maskottchen und Icon auf hellem, ruhigem Hintergrund mit genug Freiraum", "Mint als Grundton, Orange sparsam für Aktionen und Highlights", "Echte Screenshots aus dem Media Kit verwenden", "Den Namen exakt „PantoMeGo“ schreiben"],
+            donts: ["Maskottchen oder Icon verzerren, umfärben, drehen oder beschneiden", "Den alten Arbeitstitel „PantoKids“ verwenden", "App-Oberflächen nachbauen oder Funktionen erfinden", "Preise nennen, ohne den aktuellen App-Store-Stand zu prüfen"],
+            contactHeading: "Pressekontakt", contactRole: "Entwickler",
+            contactTest: "PantoMeGo erscheint demnächst im App Store für iPhone und iPad. Einen Testzugang für Redaktionen stellen wir auf Anfrage gern bereit. Gern erzählen wir auch im Interview, wie PantoMeGo und BiSi entstanden sind.",
+            contactBtn: "E-Mail schreiben", contactSubject: "Presseanfrage PantoMeGo",
+            footer: "© 2026 Martin Bechtold · Alle Materialien sind für die redaktionelle Berichterstattung frei verwendbar.", privacy: "Datenschutz", home: "Startseite"
+        },
+        en: {
+            navDownloads: "Downloads", navBrand: "Brand & CI", navContact: "Contact",
+            badge: "Press & Media Kit", title: "Everything you need to cover PantoMeGo",
+            subtitle: "Press texts, fact sheet, screenshots, logos and brand guidelines. Free to use for editorial coverage.",
+            ctaKit: "Download media kit (ZIP)", ctaTest: "Request review access", testSubject: "PantoMeGo review access",
+            factsHeading: "At a glance",
+            factsLead: "PantoMeGo is a charades app for families with kids aged 3 and up on iPhone and iPad. The app draws a kid-friendly word, gives a whisper tip and starts the round. Then it’s: put the phone down and act it out.",
+            f1: "age levels: Bambini, Explorers, Pros", f2: "categories, from animals to daily life", f3: "words, each with three acting tips", f4: "languages: EN · DE · FR · ES",
+            boilerHeading: "About PantoMeGo (boilerplate to copy)",
+            boiler: "PantoMeGo is a charades app for families with children aged 3 and up on iPhone and iPad, developed by Martin Bechtold. It provides kid-friendly words in three age levels, whisper tips for children who can’t read yet, and a timer for every round. PantoMeGo is available in English, German, French and Spanish, works completely offline and uses no tracking, no ads and no in-app purchases.",
+            copy: "Copy text", copied: "Copied!",
+            dlHeading: "Downloads", dlLead: "Every document per language: as PDF to read, and as Word (DOCX) and plain text (TXT) to drop straight into your article. The media kit ZIP bundles everything, plus full-resolution screenshots for iPhone and iPad, logo, icons and header image.",
+            dlDoc: "Document", dlZip: "Complete media kit", dlZipSub: "ZIP · all files for one language", dlFs: "Fact sheet", dlFsSub: "PDF · 2 pages", dlPm: "Press release", dlPmSub: "PDF · Word · text", dlGs: "Founder story", dlGsSub: "Short profile + story · PDF · Word · text",
+            dlVid: "Promo video", dlVidSub: "MP4 · 16:9 · 1080p", soon: "coming soon",
+            shotsHeading: "Screenshots", shotsLead: "Preview in the selected language. Click to open. Full resolution (iPhone 1320 × 2868, iPad 2064 × 2752) in the media kit ZIP.",
+            videoHeading: "Promo video", videoSoon: "The promo video is in production and will appear here soon.",
+            videoLead: "The PantoMeGo teaser in 20 seconds.", vid169: "Download 16:9", vid916: "Download 9:16", videoMeta: "MP4 · 1080p. All language versions are in the download table above. Note: the people and living-room scenes shown are AI-generated; all app screens are real screenshots.",
+            ciHeading: "Brand & CI", ciLead: "For articles, banners and ads. Please follow these guidelines so PantoMeGo is instantly recognizable everywhere.",
+            logoHeading: "Logos & icons", logo1: "Mascot · PNG, transparent", logo2: "App icon, rounded · 1024 px", logo3: "App icon, original · 1024 px", logo4: "Header image · 2760 × 1504", download: "Download",
+            colorHeading: "Colors", colorLead: "Eucalyptus mint is the calm base tone, while Sunburst Orange and honey yellow bring energy to actions, highlights and rewards. Click a color to copy its HEX code.",
+            roles: { primary: "Primary color, surfaces, success", primaryDark: "Gradients, links, accents", orange: "Action buttons, timer, badges", honey: "Stars, rewards, highlights", text: "Text, wordmark", muted: "Secondary text", canvas: "Light background", border: "Borders, dividers" },
+            typeHeading: "Wordmark & typography", claim: "Act it out · Laugh · Guess",
+            typeWordmark: "Wordmark “PantoMeGo” in Forest Green on a light background, ideally with the app icon or mascot. The name combines “Panto” (pantomime), “Me” (“I’m joining in!”) and “Go” (“Let’s go!”).",
+            typeFonts: "Typeface: SF Pro Rounded (Black / Heavy) in the app. On the web, Outfit for headlines and Plus Jakarta Sans for body text. Any rounded, friendly sans-serif works as a substitute.",
+            typeName: "Spelling: “PantoMeGo” as one word with a capital P, M and G. App Store subtitle: “Kids Charades & Guessing Game”.",
+            rulesHeading: "Do's & don'ts", doHeading: "Please do", dontHeading: "Please don't",
+            dos: ["Place mascot and icon on a light, calm background with enough clear space", "Use mint as the base tone and orange sparingly for actions and highlights", "Use real screenshots from the media kit", "Write the name exactly as “PantoMeGo”"],
+            donts: ["Distort, recolor, rotate or crop the mascot or icon", "Use the old working title “PantoKids”", "Recreate app screens or invent features", "Quote prices without checking the current App Store listing"],
+            contactHeading: "Press contact", contactRole: "Developer",
+            contactTest: "PantoMeGo is coming soon to the App Store for iPhone and iPad. We are happy to provide review access for editors on request, and to tell the story of how PantoMeGo and BiSi came to be in an interview.",
+            contactBtn: "Send an email", contactSubject: "PantoMeGo press inquiry",
+            footer: "© 2026 Martin Bechtold · All materials may be used freely for editorial coverage.", privacy: "Privacy", home: "Home"
+        },
+        fr: {
+            navDownloads: "Téléchargements", navBrand: "Marque & CI", navContact: "Contact",
+            badge: "Presse & kit média", title: "Tout pour parler de PantoMeGo",
+            subtitle: "Textes presse, fiche produit, captures d’écran, logos et charte graphique. Libres d’utilisation pour un usage rédactionnel.",
+            ctaKit: "Télécharger le kit média (ZIP)", ctaTest: "Demander un accès test", testSubject: "Accès test PantoMeGo",
+            factsHeading: "En bref",
+            factsLead: "PantoMeGo est une app de mime pour les familles avec des enfants dès 3 ans, sur iPhone et iPad. L’app tire un mot adapté aux enfants, donne un indice à chuchoter et lance la manche. Ensuite, on pose le téléphone et on mime.",
+            f1: "niveaux d’âge : Bambini, Explorateurs, Pros", f2: "catégories, des animaux au quotidien", f3: "mots, chacun avec trois idées pour mimer", f4: "langues : FR · EN · DE · ES",
+            boilerHeading: "À propos de PantoMeGo (texte à copier)",
+            boiler: "PantoMeGo est une app de mime et de charades pour les familles avec des enfants dès 3 ans sur iPhone et iPad, développée par Martin Bechtold. Elle propose des mots adaptés aux enfants sur trois niveaux d’âge, des indices à chuchoter pour les enfants qui ne savent pas encore lire et un minuteur pour chaque manche. PantoMeGo est disponible en français, anglais, allemand et espagnol, fonctionne entièrement hors ligne et n’utilise ni pistage, ni publicité, ni achats intégrés.",
+            copy: "Copier le texte", copied: "Copié !",
+            dlHeading: "Téléchargements", dlLead: "Chaque document par langue : en PDF pour la lecture, en Word (DOCX) et en texte brut (TXT) pour une reprise directe dans vos articles. Le ZIP du kit média regroupe tout, avec les captures en pleine résolution pour iPhone et iPad, le logo, les icônes et l’image d’en-tête.",
+            dlDoc: "Document", dlZip: "Kit média complet", dlZipSub: "ZIP · tous les fichiers d’une langue", dlFs: "Fiche produit", dlFsSub: "PDF · 2 pages", dlPm: "Communiqué de presse", dlPmSub: "PDF · Word · texte", dlGs: "Histoire du fondateur", dlGsSub: "Portrait + histoire · PDF · Word · texte",
+            dlVid: "Vidéo promo", dlVidSub: "MP4 · 16:9 · 1080p", soon: "bientôt",
+            shotsHeading: "Captures d’écran", shotsLead: "Aperçu dans la langue choisie. Cliquez pour ouvrir. Pleine résolution (iPhone 1320 × 2868, iPad 2064 × 2752) dans le ZIP du kit média.",
+            videoHeading: "Vidéo promo", videoSoon: "La vidéo promotionnelle est en cours de production et sera bientôt disponible ici.",
+            videoLead: "Le teaser PantoMeGo en 20 secondes.", vid169: "Télécharger en 16:9", vid916: "Télécharger en 9:16", videoMeta: "MP4 · 1080p. Toutes les versions linguistiques figurent dans le tableau ci-dessus. Remarque : les personnes et les scènes de salon sont générées par IA ; tous les écrans de l’app sont de vraies captures d’écran.",
+            ciHeading: "Marque & CI", ciLead: "Pour les articles, bannières et publicités. Merci de respecter ces règles pour que PantoMeGo soit reconnaissable partout.",
+            logoHeading: "Logos & icônes", logo1: "Mascotte · PNG, transparent", logo2: "Icône arrondie · 1024 px", logo3: "Icône originale · 1024 px", logo4: "Image d’en-tête · 2760 × 1504", download: "Télécharger",
+            colorHeading: "Couleurs", colorLead: "Le vert eucalyptus est la teinte de base apaisante ; l’orange Sunburst et le jaune miel apportent de l’énergie aux actions, aux points forts et aux récompenses. Cliquez sur une couleur pour copier son code HEX.",
+            roles: { primary: "Couleur principale, surfaces, succès", primaryDark: "Dégradés, liens, accents", orange: "Boutons d’action, minuteur, badges", honey: "Étoiles, récompenses, points forts", text: "Texte, logotype", muted: "Texte secondaire", canvas: "Fond clair", border: "Bordures, séparateurs" },
+            typeHeading: "Logotype & typographie", claim: "Mimer · Rire · Deviner",
+            typeWordmark: "Logotype « PantoMeGo » en Forest Green sur fond clair, idéalement avec l’icône de l’app ou la mascotte. Le nom réunit « Panto » (pantomime), « Me » (« Je joue aussi ! ») et « Go » (« C’est parti ! »).",
+            typeFonts: "Police : SF Pro Rounded (Black / Heavy) dans l’app. Sur le web, Outfit pour les titres et Plus Jakarta Sans pour le texte courant. Toute sans-serif arrondie et chaleureuse convient en remplacement.",
+            typeName: "Orthographe : « PantoMeGo » en un seul mot, avec un P, un M et un G majuscules. Sous-titre sur l’App Store : « Mimes & devinettes enfants ».",
+            rulesHeading: "À faire & à éviter", doHeading: "À faire", dontHeading: "À éviter",
+            dos: ["Placer la mascotte et l’icône sur un fond clair et sobre, avec assez d’espace", "Utiliser le vert comme teinte de base et l’orange avec parcimonie", "Utiliser les vraies captures d’écran du kit média", "Écrire le nom exactement « PantoMeGo »"],
+            donts: ["Déformer, recolorer, pivoter ou recadrer la mascotte ou l’icône", "Utiliser l’ancien nom de travail « PantoKids »", "Recréer des écrans de l’app ou inventer des fonctions", "Indiquer un prix sans vérifier la fiche App Store actuelle"],
+            contactHeading: "Contact presse", contactRole: "développeur",
+            contactTest: "PantoMeGo sera bientôt disponible sur l’App Store pour iPhone et iPad. Nous mettons volontiers un accès test à la disposition des rédactions sur demande, et racontons avec plaisir en interview la naissance de PantoMeGo et de BiSi.",
+            contactBtn: "Écrire un e-mail", contactSubject: "Demande presse PantoMeGo",
+            footer: "© 2026 Martin Bechtold · Tous les éléments sont libres d’utilisation pour un usage rédactionnel.", privacy: "Confidentialité", home: "Accueil"
+        },
+        es: {
+            navDownloads: "Descargas", navBrand: "Marca y CI", navContact: "Contacto",
+            badge: "Prensa y kit de medios", title: "Todo lo que necesitas para hablar de PantoMeGo",
+            subtitle: "Textos de prensa, ficha técnica, capturas, logotipos y guía de marca. De uso libre para fines editoriales.",
+            ctaKit: "Descargar kit de medios (ZIP)", ctaTest: "Solicitar acceso de prueba", testSubject: "Acceso de prueba PantoMeGo",
+            factsHeading: "De un vistazo",
+            factsLead: "PantoMeGo es una app de mímica para familias con niños a partir de 3 años en iPhone y iPad. La app elige una palabra adaptada a los niños, da una pista para susurrar y empieza la ronda. Después, a dejar el móvil y actuar.",
+            f1: "niveles de edad: Bambini, Exploradores, Expertos", f2: "categorías, de animales a la vida diaria", f3: "palabras, cada una con tres ideas para actuar", f4: "idiomas: ES · EN · DE · FR",
+            boilerHeading: "Sobre PantoMeGo (texto para copiar)",
+            boiler: "PantoMeGo es una app de mímica para familias con niños a partir de 3 años en iPhone y iPad, desarrollada por Martin Bechtold. Ofrece palabras adaptadas a los niños en tres niveles de edad, pistas para susurrar a quienes aún no saben leer y un temporizador para cada ronda. PantoMeGo está disponible en español, inglés, alemán y francés, funciona completamente sin conexión y no utiliza rastreo, anuncios ni compras integradas.",
+            copy: "Copiar texto", copied: "¡Copiado!",
+            dlHeading: "Descargas", dlLead: "Cada documento por idioma: en PDF para leer y en Word (DOCX) y texto plano (TXT) para usarlo directamente en tus artículos. El ZIP del kit de medios lo reúne todo, con capturas a resolución completa para iPhone y iPad, logotipo, iconos e imagen de cabecera.",
+            dlDoc: "Documento", dlZip: "Kit de medios completo", dlZipSub: "ZIP · todos los archivos de un idioma", dlFs: "Ficha técnica", dlFsSub: "PDF · 2 páginas", dlPm: "Nota de prensa", dlPmSub: "PDF · Word · texto", dlGs: "Historia del fundador", dlGsSub: "Perfil breve + historia · PDF · Word · texto",
+            dlVid: "Vídeo promocional", dlVidSub: "MP4 · 16:9 · 1080p", soon: "próximamente",
+            shotsHeading: "Capturas de pantalla", shotsLead: "Vista previa en el idioma elegido. Haz clic para abrir. Resolución completa (iPhone 1320 × 2868, iPad 2064 × 2752) en el ZIP del kit de medios.",
+            videoHeading: "Vídeo promocional", videoSoon: "El vídeo promocional está en producción y aparecerá aquí muy pronto.",
+            videoLead: "El teaser de PantoMeGo en 20 segundos.", vid169: "Descargar 16:9", vid916: "Descargar 9:16", videoMeta: "MP4 · 1080p. Todas las versiones de idioma están en la tabla de descargas. Nota: las personas y las escenas del salón están generadas con IA; todas las pantallas de la app son capturas reales.",
+            ciHeading: "Marca y CI", ciLead: "Para artículos, banners y anuncios. Sigue estas pautas para que PantoMeGo sea reconocible en todas partes.",
+            logoHeading: "Logotipos e iconos", logo1: "Mascota · PNG, transparente", logo2: "Icono redondeado · 1024 px", logo3: "Icono original · 1024 px", logo4: "Imagen de cabecera · 2760 × 1504", download: "Descargar",
+            colorHeading: "Colores", colorLead: "El verde eucalipto es el tono base tranquilo; el naranja Sunburst y el amarillo miel aportan energía a acciones, destacados y recompensas. Haz clic en un color para copiar su código HEX.",
+            roles: { primary: "Color principal, superficies, éxito", primaryDark: "Degradados, enlaces, acentos", orange: "Botones de acción, temporizador, insignias", honey: "Estrellas, recompensas, destacados", text: "Texto, logotipo", muted: "Texto secundario", canvas: "Fondo claro", border: "Bordes, separadores" },
+            typeHeading: "Logotipo y tipografía", claim: "Imitar · Reír · Adivinar",
+            typeWordmark: "Logotipo «PantoMeGo» en Forest Green sobre fondo claro, idealmente con el icono de la app o la mascota. El nombre une «Panto» (pantomima), «Me» («¡Yo también juego!») y «Go» («¡Vamos!»).",
+            typeFonts: "Tipografía: SF Pro Rounded (Black / Heavy) en la app. En la web, Outfit para titulares y Plus Jakarta Sans para el texto. Cualquier sans-serif redondeada y amable sirve como alternativa.",
+            typeName: "Escritura: «PantoMeGo» en una sola palabra, con P, M y G mayúsculas. Subtítulo en el App Store: «Mímica y juegos para niños».",
+            rulesHeading: "Qué hacer y qué evitar", doHeading: "Así sí", dontHeading: "Así no",
+            dos: ["Colocar la mascota y el icono sobre un fondo claro y tranquilo, con espacio suficiente", "Usar el verde como tono base y el naranja con moderación", "Usar las capturas reales del kit de medios", "Escribir el nombre exactamente como «PantoMeGo»"],
+            donts: ["Deformar, recolorear, girar o recortar la mascota o el icono", "Usar el antiguo nombre provisional «PantoKids»", "Recrear pantallas de la app o inventar funciones", "Indicar precios sin comprobar la ficha actual del App Store"],
+            contactHeading: "Contacto de prensa", contactRole: "Desarrollador",
+            contactTest: "PantoMeGo llegará próximamente al App Store para iPhone y iPad. Facilitamos con gusto un acceso de prueba a las redacciones que lo soliciten y contamos encantados en una entrevista cómo nacieron PantoMeGo y BiSi.",
+            contactBtn: "Enviar un correo", contactSubject: "Consulta de prensa PantoMeGo",
+            footer: "© 2026 Martin Bechtold · Todos los materiales pueden usarse libremente con fines editoriales.", privacy: "Privacidad", home: "Inicio"
+        }
+    };
+
+    const ALL_LANGS = ["de", "en", "fr", "es"];
+    const LANGS = ALL_LANGS.filter(l => T[l]);   // nur Sprachen mit fertigen Texten
+    let current = "de";
+
+    function toast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg; t.classList.add("show");
+        clearTimeout(window.__toast); window.__toast = setTimeout(() => t.classList.remove("show"), 1600);
+    }
+    async function copyText(text) {
+        try { await navigator.clipboard.writeText(text); }
+        catch (e) {
+            const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta);
+            ta.select(); try { document.execCommand("copy"); } catch (_) {} ta.remove();
+        }
+        toast(T[current].copied);
+    }
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    function renderDownloads(t) {
+        document.getElementById("dl-head").innerHTML = `<th>${esc(t.dlDoc)}</th>` + LANGS.map(l => `<th>${l.toUpperCase()}</th>`).join("");
+        const rows = [["dlZip", "dlZipSub", "zip"], ["dlFs", "dlFsSub", "fs"], ["dlPm", "dlPmSub", "pm"], ["dlGs", "dlGsSub", "gs"], ["dlVid", "dlVidSub", "vid"]];
+        document.getElementById("dl-body").innerHTML = rows.map(([k, sub, key]) =>
+            `<tr><td>${esc(t[k])}<small>${esc(t[sub])}</small></td>` +
+            LANGS.map(l => {
+                const cur = l === current ? " cur" : "";
+                if (key === "vid") {
+                    if (!VIDEO_LANGS.includes(l)) return `<td><span class="soon">${esc(t.soon)}</span></td>`;
+                    const L = l.toUpperCase();
+                    return `<td><div class="pills">` + [["16x9", "16:9"], ["9x16", "9:16"]].filter(([f]) => f === "16x9" || VIDEO_916.includes(l)).map(([f, lab]) =>
+                        `<a class="pill${cur}" href="video/PantoMeGo_Promo_${L}_${f}.mp4" download>${lab}</a>`).join("") + `</div></td>`;
+                }
+                const base = DOCS[l][key];
+                const links = FORMATS[key].map(ext => {
+                    const href = key === "zip" ? `downloads/${base}.zip` : `downloads/${l}/${base}.${ext}`;
+                    const label = FORMATS[key].length === 1 ? l.toUpperCase() : ext.toUpperCase();
+                    return `<a class="pill${cur}" href="${href}" download>${label}</a>`;
+                }).join("");
+                return `<td><div class="pills">${links}</div></td>`;
+            }).join("") + `</tr>`).join("");
+    }
+    function renderVideo(t) {
+        const area = document.getElementById("video-area");
+        if (!VIDEO_LANGS.includes(current)) {
+            area.innerHTML = `<div class="soon-box" style="margin-top:12px"><span>🎬</span><span>${esc(t.videoSoon)}</span></div>`;
+            return;
+        }
+        const L = current.toUpperCase(), src = `video/PantoMeGo_Promo_${L}_16x9.mp4`;
+        area.innerHTML = `<p class="lead" style="margin-bottom:0">${esc(t.videoLead)}</p>
+            <div class="video-wrap"><video id="promo-video" controls preload="none" playsinline poster="video/PantoMeGo_Promo_${L}_16x9_poster.png">
+            <source src="${src}" type="video/mp4"></video></div>
+            <div class="video-actions"><a class="btn btn-orange" id="vid-169" href="${src}" download>${esc(t.vid169)}</a>
+            ${VIDEO_916.includes(current) ? `<a class="btn btn-ghost" id="vid-916" href="video/PantoMeGo_Promo_${L}_9x16.mp4" download>${esc(t.vid916)}</a>` : ""}</div>
+            <p class="video-meta">${esc(t.videoMeta)}</p>`;
+    }
+    function renderShots() {
+        document.getElementById("shots").innerHTML = SHOTS.map(s =>
+            `<a href="../assets/screenshots/${current}/${s}.png" target="_blank" rel="noopener"><img loading="lazy" src="../assets/screenshots/${current}/${s}.png" alt="PantoMeGo ${s.replace(/^iPhone_6\.9_\d+_/, "")}"></a>`).join("");
+    }
+    function renderSwatches(t) {
+        document.getElementById("swatches").innerHTML = COLORS.map(c =>
+            `<button class="swatch" data-hex="${c.hex}"><div class="chip" style="background:${c.hex}"></div>` +
+            `<div class="meta"><b>${c.name}</b><code>${c.hex}</code><span>RGB ${c.rgb}</span><span>${esc(t.roles[c.role])}</span></div></button>`).join("");
+        document.querySelectorAll(".swatch").forEach(b => b.addEventListener("click", () => copyText(b.dataset.hex)));
+    }
+
+    function setLang(lang) {
+        if (!T[lang]) lang = "de";
+        current = lang;
+        const t = T[lang];
+        document.querySelectorAll("[data-i18n]").forEach(el => { const k = el.dataset.i18n; if (t[k] !== undefined) el.textContent = t[k]; });
+        document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+        document.getElementById("boiler-text").textContent = t.boiler;
+        document.getElementById("cta-kit").href = `downloads/${DOCS[lang].zip}.zip`;
+        document.getElementById("cta-test").href = `mailto:${MAIL}?subject=${encodeURIComponent(t.testSubject)}`;
+        document.getElementById("contact-btn").href = `mailto:${MAIL}?subject=${encodeURIComponent(t.contactSubject)}`;
+        document.getElementById("nav-home").href = `../#${lang}`;
+        document.getElementById("footer-home").href = `../#${lang}`;
+        document.getElementById("footer-privacy").href = `../privacy/#${lang}`;
+        document.getElementById("do-list").innerHTML = t.dos.map(x => `<li>${esc(x)}</li>`).join("");
+        document.getElementById("dont-list").innerHTML = t.donts.map(x => `<li>${esc(x)}</li>`).join("");
+        renderDownloads(t); renderShots(); renderSwatches(t); renderVideo(t);
+        document.documentElement.lang = lang;
+        if (window.location.hash.replace("#", "") !== lang && LANGS.includes(lang)) history.replaceState(null, "", "#" + lang);
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(b => {
+        if (!T[b.dataset.lang]) b.hidden = true;
+        b.addEventListener("click", () => setLang(b.dataset.lang));
+    });
+    if (LANGS.length < 2) document.querySelector(".lang-switch-wrap").hidden = true;
+    document.getElementById("copy-boiler").addEventListener("click", () => copyText(T[current].boiler));
+
+    function initHash() {
+        const h = window.location.hash.replace("#", "").toLowerCase();
+        if (LANGS.includes(h)) return setLang(h);
+        const nav = (navigator.language || "de").slice(0, 2).toLowerCase();
+        setLang(LANGS.includes(nav) ? nav : "de");
+    }
+    window.addEventListener("DOMContentLoaded", initHash);
+    window.addEventListener("hashchange", () => {
+        const h = window.location.hash.replace("#", "").toLowerCase();
+        if (LANGS.includes(h) && h !== current) setLang(h);
+    });
+</script>
+</body>
+</html>
